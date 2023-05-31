@@ -1,2 +1,5 @@
 all:
-	g++ classes.cpp Sample.class.cpp -o runthis && ./runthis
+	@g++ *.cpp -o runthis && ./runthis
+
+clean:
+	rm runthis

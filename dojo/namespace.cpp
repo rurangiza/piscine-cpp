@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   namespace.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lupin <lupin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:29:38 by arurangi          #+#    #+#             */
-/*   Updated: 2023/05/31 14:25:10 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:51:21 by lupin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ namespace Primary {
 namespace	Secondary = Primary;
 
 #include <stdio.h>
+
+/*
 int main(void)
 {
     printf("gl_var:		        [%d]\n", gl_var);
@@ -50,3 +52,4 @@ int main(void)
     printf("gl_var:		        [%d]\n", ::gl_var);
     printf("f():		        [%d]\n\n", ::f());
 }
+*/

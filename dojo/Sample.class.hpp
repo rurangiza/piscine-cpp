@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Sample.class.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lupin <lupin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:41:16 by arurangi          #+#    #+#             */
-/*   Updated: 2023/05/31 15:24:44 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:31:46 by lupin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ class Sample2 {
 		
 		Sample2(char p1, int p2, float p3);
 		~Sample2(void);
+
+};
+
+class Sample3 {
+
+	public:
+		float const	pi;
+		int			nbr;
+		
+		Sample3(float const f);
+		~Sample3(void);
+
+		void	bar(void) const;
 
 };
 

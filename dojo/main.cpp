@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   classes.cpp                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lupin <lupin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:39:20 by arurangi          #+#    #+#             */
-/*   Updated: 2023/05/31 15:12:56 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:31:14 by lupin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 
 int	main(void)
 {
-	Sample instance;
-	
-	// instance.foo = 42;
-	// std::cout << "instance.foo " << instance.foo << std::endl;
-
-	// instance.bar();
+	Sample2 instance('a', 1940, 9.34);
+	Sample3	inst3(3.1462738);
 	
 	return 0;
 }
