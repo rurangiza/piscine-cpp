@@ -6,7 +6,7 @@
 /*   By: lupin <lupin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 14:42:58 by arurangi          #+#    #+#             */
-/*   Updated: 2023/05/31 19:34:25 by lupin            ###   ########.fr       */
+/*   Updated: 2023/05/31 19:38:16 by lupin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 Sample::Sample(void)
 {
-
 	std::cout << "Constructor[1] called" << std::endl;
 
 	this->foo = 42;
@@ -28,7 +27,6 @@ Sample::Sample(void)
 
 Sample::~Sample(void)
 {
-
 	std::cout << "Destructor[1] called" << std::endl;
 	return;
 }

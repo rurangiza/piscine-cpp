@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex00.cpp                                           :+:      :+:    :+:   */
+/*   current.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lupin <lupin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/31 15:43:37 by lupin             #+#    #+#             */
-/*   Updated: 2023/05/31 15:44:22 by lupin            ###   ########.fr       */
+/*   Created: 2023/06/01 10:32:41 by lupin             #+#    #+#             */
+/*   Updated: 2023/06/01 12:32:21 by lupin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-int
-main(void)
-{
-    std::cout << "Hello, world" << std::endl;
-    return (0);
+using namespace std;
+
+int main() {
+  string str = "Hello, Arsene.R";
+  cout << str << endl;
+  return 0;
 }
