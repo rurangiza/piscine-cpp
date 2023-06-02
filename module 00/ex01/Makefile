@@ -6,28 +6,31 @@
 #    By: lupin <lupin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 15:16:45 by lupin             #+#    #+#              #
-#    Updated: 2023/06/01 22:54:54 by lupin            ###   ########.fr        #
+#    Updated: 2023/06/02 12:11:10 by lupin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	phonebook
-CC			=	c++
-FLAGS		=	-std=c++98
-FLAGS		+=	-Wall -Wextra -Werror
-SANITIZE	+=	-g -fsanitize=address
-SRC			=	main.cpp \
-				Megaphone.class.cpp \
+NAME		  =   phonebook
+CC        =   c++
+FLAGS     =   -std=c++98
+FLAGS     +=	-Wall -Wextra -Werror
+SANITIZE  =	-g -fsanitize=address
+
+INC			  =	  -I./includes
+SRC			  =	  src/main.cpp \
+				  src/Phonebook.class.cpp \
+				  src/helpers.cpp \
 
 
-OBJS		=	${SRC:.cpp=.o}
+OBJS		  =   ${SRC:.cpp=.o}
 %.o: %.c
-		$(CC) $(FLAGS)  -c $< -o $@
+		$(CC) $(FLAGS) $(INC) -cpp $< -o $@
 
 all: $(OBJS)
-	$(CC) $(FLAGS) -o $(NAME) $(SRC)
+	$(CC) $(FLAGS) $(INC) -o $(NAME) $(SRC)
 
 debug:
-	$(CC) $(FLAGS) $(SANITIZE) -o $(NAME) $(SRC)
+	$(CC) $(FLAGS) $(INC) $(SANITIZE) -o $(NAME) $(SRC)
 
 clean:
 				rm -f $(OBJS)		

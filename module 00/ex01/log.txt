@@ -1,0 +1,5 @@
+BUGS:
+- multi-word "Darkest secret" leads to infinite loop
+
+FEATURES:
+- 

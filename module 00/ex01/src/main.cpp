@@ -6,11 +6,11 @@
 /*   By: lupin <lupin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:17:25 by lupin             #+#    #+#             */
-/*   Updated: 2023/06/01 22:55:15 by lupin            ###   ########.fr       */
+/*   Updated: 2023/06/02 12:16:20 by lupin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Megaphone.class.hpp"
+#include "../includes/Phonebook.class.hpp"
 
 int
 main(void) {
@@ -18,18 +18,19 @@ main(void) {
     string input;
 
     while (true) {
-		input = "";
-        std::cout << USER_INPUT_MSG << endl << "> ";
+        std::cout << CBOLD CBLUE USER_INPUT_MSG CRESET << endl
+            << CGRAY "> " CRESET;
         std::cin >> input;
 
-        if (input == "ADD")
-            phonebook.add(phonebook);
+        if (input == "ADD") {
+            phonebook.add();
+            std::cout << "Index: " << phonebook.size << endl;
+        }
         else if (input == "SEARCH")
-            phonebook.search(phonebook);
-        else if (input == "EXIT") {
-            std::cout << "Exiting";
-			return (0);
-		}
+            phonebook.search();
+        else if (input == "EXIT")
+            break ;
+        input.clear();
     }
     return (EXIT_SUCCESS);
 }
