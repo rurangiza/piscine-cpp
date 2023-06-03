@@ -2,4 +2,9 @@ BUGS:
 - multi-word "Darkest secret" leads to infinite loop
 
 FEATURES:
-- 
+- Add welcome header
+- handle invalid commands
+
+TESTS:
+- when a phonebook element is > 10 characters. Should elipse
+- more than 8 contacts. Should replace oldest

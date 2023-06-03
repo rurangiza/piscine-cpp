@@ -20,34 +20,32 @@ Phonebook::Phonebook(void) {
     return ;
 };
 
-Phonebook::~Phonebook(void) {
+Phonebook::~Phonebook() {
     return ;
 }
 
-void Phonebook::add(void) {
+void Phonebook::add() {
     Contacts	new_contact;
-    uint8_t		index;
 
-    std::cout << endl << "*** Fill in the form ***" << endl;
+    std::cout << addSpace(2) << "↳ " << CBOLD "Fill in the form" CRESET << endl;
     
-	std::cout << CGRAY "> " CRESET << "First Name: ";
+	std::cout << addSpace(4) << CGRAY "○ " CRESET << "First Name ... : ";
     std::cin >> new_contact.first_name;
 	
-	std::cout << CGRAY "> " CRESET << "Last Name: ";
+	std::cout << addSpace(4) << CGRAY "○ " CRESET << "Last Name .... : ";
     std::cin >> new_contact.last_name;
 	
-	std::cout << CGRAY "> " CRESET << "Nickname: ";
+	std::cout << addSpace(4)  << CGRAY "○ " CRESET << "Nickname ..... : ";
     std::cin >> new_contact.nickname;
 	
-	std::cout << CGRAY "> " CRESET << "Darkest secret: ";
-    std::cin >> new_contact.darkest_secret;
+	std::cout << addSpace(4)  << CGRAY "○ " CRESET << "Darkest secret : ";
+    std::getline(std::cin >> std::ws, new_contact.darkest_secret);
 
     std::string tmp;
     while (true) {
         tmp.clear();
-        std::cout << "> Phone number: ";
-        std::getline(cin >> std::ws, tmp);
-//        std::cin >> tmp;
+        std::cout << addSpace(4) << CGRAY "○ " CRESET <<  "Phone number . : ";
+        std::cin >> std::dec >> tmp;
         if (isNumber(tmp)) {
             std::istringstream iss(tmp);
             if (iss >> new_contact.phonenumber) {
@@ -58,15 +56,10 @@ void Phonebook::add(void) {
         tmp.clear();
     }
 
-    std::cout << "------------------------------------" << endl;
-    
-    if (this->size < 8) {
-        index = this->size;
-        this->size++;
-    }
-    else
-        index = this->size % 8;
-    this->contacts[index] = new_contact;
+    std::cout << addSpace(4) << CGREEN "✓ Contact added to the phonebook" CRESET << std::endl;
+
+    this->contacts[this->size % MAX_CONTACTS] = new_contact;
+    this->size++;
     this->is_empty = false;
 }
 
@@ -74,18 +67,19 @@ void Phonebook::search(void) {
     string contact_name;
 
     if (this->is_empty) {
-        std::cout << CORANGE "    The phonebook is empty" CRESET << std::endl;
+        std::cout << addSpace(4);
+        std::cout << CORANGE "The phonebook is empty. Add a contact" CRESET << std::endl;
         return ;
     }
     this->showAllContacts();
 
-    std::cout << CBLUE CBOLD SEARCH_MSG CRESET <<  "\n> ";
+    std::cout << addSpace(2) << "↳ " << CBOLD SEARCH_MSG CRESET << std::endl;
+    std::cout << addSpace(4) << CGRAY "○ " CRESET;
     std::cin >> contact_name;
     this->showOneContact(contact_name);
 }
 
 void  Phonebook::showAllContacts() {
-    int i = 0;
 
     std::cout << std::setw(10) << std::right << "Index" << " | ";
     std::cout << std::setw(10) << std::right << "Firstname" << " | ";
@@ -93,7 +87,10 @@ void  Phonebook::showAllContacts() {
     std::cout << std::setw(10) << std::right << "Nickname" << endl;
     std::cout << "---------- + ---------- + ---------- + ----------" << std::endl;
 
+    int i = 0;
     while (i < this->size) {
+        if (i >= 8)
+            break ;
         std::cout << std::setw(10) << std::right << i << " | ";
         std::cout << std::setw(10) << std::right
                   << truncate(contacts[i].first_name, 10) << " | ";
@@ -110,14 +107,35 @@ void  Phonebook::showOneContact(string contact_name) {
     int i = 0;
     while (i < this->size) {
         if (this->contacts[i].first_name == contact_name) {
-            std::cout << "  First name: " << this->contacts[i].first_name << std::endl;
-            std::cout << "  Last name: " << this->contacts[i].last_name << std::endl;
-            std::cout << "  Nickname: " << this->contacts[i].nickname << std::endl;
-            std::cout << "  Phone number: " << this->contacts[i].phonenumber << std::endl;
-            std::cout << "  Darkest secret: " << this->contacts[i].darkest_secret << std::endl;
+            std::cout << addSpace(4) << CGRAY "○   " CRESET << "First name ... : " << this->contacts[i].first_name << std::endl;
+            std::cout << addSpace(4) << CGRAY "○   " CRESET << "Last name .... : " << this->contacts[i].last_name << std::endl;
+            std::cout << addSpace(4) << CGRAY "○   " CRESET << "Nickname ..... : " << this->contacts[i].nickname << std::endl;
+            std::cout << addSpace(4) << CGRAY "○   " CRESET << "Phone number . : " << this->contacts[i].phonenumber << std::endl;
+            std::cout << addSpace(4) << CGRAY "○   " CRESET << "Darkest secret : " << this->contacts[i].darkest_secret << std::endl;
             return ;
         }
         i++;
     }
-    std::cout << CORANGE "Not found" CRESET << std::endl;
+    std::cout << addSpace(6) << CORANGE "Couldn't find `" << contact_name << "`" CRESET << std::endl;
+}
+
+void Phonebook::fill(void) {
+
+    Contacts person = {
+        "John",
+        "Doe",
+        "Unknown",
+        48378374,
+        "Nothing special"
+    };
+
+    int i = this->size;
+    while (i < 8) {
+        this->contacts[i] = person;
+        this->size++;
+        i++;
+    }
+    this->is_empty = false;
+
+    std::cout << addSpace(4) << CGREEN "✓ Filled the phonebook" CRESET << std::endl;
 }

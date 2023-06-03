@@ -20,6 +20,9 @@
 #define USER_INPUT_MSG "ADD, SEARCH or EXIT the phonebook: "
 #define SEARCH_MSG "Who are you looking for?"
 #define ERR_NOTNUM "                 ^ not a number. try again"
+
+#define MAX_CONTACTS 8
+
 #define CGRAY "\033[0;36m"
 #define CRED "\033[0;31m"
 #define CGREEN "\033[0;32m"
@@ -58,9 +61,11 @@ class Phonebook {
 		void search(void);
         void showAllContacts(void);
         void showOneContact(string contact_name);
+        void fill(void);
 };
 
 std::string truncate(const std::string& str, size_t width);
 bool        isNumber(std::string str);
+std::string addSpace(int n);
 
 #endif

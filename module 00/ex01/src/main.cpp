@@ -13,23 +13,26 @@
 #include "../includes/Phonebook.class.hpp"
 
 int
-main(void) {
+main() {
     Phonebook phonebook;    
     string input;
 
     while (true) {
         std::cout << CBOLD CBLUE USER_INPUT_MSG CRESET << endl
-            << CGRAY "> " CRESET;
-        std::cin >> input;
+            << CBLUE "↳ " CRESET;
+        std::getline(std::cin >> std::ws, input);
 
-        if (input == "ADD") {
+        if (input == "ADD")
             phonebook.add();
-            std::cout << "Index: " << phonebook.size << endl;
-        }
         else if (input == "SEARCH")
             phonebook.search();
         else if (input == "EXIT")
             break ;
+        else if (input == "FILL")
+            phonebook.fill();
+        else
+            std::cerr << addSpace(4) << CRED "^ error: invalid command" CRESET << endl;
+
         input.clear();
     }
     return (EXIT_SUCCESS);

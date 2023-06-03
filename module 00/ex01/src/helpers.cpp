@@ -17,3 +17,12 @@ std::string truncate(const std::string& str, size_t width) {
         return str.substr(0, width-1) + ".";
     return (str);
 }
+
+std::string addSpace(int n) {
+    std::string str = "";
+    while (n > 0) {
+        str += " ";
+        n--;
+    }
+    return str;
+}

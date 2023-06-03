@@ -10,27 +10,27 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		  =   phonebook
-CC        =   c++
-FLAGS     =   -std=c++98
-FLAGS     +=	-Wall -Wextra -Werror
-SANITIZE  =	-g -fsanitize=address
+NAME        =   phonebook
+CC          =   c++
+FLAGS       =   -std=c++98
+FLAGS       +=	-Wall -Wextra -Werror
+DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
 
-INC			  =	  -I./includes
-SRC			  =	  src/main.cpp \
+INC         =	  -I./includes
+SRC         =	  src/main.cpp \
 				  src/Phonebook.class.cpp \
 				  src/helpers.cpp \
 
 
-OBJS		  =   ${SRC:.cpp=.o}
+OBJS        =   ${SRC:.cpp=.o}
 %.o: %.c
 		$(CC) $(FLAGS) $(INC) -cpp $< -o $@
 
 all: $(OBJS)
 	$(CC) $(FLAGS) $(INC) -o $(NAME) $(SRC)
 
-debug:
-	$(CC) $(FLAGS) $(INC) $(SANITIZE) -o $(NAME) $(SRC)
+debug: $(OBJS)
+	$(CC) $(DEBUG_FLAGS) $(INC) -o $(NAME) $(SRC)
 
 clean:
 				rm -f $(OBJS)		
