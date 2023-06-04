@@ -1,0 +1,14 @@
+BUGS:
+[ ] segfault (READ size 1) in Phonebook::showOneContact() when I
+    1. fill phonebook
+    2. add two contacts
+    3. try access a non existing contact
+[x] multi-word "Darkest secret" leads to infinite loop
+
+FEATURES:
+- Add welcome header
+- handle invalid commands
+
+TESTS:
+- when a phonebook element is > 10 characters. Should elipse
+- more than 8 contacts. Should replace oldest

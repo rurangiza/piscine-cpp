@@ -12,7 +12,7 @@
 
 NAME        =   phonebook
 CC          =   c++
-FLAGS       =   -std=c++98
+FLAGS       =
 FLAGS       +=	-Wall -Wextra -Werror
 DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
 
@@ -20,7 +20,7 @@ INC         =	  -I./includes
 SRC         =	  src/main.cpp \
 				  src/Phonebook.class.cpp \
 				  src/helpers.cpp \
-
+				  src/UserInterface.class.cpp \
 
 OBJS        =   ${SRC:.cpp=.o}
 %.o: %.c

@@ -2,10 +2,10 @@
 // Created by Arsène Rurangiza on 02/06/2023.
 //
 
-#include "../includes/Phonebook.class.hpp"
+#include "../includes/Phonebook.class.h"
 
 bool isNumber(std::string str) {
-    for (int i = 0; str[i]; i++) {
+    for (size_t i = 0; str[i]; i++) {
         if (!std::isdigit(str[i]))
             return (false);
     }
