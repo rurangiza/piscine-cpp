@@ -12,7 +12,10 @@ main() {
     system("clear");
     while (true) {
         ui.prompt(0, USER_INPUT_MSG);
-        std::getline(std::cin >> std::ws, input);
+        std::getline(std::cin, input);
+
+        if (input.empty())
+          continue ;
 
         if (input == "ADD")
             phonebook.add();

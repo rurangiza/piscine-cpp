@@ -4,9 +4,13 @@
 
 #include "../includes/UserInterface.class.h"
 
+//===---===---===---===---===---=== INIT ===---===---===---===---===---===---===
+
 UserInterface::UserInterface() {};
 
 UserInterface::~UserInterface() {};
+
+//===---===---===---===---===--- FUNCTIONS ===---===---===---===---===---===---=
 
 /* Display error message */
 void  UserInterface::err_msg(int indent, std::string msg) {

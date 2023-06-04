@@ -1,6 +1,8 @@
 #include "../includes/Phonebook.class.h"
 #include <sstream>
 
+//===---===---===---===---===---===---===---===---===---===---===---===---===---
+
 Phonebook::Phonebook() {
     size = 0;
     is_empty = true;
@@ -9,37 +11,20 @@ Phonebook::Phonebook() {
 Phonebook::~Phonebook() {
 }
 
-void Phonebook::add() {
+//===---===---===---===---===---===---===---===---===---===---===---===---===---
+
+/* Add new contact to phonebook after prompting for input */
+void
+Phonebook::add() {
     Contacts	new_contact;
 
     ui.subprompt(2, "Fill in the form");
-
-//    ui.list(4, "First Name ... : ", "", false);
-//    std::cin >> new_contact.first_name;
-//
-//    ui.list(4, "Last Name .... : ", "", false);
-//    std::cin >> new_contact.last_name;
-//
-//    ui.list(4, "Nickname ..... : ", "", false);
-//    std::cin >> new_contact.nickname;
-//
-//    ui.list(4, "Darkest secret : ", "", false);
-//    std::getline(std::cin >> std::ws, new_contact.darkest_secret);
-
 
     new_contact.first_name = get_input("string", "First Name ... : ");
     new_contact.last_name = get_input("string", "Last Name .... : ");
     new_contact.nickname = get_input("string", "Nickname ..... : ");
     new_contact.darkest_secret = get_input("string", "Darkest secret : ");
     new_contact.phonenumber = get_input("number", "Phone number . : ");
-
-//    std::string tmp;
-//    do {
-//      ui.list(4, "Phone number . : ", "", false);
-//      std::getline(std::cin, tmp);
-//    } while (!isNumber(tmp) || tmp.empty());
-//    new_contact.phonenumber = tmp;
-
 
     ui.succ_msg(4, "Contact added to the phonebook");
 
@@ -48,7 +33,9 @@ void Phonebook::add() {
     this->is_empty = false;
 }
 
-std::string Phonebook::get_input(const std::string& type, const std::string& prefix) {
+/* Save user input in contact fields */
+std::string
+Phonebook::get_input(const std::string& type, const std::string& prefix) {
     std::string tmp;
 
     while (true) {
@@ -64,7 +51,9 @@ std::string Phonebook::get_input(const std::string& type, const std::string& pre
     return tmp;
 }
 
-void Phonebook::search() const {
+/* Look for a specific contact after displaying entire phonebook */
+void
+Phonebook::search() const {
     std::string contact_name;
 
     if (this->is_empty) {
@@ -73,12 +62,15 @@ void Phonebook::search() const {
     }
     this->showAllContacts();
 
-    ui.inlineprompt(2, SEARCH_MSG);
+    ui.inlineprompt(2, SEARCH_MSG); // print message
     std::cin >> contact_name;
     this->showOneContact(contact_name);
+    std::cin.ignore(1, '\n');
 }
 
-void  Phonebook::showAllContacts() const {
+/* Show all contacts currently in phonebook */
+void
+Phonebook::showAllContacts() const {
 
     std::cout << std::setw(10) << std::right << "Index" << " | ";
     std::cout << std::setw(10) << std::right << "Firstname" << " | ";
@@ -99,9 +91,12 @@ void  Phonebook::showAllContacts() const {
                   << truncate(this->contacts[i].nickname, 10) << std::endl;
         i++;
     }
+    std::cout << "-------------------------------------------------" << std::endl;
 }
 
-void  Phonebook::showOneContact(std::string contact_name) const {
+/* Look for specific contact. Display if found else return error message */
+void
+Phonebook::showOneContact(std::string contact_name) const {
 
     int i = 0;
     while (i < this->size) {
@@ -118,7 +113,9 @@ void  Phonebook::showOneContact(std::string contact_name) const {
     std::cout << addSpace(4) << CORANGE "Couldn't find `" << contact_name << "`" CRESET << std::endl;
 }
 
-void Phonebook::fill() {
+/* Fill phonebook with dummy contacts */
+void
+Phonebook::fill() {
 
     Contacts person = {
         "John",

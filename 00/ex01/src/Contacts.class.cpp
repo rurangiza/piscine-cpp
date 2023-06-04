@@ -4,6 +4,8 @@
 
 #include "../includes/Contacts.class.h"
 
+//===---===---===---===---===---===---===---===---===---===---===---===---===---
+
 Contacts::Contacts() {
     this->first_name = "";
     this->last_name = "";
@@ -15,3 +17,5 @@ Contacts::Contacts() {
 Contacts::~Contacts() {
     ;
 };
+
+//===---===---===---===---===---===---===---===---===---===---===---===---===---
