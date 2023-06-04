@@ -11,8 +11,7 @@ UserInterface::~UserInterface() {};
 /* Display error message */
 void  UserInterface::err_msg(int indent, std::string msg) {
     this->addSpace(indent);
-    std::cerr << CRED CBOLD "Error: \n" CRESET;
-    this->addSpace(indent);
+    std::cerr << CRED CBOLD "Error: " CRESET;
     std::cerr << msg << std::endl;
 };
 
@@ -34,7 +33,7 @@ void  UserInterface::info_msg(int indent, std::string msg) {
 /* List elements */
 void  UserInterface::list(int indent, std::string field, std::string content, bool newline) {
     this->addSpace(indent);
-    std::cout << CGRAY SYM_BUBBLE CRESET;
+    std::cout << CGRAY "- " CRESET;
     if (!field.empty())
       std::cout << field;
     if (!content.empty())
@@ -46,7 +45,7 @@ void  UserInterface::list(int indent, std::string field, std::string content, bo
 /* Ask user for input */
 void  UserInterface::prompt(int indent, std::string msg) {
     this->addSpace(indent);
-    std::cout << CBOLD CBLUE << msg << CRESET << std::endl;
+    std::cout << CBOLD CBLUE << std::endl << msg << CRESET << std::endl;
     this->addSpace(indent);
     std::cout << CBLUE SYM_DRIGHT_ARROW CRESET;
 };

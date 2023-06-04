@@ -25,8 +25,6 @@
 
 #define MAX_CONTACTS 8
 
-
-
 class Phonebook {
 
     private:
@@ -34,6 +32,7 @@ class Phonebook {
       int         size;
       bool        is_empty;
 
+      static std::string get_input(const std::string& type, const std::string& prefix);
       void showAllContacts() const;
       void showOneContact(std::string contact_name) const;
 

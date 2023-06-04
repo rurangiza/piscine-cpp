@@ -13,7 +13,7 @@ class Contacts { // can't have empty fields
         std::string   first_name;
         std::string   last_name;
         std::string   nickname;
-        int           phonenumber;
+        std::string   phonenumber;
         std::string   darkest_secret;
 };
 

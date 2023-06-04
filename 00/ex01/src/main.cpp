@@ -6,12 +6,12 @@ UserInterface ui;
 
 int
 main() {
-    Phonebook phonebook;
+    Phonebook   phonebook;
+    std::string input;
 
+    system("clear");
     while (true) {
         ui.prompt(0, USER_INPUT_MSG);
-
-        std::string input;
         std::getline(std::cin >> std::ws, input);
 
         if (input == "ADD")

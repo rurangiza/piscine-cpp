@@ -17,7 +17,7 @@
 
 #define SYM_DOT "• "
 #define SYM_DRIGHT_ARROW "↳ "
-#define SYM_BUBBLE "○ "
+//#define SYM_BUBBLE "○ "
 #define SYM_SUCCESS "✓ "
 
 class UserInterface {

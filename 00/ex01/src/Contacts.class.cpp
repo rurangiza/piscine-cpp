@@ -8,10 +8,10 @@ Contacts::Contacts() {
     this->first_name = "";
     this->last_name = "";
     this->nickname = "";
-    this->phonenumber = 0;
+    this->phonenumber = "";
     this->darkest_secret = "";
-}
+};
 
 Contacts::~Contacts() {
     ;
-}
+};
