@@ -66,15 +66,14 @@ Phonebook::get_input(const std::string& type, const std::string& prefix) {
 /* Look for a specific contact after displaying entire phonebook */
 void
 Phonebook::search() const {
-
     if (this->is_empty) {
         ui.warn_msg(4, "The phonebook is empty. Add a contact");
         return ;
     }
+
     this->showAllContacts();
 
     int contact_index;
-
     while (true) {
       ui.inlineprompt(2, SEARCH_MSG); // print message
       std::cin >> std::dec >> contact_index;
@@ -86,11 +85,6 @@ Phonebook::search() const {
       std::cin.clear();
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-
-//    do {
-//      std::cin.clear();
-//      std::cin.ignore(1, '\n');
-//    } while (std::cin.fail());
     std::cin.ignore(1, '\n');
 }
 
