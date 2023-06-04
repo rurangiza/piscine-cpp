@@ -1,6 +1,14 @@
-//
-// Created by Arsène Rurangiza on 04/06/2023.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   UserInterface.class.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/04 21:01:53 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/04 21:01:55 by arurangi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef USERINTERFACE_CLASS_H
 #define USERINTERFACE_CLASS_H

@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.class.hpp                                :+:      :+:    :+:   */
+/*   Phonebook.class.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lupin <lupin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 15:23:49 by lupin             #+#    #+#             */
-/*   Updated: 2023/06/02 12:29:34 by lupin            ###   ########.fr       */
+/*   Created: 2023/06/04 21:01:47 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/04 21:01:49 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PHONEBOOK_CLASS_H
 #define PHONEBOOK_CLASS_H
@@ -20,7 +19,7 @@
 #include "Contacts.class.h"
 
 #define USER_INPUT_MSG "ADD, SEARCH or EXIT the phonebook: "
-#define SEARCH_MSG "Who are you looking for?"
+#define SEARCH_MSG "Enter the index of a contact:"
 #define ERR_NOTNUM "                 ^ not a number. try again"
 
 #define MAX_CONTACTS 8
@@ -34,7 +33,7 @@ class Phonebook {
 
       static std::string get_input(const std::string& type, const std::string& prefix);
       void showAllContacts() const;
-      void showOneContact(std::string contact_name) const;
+      void showOneContact(int contact_index) const;
 
     public:
       Phonebook();

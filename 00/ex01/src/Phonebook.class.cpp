@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Phonebook.class.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/04 21:01:21 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/04 21:01:22 by arurangi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Phonebook.class.h"
 #include <sstream>
 
@@ -54,7 +66,6 @@ Phonebook::get_input(const std::string& type, const std::string& prefix) {
 /* Look for a specific contact after displaying entire phonebook */
 void
 Phonebook::search() const {
-    std::string contact_name;
 
     if (this->is_empty) {
         ui.warn_msg(4, "The phonebook is empty. Add a contact");
@@ -62,9 +73,24 @@ Phonebook::search() const {
     }
     this->showAllContacts();
 
-    ui.inlineprompt(2, SEARCH_MSG); // print message
-    std::cin >> contact_name;
-    this->showOneContact(contact_name);
+    int contact_index;
+
+    while (true) {
+      ui.inlineprompt(2, SEARCH_MSG); // print message
+      std::cin >> std::dec >> contact_index;
+      if (!std::cin.fail()) {
+        this->showOneContact(contact_index);
+        break ;
+      }
+      ui.err_msg(13, "invalid input ^");
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+
+//    do {
+//      std::cin.clear();
+//      std::cin.ignore(1, '\n');
+//    } while (std::cin.fail());
     std::cin.ignore(1, '\n');
 }
 
@@ -96,11 +122,11 @@ Phonebook::showAllContacts() const {
 
 /* Look for specific contact. Display if found else return error message */
 void
-Phonebook::showOneContact(std::string contact_name) const {
+Phonebook::showOneContact(int contact_index) const {
 
     int i = 0;
     while (i < this->size) {
-        if (this->contacts[i].first_name == contact_name) {
+        if (i == contact_index) {
             ui.list(4, "First name ... : ", this->contacts[i].first_name, true);
             ui.list(4, "Last name .... : ", this->contacts[i].last_name, true);
             ui.list(4, "Nickname ..... : ", this->contacts[i].nickname, true);
@@ -110,7 +136,7 @@ Phonebook::showOneContact(std::string contact_name) const {
         }
         i++;
     }
-    std::cout << addSpace(4) << CORANGE "Couldn't find `" << contact_name << "`" CRESET << std::endl;
+    std::cout << addSpace(4) << CORANGE "No contact at index [" << contact_index << "]" CRESET << std::endl;
 }
 
 /* Fill phonebook with dummy contacts */
