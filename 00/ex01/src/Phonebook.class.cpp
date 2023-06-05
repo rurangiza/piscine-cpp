@@ -45,20 +45,30 @@ Phonebook::add() {
     this->is_empty = false;
 }
 
+int is_all_spaces(std::string str) {
+    int i = 0;
+    while (str[i]) {
+        if (str[i] != ' ')
+            return false;
+        i++;
+    }
+    return true;
+}
+
 /* Save user input in contact fields */
 std::string
 Phonebook::get_input(const std::string& type, const std::string& prefix) {
     std::string tmp;
 
     while (true) {
-      ui.list(4, prefix, "", false);
-      std::getline(std::cin, tmp);
-      if (tmp.empty())
-          ui.err_msg(8, "empty. you must enter something");
-      else if (type == "number" && !isNumber(tmp))
-        ui.err_msg(8, "not a number");
-      else
-        break ;
+        ui.list(4, prefix, "", false);
+        std::getline(std::cin, tmp);
+        if (tmp.empty() || is_all_spaces(tmp))
+            ui.err_msg(8, "empty. you must enter something");
+        else if (type == "number" && !isNumber(tmp))
+            ui.err_msg(8, "not a number");
+        else
+            break ;
     }
     return tmp;
 }
@@ -75,16 +85,18 @@ Phonebook::search() const {
 
     int contact_index;
     while (true) {
-      ui.inlineprompt(2, SEARCH_MSG); // print message
-      std::cin >> std::dec >> contact_index;
-      if (!std::cin.fail()) {
-        this->showOneContact(contact_index);
-        break ;
-      }
-      ui.err_msg(13, "invalid input ^");
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        ui.inlineprompt(2, SEARCH_MSG); // print message
+        std::cin >> std::dec >> contact_index;
+        if (!std::cin.fail()) {
+            break ;
+        }
+        ui.err_msg(13, "invalid input ^");
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
+
+    this->showOneContact(contact_index);
+
     std::cin.ignore(1, '\n');
 }
 

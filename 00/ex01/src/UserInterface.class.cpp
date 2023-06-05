@@ -47,11 +47,11 @@ void  UserInterface::list(int indent, std::string field, std::string content, bo
     this->addSpace(indent);
     std::cout << CGRAY "- " CRESET;
     if (!field.empty())
-      std::cout << field;
+        std::cout << field;
     if (!content.empty())
-      std::cout << content;
+        std::cout << content;
     if (newline == true)
-      std::cout << std::endl;
+        std::cout << std::endl;
 }
 
 /* Ask user for input */
@@ -84,5 +84,5 @@ void  UserInterface::warn_msg(int indent, std::string msg) {
 /* Add indentation dynamicly */
 void  UserInterface::addSpace(int n) {
     while (n-- > 0)
-      std::cout << " ";
+        std::cout << " ";
 };
