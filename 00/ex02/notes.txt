@@ -1,7 +1,0 @@
-Concepts : vector, iterator, pairs
-
-Pseudocode:
-    - create file named `current_time.log` in Read/Write mode
-    - write data into it
-        -
-        -

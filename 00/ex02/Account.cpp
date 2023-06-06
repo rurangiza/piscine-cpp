@@ -1,36 +1,42 @@
 
 #include "Account.hpp"
 #include <iostream>
-#include <string>
-#include <iomanip>
 #include <ctime>
-
-#define CGRAY "\033[0;37m"
-#define CRED "\033[0;31m"
-#define CGREEN "\033[0;32m"
-#define CORANGE "\033[0;33m"
-#define CBLUE "\033[0;34m"
-#define CRESET "\033[0m"
-#define CBOLD "\033[1m"
+#include <fstream>
+#include <sstream>
 
 int g_indexG = 0;
 int g_totalAmount = 0;
 int g_totalDeposits = 0;
 int g_totalWithdrawals = 0;
 
+std::fstream outFile;
+
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
 Account::Account(int initial_deposit) {
     // Format: [19920104_091532] index:0;amount:42;created
 
-    _displayTimestamp();
     this->_accountIndex = g_indexG;
-    g_indexG++;
-    std::cout << " index:" << this->_accountIndex;
+    if (this->_accountIndex == 0) {
+        std::time_t now = std::time(nullptr);
+        std::stringstream ss;
+        ss << std::put_time(std::localtime(&now), "%Y%m%d_%H%M%S");
+        std::string timestamp = ss.str();
 
-    std::cout << ";amount:" << initial_deposit;
+        outFile.open(timestamp+".log", std::ios::out);
+        if (!outFile.is_open())
+            outFile << "Error: couldn't open outFile" << std::endl;
+    }
+
+
+    _displayTimestamp();
+    g_indexG++;
+    outFile << " index:" << this->_accountIndex;
+
+    outFile << ";amount:" << initial_deposit;
     this->_amount = initial_deposit;
-    std::cout << CGRAY ";created" CRESET << std::endl;
+    outFile << ";created" << std::endl;
 
     g_totalAmount += this->_amount; // CHECK: is there better way? no global
 
@@ -42,9 +48,13 @@ Account::Account(int initial_deposit) {
 Account::~Account() {
     // Format: [19920104_091532] index:0;amount:47;closed
     _displayTimestamp();
-    std::cout << " index:" << this->_accountIndex;
-    std::cout << ";amount:" << this->_amount;
-    std::cout << CGRAY ";closed" CRESET << std::endl;
+    outFile << " index:" << this->_accountIndex;
+    outFile << ";amount:" << this->_amount;
+    outFile << ";closed" << std::endl;
+
+    g_indexG--;
+    if (g_indexG == 0)
+        outFile.close();
     ;
 }
 
@@ -76,15 +86,13 @@ Account::displayAccountsInfos() {
 
     _displayTimestamp();
 
-    std::cout << CBLUE;
-    std::cout << " accounts:" << g_indexG;
+    outFile << " accounts:" << g_indexG;
 
-    std::cout << ";total:" << g_totalAmount;
+    outFile << ";total:" << g_totalAmount;
 
-    std::cout << ";deposits:" << g_totalDeposits;
+    outFile << ";deposits:" << g_totalDeposits;
 
-    std::cout << ";withdrawals:" << g_totalWithdrawals << std::endl;
-    std::cout << CRESET;
+    outFile << ";withdrawals:" << g_totalWithdrawals << std::endl;
 
 }
 
@@ -96,15 +104,15 @@ Account::makeDeposit(int deposit) {
 
     _displayTimestamp();
 
-    std::cout << " index:" << this->_accountIndex;
-    std::cout << ";p_amount:" << this->_amount << ";";
-    std::cout << CGREEN "deposit:" << deposit << CRESET;
+    outFile << " index:" << this->_accountIndex;
+    outFile << ";p_amount:" << this->_amount << ";";
+    outFile << "deposit:" << deposit;
 
     this->_amount += deposit;
-    std::cout << ";amount:" << this->_amount;
+    outFile << ";amount:" << this->_amount;
 
     this->_nbDeposits++;
-    std::cout << ";nb_deposits:" << this->_nbDeposits << std::endl;
+    outFile << ";nb_deposits:" << this->_nbDeposits << std::endl;
 
 
 
@@ -117,20 +125,20 @@ Account::makeWithdrawal(int withdrawal) {
 
     _displayTimestamp();
 
-    std::cout << " index:" << this->_accountIndex;
-    std::cout << ";p_amount:" << this->_amount << ";";
+    outFile << " index:" << this->_accountIndex;
+    outFile << ";p_amount:" << this->_amount << ";";
 
     if (withdrawal > this->_amount) {
-        std::cout << CRED "withdrawal:refused" CRESET << std::endl;
+        outFile << "withdrawal:refused" << std::endl;
         return false;
     }
-    std::cout << CRED "withdrawal:" << withdrawal << CRESET;
+    outFile << "withdrawal:" << withdrawal;
 
     this->_amount -= withdrawal;
-    std::cout << ";amount:" << this->_amount;
+    outFile << ";amount:" << this->_amount;
 
     this->_nbWithdrawals++;
-    std::cout << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
+    outFile << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 
     return true;
 }
@@ -145,10 +153,10 @@ Account::displayStatus() const {
     // Format : [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
     _displayTimestamp();
 
-    std::cout << " index:" << this->_accountIndex;
-    std::cout << ";amount:" << this->_amount;
-    std::cout << ";deposits:" << this->_nbDeposits;
-    std::cout << ";withdrawals:" << this->_nbWithdrawals << std::endl;
+    outFile << " index:" << this->_accountIndex;
+    outFile << ";amount:" << this->_amount;
+    outFile << ";deposits:" << this->_nbDeposits;
+    outFile << ";withdrawals:" << this->_nbWithdrawals << std::endl;
 }
 
 // PRIVATE ===---===---===---===---===---===---===---===---===---===---===---===
@@ -163,7 +171,7 @@ Account::_displayTimestamp() {
     std::strftime(timestamp, sizeof(timestamp), "%Y%m%d_%H%M%S", std::localtime(&now));
 
     // Display the timestamp
-    std::cout << "[" << timestamp << "]";
+    outFile << "[" << timestamp << "]";
 }
 
 Account::Account() {
