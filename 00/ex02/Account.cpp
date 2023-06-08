@@ -62,22 +62,22 @@ Account::~Account() {
 
 int
 Account::getNbAccounts() {
-    return 0;
+    return g_indexG;
 }
 
 int
 Account::getTotalAmount() {
-    return 0;
+    return g_totalAmount;
 }
 
 int
 Account::getNbDeposits() {
-    return 0;
+    return g_totalDeposits;
 }
 
 int
 Account::getNbWithdrawals() {
-    return 0;
+    return g_totalWithdrawals;
 }
 
 void
@@ -93,7 +93,6 @@ Account::displayAccountsInfos() {
     outFile << ";deposits:" << g_totalDeposits;
 
     outFile << ";withdrawals:" << g_totalWithdrawals << std::endl;
-
 }
 
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
@@ -108,15 +107,13 @@ Account::makeDeposit(int deposit) {
     outFile << ";p_amount:" << this->_amount << ";";
     outFile << "deposit:" << deposit;
 
+    g_totalAmount += deposit;
     this->_amount += deposit;
     outFile << ";amount:" << this->_amount;
 
+    g_totalDeposits++;
     this->_nbDeposits++;
     outFile << ";nb_deposits:" << this->_nbDeposits << std::endl;
-
-
-
-    ;
 }
 
 bool
@@ -134,9 +131,11 @@ Account::makeWithdrawal(int withdrawal) {
     }
     outFile << "withdrawal:" << withdrawal;
 
+    g_totalAmount -= withdrawal;
     this->_amount -= withdrawal;
     outFile << ";amount:" << this->_amount;
 
+    g_totalWithdrawals++;
     this->_nbWithdrawals++;
     outFile << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 
