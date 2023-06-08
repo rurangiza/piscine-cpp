@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lupin <lupin@student.42.fr>                +#+  +:+       +#+         #
+#    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 15:16:45 by lupin             #+#    #+#              #
-#    Updated: 2023/06/02 12:11:10 by lupin            ###   ########.fr        #
+#    Updated: 2023/06/08 15:25:38 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ OBJS        =   ${SRC:.cpp=.o}
 %.o: %.c
 		$(CC) $(FLAGS) $(INC) -cpp $< -o $@
 
-all: $(OBJS)
+all: $(NAME)
+
+$(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(INC) -o $(NAME) $(SRC)
 
 debug: $(OBJS)

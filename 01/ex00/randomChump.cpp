@@ -9,5 +9,6 @@
 */
 
 void randomChump( std::string name ) {
-    ;
+    Zombie newzomb(name);
+    newzomb.announce();
 }

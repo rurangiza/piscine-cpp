@@ -12,8 +12,10 @@ SRC         =     tests.cpp \
 OBJS        =   ${SRC:.cpp=.o}
 %.o: %.c
 		$(CC) $(FLAGS) $(INC) -cpp $< -o $@
+	
+all: $(NAME)
 
-all: $(OBJS)
+$(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(INC) -o $(NAME) $(SRC)
 
 minimal:

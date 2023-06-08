@@ -13,5 +13,7 @@ main(void) {
     glop.announce();
     foo.announce();
 
+    random
+
     return 0;
 }

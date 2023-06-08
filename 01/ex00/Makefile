@@ -12,7 +12,9 @@ OBJS        =   ${SRC:.cpp=.o}
 %.o: %.c
 		$(CC) $(FLAGS) $(INC) -cpp $< -o $@
 
-all: $(OBJS)
+all: $(NAME)
+
+$(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(INC) -o $(NAME) $(SRC)
 
 minimal:
