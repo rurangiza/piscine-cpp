@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 21:01:21 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/04 21:01:22 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:48:31 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,21 @@ Phonebook::add() {
 
     ui.subprompt(2, "Fill in the form");
 
-    new_contact.first_name = get_input("string", "First Name ... : ");
-    new_contact.last_name = get_input("string", "Last Name .... : ");
-    new_contact.nickname = get_input("string", "Nickname ..... : ");
-    new_contact.darkest_secret = get_input("string", "Darkest secret : ");
-    new_contact.phonenumber = get_input("number", "Phone number . : ");
+    // new_contact.first_name = get_input("string", "First Name ... : ");
+    new_contact.setFirstName(get_input("string", "First Name ... : "));
+    
+    // new_contact.last_name = get_input("string", "Last Name .... : ");
+    new_contact.setLastName(get_input("string", "Last Name .... : "));
+    
+    // new_contact.nickname = get_input("string", "Nickname ..... : ");
+    new_contact.setNickname(get_input("string", "Nickname ..... : "));
+
+    // new_contact.darkest_secret = get_input("string", "Darkest secret : ");
+    new_contact.setDarkestSecret(get_input("string", "Darkest secret : "));
+    
+    // new_contact.phonenumber = get_input("number", "Phone number . : ");
+    new_contact.setPhonenumber(get_input("number", "Phone number . : "));
+    
 
     ui.succ_msg(4, "Contact added to the phonebook");
 
@@ -133,11 +143,11 @@ Phonebook::showOneContact(int contact_index) const {
     int i = 0;
     while (i < this->size) {
         if (i == contact_index) {
-            ui.list(4, "First name ... : ", this->contacts[i].first_name, true);
-            ui.list(4, "Last name .... : ", this->contacts[i].last_name, true);
-            ui.list(4, "Nickname ..... : ", this->contacts[i].nickname, true);
-            ui.list(4, "Phone number . : ", this->contacts[i].phonenumber, true);
-            ui.list(4, "Darkest secret : ", this->contacts[i].first_name, true);
+            ui.list(4, "First name ... : ", contacts[i].getFirstName(), true);
+            ui.list(4, "Last name .... : ", contacts[i]->getLastName, true);
+            ui.list(4, "Nickname ..... : ", contacts[i]->getNickname, true);
+            ui.list(4, "Phone number . : ", contacts[i]->getPhonenumber, true);
+            ui.list(4, "Darkest secret : ", contacts[i].getDarkestSecret(), true);
             return ;
         }
         i++;
