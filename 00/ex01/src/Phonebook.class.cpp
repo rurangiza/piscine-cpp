@@ -82,8 +82,10 @@ Phonebook::get_input(const std::string& type, const std::string& prefix) {
         std::getline(std::cin, tmp);
         if (tmp.empty() || is_all_spaces(tmp) || tmp.find( '\t') != std::string::npos )
             ui.err_msg( 8, "empty or contains tabs" );
-        else if (type == "number" && (!isNumber(tmp) || tmp.length() != 10 || tmp[0] != '0'))
+        else if (type == "number" && (!is_onlyDigits(tmp) || tmp.length() != 10 || tmp[0] != '0'))
             ui.err_msg(8, "must be 10-digit long and start with zero");
+        else if (type == "string" && !is_onlyLetters(tmp))
+            ui.err_msg(8, "can only be letters");
         else
             break ;
     }

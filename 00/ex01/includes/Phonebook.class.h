@@ -17,6 +17,7 @@
 #include <iomanip>
 #include "common.h"
 #include "Contacts.class.h"
+#include "helpers.h"
 
 #define USER_INPUT_MSG "ADD, SEARCH or EXIT the phonebook: "
 #define SEARCH_MSG "Enter the index of a contact:"
@@ -42,9 +43,5 @@ class Phonebook {
         void search() const;
         void fill();
 };
-
-std::string truncate(const std::string& str, size_t width);
-bool        isNumber(std::string str);
-std::string addSpace(int n);
 
 #endif

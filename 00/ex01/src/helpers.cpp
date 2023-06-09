@@ -10,11 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Phonebook.class.h"
+#include "../includes/helpers.h"
 
-bool isNumber(std::string str) {
+bool is_onlyDigits(std::string str) {
     for (size_t i = 0; str[i]; i++) {
         if (!std::isdigit(str[i]))
+            return (false);
+    }
+    return (true);
+}
+
+bool is_onlyLetters(std::string str) {
+    for (size_t i = 0; str[i]; i++) {
+        if (!std::isalpha(str[i]) && !std::isspace(str[i]))
             return (false);
     }
     return (true);
