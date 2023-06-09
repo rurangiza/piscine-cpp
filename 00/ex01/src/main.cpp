@@ -37,8 +37,6 @@ main() {
             phonebook.add();
         else if (input == "SEARCH")
             phonebook.search();
-        else if (input == "FILL")
-            phonebook.fill();
         else if (input == "EXIT")
             break ;
         else

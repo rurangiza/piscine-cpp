@@ -21,7 +21,8 @@ Phonebook::Phonebook() {
 
 Phonebook::~Phonebook() {
     int i = 0;
-    while (i < MAX_CONTACTS)
+    int limit = m_size > MAX_CONTACTS ? MAX_CONTACTS : m_size;
+    while (i < limit)
         delete m_contacts[i++];
 }
 
