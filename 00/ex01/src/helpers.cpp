@@ -49,7 +49,7 @@ addSpace(int n) {
 
 int
 is_all_spaces(std::string str) {
-    int i = 0;
+    size_t i = 0;
     while (str[i]) {
         if (str[i] != ' ')
             return false;
@@ -66,4 +66,12 @@ ignoreSpaces(std::string str) {
     while (iss >> word)
         ;
     return word;
+}
+
+void
+handle_signal(int signal) {
+    if (signal == SIGQUIT) {
+        std::cout << std::endl << "Input was Ctrl^\\ (SIGQUIT)" << std::endl;
+        exit(1);
+    }
 }

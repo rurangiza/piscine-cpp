@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/Phonebook.class.h"
-#include <sstream>
 
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
@@ -22,7 +21,7 @@ Phonebook::Phonebook() {
 
 Phonebook::~Phonebook() {
     int i = 0;
-    while (i < m_size)
+    while (i < MAX_CONTACTS)
         delete m_contacts[i++];
 }
 
@@ -169,26 +168,26 @@ Phonebook::showOneContact(int contact_index) const {
 }
 
 /* Fill phonebook with dummy contacts */
-/*
+
 void
 Phonebook::fill() {
 
-    Contacts person = {
-        "John",
-        "Doe",
-        "Unknown",
-        "0483872256",
-        "Nothing special"
-    };
-
-    int i = this->size;
+    int i = this->m_size;
     while (i < 8) {
-        this->contacts[i] = person;
-        this->size++;
+
+        Contacts *person = new Contacts;
+
+        person->setFirstName("John");
+        person->setLastName("Doe");
+        person->setNickname("Unknown");
+        person->setDarkestSecret("Nothing special");
+        person->setPhoneNumber("0483872256");
+
+        this->m_contacts[i] = person;
+        this->m_size++;
         i++;
     }
-    this->is_empty = false;
+    this->m_is_empty = false;
 
     ui.succ_msg(4, "Filled the phonebook");
 }
- */

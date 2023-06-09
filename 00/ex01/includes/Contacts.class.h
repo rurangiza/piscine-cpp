@@ -19,7 +19,7 @@ class Contacts {
 
     public:
         Contacts();
-        ~Contacts();
+        //~Contacts();
         
         std::string getFirstName();
         std::string getLastName();

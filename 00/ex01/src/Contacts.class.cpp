@@ -21,13 +21,6 @@ Contacts::Contacts() {
     m_darkest_secret = "";
 };
 
-Contacts::~Contacts() {
-    m_first_name.clear();
-    m_last_name.clear();
-    m_nickname.clear();
-    m_darkest_secret.clear();
-};
-
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
 std::string

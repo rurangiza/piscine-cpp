@@ -20,10 +20,12 @@ main() {
     std::string input;
 
     system("clear");
+    // set signal handler for SIGQUIT
+    std::signal(SIGQUIT, handle_signal);
     while (true) {
         ui.prompt(0, USER_INPUT_MSG);
         std::getline(std::cin, input);
-        if (std::cin.eof()) {
+        if (std::cin.eof() || std::cin.fail()) {
             std::cout << "\nInput was Ctrl^D (EOF)" << std::endl;
             return (EXIT_FAILURE);
         }
@@ -35,6 +37,8 @@ main() {
             phonebook.add();
         else if (input == "SEARCH")
             phonebook.search();
+        else if (input == "FILL")
+            phonebook.fill();
         else if (input == "EXIT")
             break ;
         else
