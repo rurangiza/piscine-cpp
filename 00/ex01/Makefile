@@ -21,6 +21,7 @@ SRC         =	  src/main.cpp \
 				  src/Phonebook.class.cpp \
 				  src/helpers.cpp \
 				  src/UserInterface.class.cpp \
+				  src/Contacts.class.cpp \
 
 OBJS        =   ${SRC:.cpp=.o}
 %.o: %.c

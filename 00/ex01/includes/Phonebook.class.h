@@ -21,27 +21,26 @@
 #define USER_INPUT_MSG "ADD, SEARCH or EXIT the phonebook: "
 #define SEARCH_MSG "Enter the index of a contact:"
 #define ERR_NOTNUM "                 ^ not a number. try again"
-
 #define MAX_CONTACTS 8
 
 class Phonebook {
 
     private:
-      Contacts	contacts[MAX_CONTACTS];
-      int         size;
-      bool        is_empty;
+        Contacts    *m_contacts[MAX_CONTACTS];
+        int         m_size;
+        bool        m_is_empty;
 
-      static std::string get_input(const std::string& type, const std::string& prefix);
-      void showAllContacts() const;
-      void showOneContact(int contact_index) const;
+        static std::string  get_input(const std::string& type, const std::string& prefix);
+        void                showAllContacts() const;
+        void                showOneContact(int contact_index) const;
 
     public:
-      Phonebook();
-      ~Phonebook();
+        Phonebook();
+        ~Phonebook();
 
-      void add();
-      void search() const;
-      void fill();
+        void add();
+        void search() const;
+        void fill();
 };
 
 std::string truncate(const std::string& str, size_t width);

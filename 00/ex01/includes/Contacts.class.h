@@ -15,29 +15,29 @@
 
 #include <iostream>
 
-class Contacts { // can't have empty fields
+class Contacts {
 
     public:
         Contacts();
         ~Contacts();
         
-        const std::string getFirstName();
+        std::string getFirstName();
         std::string getLastName();
         std::string getNickname();
         std::string getDarkestSecret();
-        int         getPhonenumber();
+        std::string getPhoneNumber();
         
         void    setFirstName(std::string firstname);
         void    setLastName(std::string name);
         void    setNickname(std::string nickname);
-        void    setPhonenumber(int number);
+        void    setPhoneNumber(std::string number);
         void    setDarkestSecret(std::string secret);
     
     private:
         std::string   m_first_name;
         std::string   m_last_name;
         std::string   m_nickname;
-        int             m_phonenumber;
+        std::string   m_phonenumber;
         std::string   m_darkest_secret;
         
 };

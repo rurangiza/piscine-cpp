@@ -16,11 +16,14 @@
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
 Phonebook::Phonebook() {
-    size = 0;
-    is_empty = true;
+    m_size = 0;
+    m_is_empty = true;
 };
 
 Phonebook::~Phonebook() {
+    int i = 0;
+    while (i < m_size)
+        delete m_contacts[i++];
 }
 
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
@@ -28,31 +31,25 @@ Phonebook::~Phonebook() {
 /* Add new contact to phonebook after prompting for input */
 void
 Phonebook::add() {
-    Contacts	new_contact;
+    Contacts	*new_contact;
+
+    new_contact = new Contacts;
 
     ui.subprompt(2, "Fill in the form");
 
-    // new_contact.first_name = get_input("string", "First Name ... : ");
-    new_contact.setFirstName(get_input("string", "First Name ... : "));
-    
-    // new_contact.last_name = get_input("string", "Last Name .... : ");
-    new_contact.setLastName(get_input("string", "Last Name .... : "));
-    
-    // new_contact.nickname = get_input("string", "Nickname ..... : ");
-    new_contact.setNickname(get_input("string", "Nickname ..... : "));
-
-    // new_contact.darkest_secret = get_input("string", "Darkest secret : ");
-    new_contact.setDarkestSecret(get_input("string", "Darkest secret : "));
-    
-    // new_contact.phonenumber = get_input("number", "Phone number . : ");
-    new_contact.setPhonenumber(get_input("number", "Phone number . : "));
-    
+    new_contact->setFirstName(get_input("string", "First Name ... : "));
+    new_contact->setLastName(get_input("string", "Last Name .... : "));
+    new_contact->setNickname(get_input("string", "Nickname ..... : "));
+    new_contact->setDarkestSecret(get_input("string", "Darkest secret : "));
+    new_contact->setPhoneNumber(get_input("number", "Phone number . : "));
 
     ui.succ_msg(4, "Contact added to the phonebook");
 
-    this->contacts[this->size % MAX_CONTACTS] = new_contact;
-    this->size++;
-    this->is_empty = false;
+    if (m_size > MAX_CONTACTS)
+        delete m_contacts[m_size % MAX_CONTACTS];
+    m_contacts[m_size % MAX_CONTACTS] = new_contact;
+    m_size++;
+    m_is_empty = false;
 }
 
 int is_all_spaces(std::string str) {
@@ -65,6 +62,16 @@ int is_all_spaces(std::string str) {
     return true;
 }
 
+std::string
+ignoreSpaces(std::string str) {
+    std::istringstream iss(str);
+
+    std::string word;
+    while (iss >> word)
+        ;
+    return word;
+}
+
 /* Save user input in contact fields */
 std::string
 Phonebook::get_input(const std::string& type, const std::string& prefix) {
@@ -73,20 +80,21 @@ Phonebook::get_input(const std::string& type, const std::string& prefix) {
     while (true) {
         ui.list(4, prefix, "", false);
         std::getline(std::cin, tmp);
-        if (tmp.empty() || is_all_spaces(tmp))
-            ui.err_msg(8, "empty. you must enter something");
-        else if (type == "number" && !isNumber(tmp))
-            ui.err_msg(8, "not a number");
+        if (tmp.empty() || is_all_spaces(tmp) || tmp.find( '\t') != std::string::npos )
+            ui.err_msg( 8, "empty or contains tabs" );
+        else if (type == "number" && (!isNumber(tmp) || tmp.length() != 10 || tmp[0] != '0'))
+            ui.err_msg(8, "must be 10-digit long and start with zero");
         else
             break ;
     }
+    tmp = ignoreSpaces(tmp);
     return tmp;
 }
 
 /* Look for a specific contact after displaying entire phonebook */
 void
 Phonebook::search() const {
-    if (this->is_empty) {
+    if (m_is_empty) {
         ui.warn_msg(4, "The phonebook is empty. Add a contact");
         return ;
     }
@@ -105,7 +113,7 @@ Phonebook::search() const {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
 
-    this->showOneContact(contact_index);
+    showOneContact(contact_index);
 
     std::cin.ignore(1, '\n');
 }
@@ -121,16 +129,19 @@ Phonebook::showAllContacts() const {
     std::cout << "---------- + ---------- + ---------- + ----------" << std::endl;
 
     int i = 0;
-    while (i < this->size) {
+    while (i < m_size) {
         if (i >= 8)
             break ;
+
+        std::string firstname = m_contacts[i]->getFirstName();
+
         std::cout << std::setw(10) << std::right << i << " | ";
         std::cout << std::setw(10) << std::right
-                  << truncate(contacts[i].first_name, 10) << " | ";
+                  << truncate(firstname, 10) << " | ";
         std::cout << std::setw(10) << std::right
-                  << truncate(this->contacts[i].last_name, 10) << " | ";
+                  << truncate(m_contacts[i]->getLastName(), 10) << " | ";
         std::cout << std::setw(10) << std::right
-                  << truncate(this->contacts[i].nickname, 10) << std::endl;
+                  << truncate(m_contacts[i]->getNickname(), 10) << std::endl;
         i++;
     }
     std::cout << "-------------------------------------------------" << std::endl;
@@ -141,13 +152,13 @@ void
 Phonebook::showOneContact(int contact_index) const {
 
     int i = 0;
-    while (i < this->size) {
+    while (i < m_size) {
         if (i == contact_index) {
-            ui.list(4, "First name ... : ", contacts[i].getFirstName(), true);
-            ui.list(4, "Last name .... : ", contacts[i]->getLastName, true);
-            ui.list(4, "Nickname ..... : ", contacts[i]->getNickname, true);
-            ui.list(4, "Phone number . : ", contacts[i]->getPhonenumber, true);
-            ui.list(4, "Darkest secret : ", contacts[i].getDarkestSecret(), true);
+            ui.list(4, "First name ... : ", m_contacts[i]->getFirstName(), true);
+            ui.list(4, "Last name .... : ", m_contacts[i]->getLastName(), true);
+            ui.list(4, "Nickname ..... : ", m_contacts[i]->getNickname(), true);
+            ui.list(4, "Phone number . : ", m_contacts[i]->getPhoneNumber(), true);
+            ui.list(4, "Darkest secret : ", m_contacts[i]->getDarkestSecret(), true);
             return ;
         }
         i++;
@@ -156,6 +167,7 @@ Phonebook::showOneContact(int contact_index) const {
 }
 
 /* Fill phonebook with dummy contacts */
+/*
 void
 Phonebook::fill() {
 
@@ -177,3 +189,4 @@ Phonebook::fill() {
 
     ui.succ_msg(4, "Filled the phonebook");
 }
+ */

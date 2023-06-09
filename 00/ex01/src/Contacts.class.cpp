@@ -15,38 +15,43 @@
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
 Contacts::Contacts() {
-    this->m_first_name = "";
-    this->m_last_name = "";
-    this->m_nickname = "";
-    this->m_darkest_secret = "";
+    m_first_name = "";
+    m_last_name = "";
+    m_nickname = "";
+    m_darkest_secret = "";
 };
 
 Contacts::~Contacts() {
-    this->m_first_name.clear();
-    this->m_last_name.clear();
-    this->m_nickname.clear();
-    this->m_darkest_secret.clear();
+    m_first_name.clear();
+    m_last_name.clear();
+    m_nickname.clear();
+    m_darkest_secret.clear();
 };
 
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
-const std::string Contacts::getFirstName() {
+std::string
+Contacts::getFirstName() {
     return m_first_name;
 };
 
-std::string Contacts::getLastName() {
+std::string
+Contacts::getLastName() {
     return m_last_name;
 };
 
-std::string Contacts::getNickname() {
+std::string
+Contacts::getNickname() {
     return m_nickname;
 };
 
-std::string Contacts::getDarkestSecret() {
+std::string
+Contacts::getDarkestSecret() {
     return m_darkest_secret;
 };
 
-int Contacts::getPhonenumber() {
+std::string
+Contacts::getPhoneNumber() {
     return m_phonenumber;
 };
 
@@ -58,7 +63,7 @@ Contacts::setFirstName(std::string firstname) {
 };
 
 void
-Contacts::setLastName(str::string lastname) {
+Contacts::setLastName(std::string lastname) {
     m_last_name = lastname;
 };
 
@@ -68,7 +73,7 @@ Contacts::setNickname(std::string nickname) {
 };
 
 void
-Contacts::setPhonenumber(int number) {
+Contacts::setPhoneNumber(std::string number) {
     m_phonenumber = number;
 };
 
