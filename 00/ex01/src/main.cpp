@@ -23,6 +23,10 @@ main() {
     while (true) {
         ui.prompt(0, USER_INPUT_MSG);
         std::getline(std::cin, input);
+        if (std::cin.eof()) {
+            std::cout << "\nInput was Ctrl^D (EOF)" << std::endl;
+            return (EXIT_FAILURE);
+        }
 
         if (input.empty())
           continue ;

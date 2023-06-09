@@ -52,26 +52,6 @@ Phonebook::add() {
     m_is_empty = false;
 }
 
-int is_all_spaces(std::string str) {
-    int i = 0;
-    while (str[i]) {
-        if (str[i] != ' ')
-            return false;
-        i++;
-    }
-    return true;
-}
-
-std::string
-ignoreSpaces(std::string str) {
-    std::istringstream iss(str);
-
-    std::string word;
-    while (iss >> word)
-        ;
-    return word;
-}
-
 /* Save user input in contact fields */
 std::string
 Phonebook::get_input(const std::string& type, const std::string& prefix) {
@@ -80,6 +60,11 @@ Phonebook::get_input(const std::string& type, const std::string& prefix) {
     while (true) {
         ui.list(4, prefix, "", false);
         std::getline(std::cin, tmp);
+        if (std::cin.eof()) {
+            std::cout << "Input was Ctrl^D (EOF)" << std::endl;
+            exit(1);
+        }
+
         if (tmp.empty() || is_all_spaces(tmp) || tmp.find( '\t') != std::string::npos )
             ui.err_msg( 8, "empty or contains tabs" );
         else if (type == "number" && (!is_onlyDigits(tmp) || tmp.length() != 10 || tmp[0] != '0'))
@@ -104,20 +89,35 @@ Phonebook::search() const {
     this->showAllContacts();
 
     int contact_index;
+    std::string tmp;
+
+    // ask for index of contact
     while (true) {
         ui.inlineprompt(2, SEARCH_MSG); // print message
-        std::cin >> std::dec >> contact_index;
-        if (!std::cin.fail()) {
+        std::getline(std::cin, tmp);
+
+        if (std::cin.eof()) {
+            std::cout << "\nInput was Ctrl^D (EOF)" << std::endl;
+            exit(1);
+        }
+        if (tmp.empty())
+            continue ;
+        if (!std::cin.fail() && is_onlyDigits((tmp))) {
+            contact_index = std::stoi(tmp);
             break ;
         }
+
         ui.err_msg(13, "invalid input ^");
         std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
 
     showOneContact(contact_index);
 
-    std::cin.ignore(1, '\n');
+    //std::cin.clear();
+    //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    //std::cin.ignore(1, '\n');
 }
 
 /* Show all contacts currently in phonebook */
