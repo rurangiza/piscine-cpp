@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 06:57:41 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 06:57:43 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:49:37 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 */
 
 Zombie* newZombie( std::string name ) {
-    Zombie zombie(name);
-    return &zombie;
+    
+    Zombie *zombie = new Zombie(name);
+    return zombie;
 }
