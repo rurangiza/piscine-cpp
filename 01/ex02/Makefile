@@ -5,20 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/12 06:57:34 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/12 16:51:35 by arurangi         ###   ########.fr        #
+#    Created: 2023/06/12 16:50:40 by arurangi          #+#    #+#              #
+#    Updated: 2023/06/12 16:51:13 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        =   zombieland
+NAME        =   this_is_brainz
 CC          =   c++ $(VERSION)
 VERSION     =   -std=c++98
 FLAGS       =	-Wall -Wextra -Werror
 DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
 
-SRC         =     main.cpp Zombie.cpp \
-									newZombie.cpp randomChump.cpp \
-									zombieHorde.cpp \
+SRC         =     main.cpp \
 									
 
 OBJS        =   ${SRC:.cpp=.o}
