@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 06:57:25 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 16:45:51 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:47:05 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ main(void) {
     for (int i = 0; i < size; i++) {
         horde[i].announce();
     }
+
+    delete[] horde;
 
     return 0;
 }

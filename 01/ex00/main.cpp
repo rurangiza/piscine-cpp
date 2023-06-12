@@ -1,19 +1,22 @@
-//
-// Created by Arsène Rurangiza on 07/06/2023.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/12 06:57:25 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/12 14:29:06 by arurangi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "Zombie.h"
 
 int
 main(void) {
 
-    Zombie foo("Foo");
-    Zombie glop("Glop");
-
-    glop.announce();
-    foo.announce();
-
-    random
+    
 
     return 0;
 }

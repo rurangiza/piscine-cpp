@@ -1,6 +1,14 @@
-//
-// Created by Arsène Rurangiza on 07/06/2023.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/12 06:57:48 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/12 14:26:28 by arurangi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Zombie.h"
 
@@ -9,6 +17,6 @@
 */
 
 void randomChump( std::string name ) {
-    Zombie newzomb(name);
-    newzomb.announce();
+    Zombie zombie(name);
+    zombie.announce();
 }

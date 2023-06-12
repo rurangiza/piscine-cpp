@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/12 06:57:34 by arurangi          #+#    #+#              #
+#    Updated: 2023/06/12 14:27:21 by arurangi         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME        =   brainzz
 CC          =   c++ $(VERSION)
@@ -7,6 +18,8 @@ DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
 
 INC         =	  -I./includes
 SRC         =     main.cpp Zombie.cpp \
+					newZombie.cpp randomZombie.cpp \
+									
 
 OBJS        =   ${SRC:.cpp=.o}
 %.o: %.c

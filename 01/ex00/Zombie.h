@@ -1,6 +1,14 @@
-//
-// Created by Arsène Rurangiza on 07/06/2023.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/12 06:58:24 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/12 14:22:49 by arurangi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef ZOMBIE_H_
 #define ZOMBIE_H_
@@ -16,7 +24,7 @@ class Zombie {
         void announce(void);
 
     private:
-        std::string name;
+        std::string m_name;
 };
 
 Zombie* newZombie( std::string name );

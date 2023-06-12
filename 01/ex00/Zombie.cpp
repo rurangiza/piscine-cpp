@@ -1,13 +1,21 @@
-//
-// Created by Arsène Rurangiza on 07/06/2023.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/12 06:57:56 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/12 14:23:53 by arurangi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Zombie.h"
 
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
 Zombie::Zombie(std::string name) {
-    this->name = name;
+    this->m_name = name;
     ;
 };
 
@@ -18,6 +26,7 @@ Zombie::~Zombie() {
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
 void Zombie::announce(void) {
-    std::cout << this->name << ": ";
-    std::cout << "BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout << this->m_name << ": " 
+							<< "BraiiiiiiinnnzzzZ..."
+							<< std::endl;
 }
