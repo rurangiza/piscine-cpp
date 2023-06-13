@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:38:11 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 18:38:33 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:18:53 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ HumanB::attack() {
 }
 
 void
-HumanB::setWeapon(Weapon newWeapon) {
+HumanB::setWeapon(Weapon& newWeapon) {
+    
     this->weapon = &newWeapon;
 }

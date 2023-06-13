@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:36:28 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 18:19:16 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:19:22 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ class HumanB {
       HumanB(std::string name);
       ~HumanB();
 
-      void attack();
-      void  setWeapon(Weapon newWeapon);
-    
+      void  attack();
+      void  setWeapon(Weapon& newWeapon);
 };
 
 #endif

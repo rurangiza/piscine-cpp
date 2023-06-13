@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:06:06 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 18:39:15 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/13 13:13:18 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ main() {
 
     {
       Weapon club = Weapon("spear");
-      HumanA bob("Bob", club);
+      HumanA bob("Bob", club); // const reference: since I won't assign another class of weapon
       bob.attack();
-      club.setType("some other type of club");
+      club.setType("spear Ultimate");
       bob.attack();
     }
     {
       Weapon club = Weapon("dagger");
       HumanB jim("Jim");
-      jim.setWeapon(club);
+      jim.setWeapon(club); // pointer: since I can assign another class of weapon 
       jim.attack();
-      club.setType("some other type of club");
+      club.setType("dagger Ultimate");
       jim.attack();
     }
 

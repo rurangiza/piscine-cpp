@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:36:13 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 18:33:29 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:58:50 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class HumanA {
 
     private:
       std::string m_name;
-      Weapon      weapon;
+      Weapon      &weapon;
 
     public:
-      HumanA(std::string name, const Weapon& newWeapon);
+      HumanA(std::string name, Weapon& newWeapon);
       ~HumanA();
 
       void attack();

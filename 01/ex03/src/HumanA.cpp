@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:38:49 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 18:38:38 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:54:13 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
-HumanA::HumanA(std::string name, const Weapon& newWeapon) : weapon(newWeapon) {
+HumanA::HumanA(std::string name, Weapon& newWeapon) : weapon(newWeapon) {
   this->m_name = name;
 }
 
