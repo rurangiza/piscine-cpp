@@ -6,43 +6,42 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/13 16:48:07 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/14 10:38:31 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-BIN			=   violence
+BIN			=   runthis
 CC          =   c++ $(VERSION)
 VERSION     =   -std=c++98
 FLAGS       =	-Wall -Wextra -Werror
 DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
 
 SRC			=	src/main.cpp \
-				src/Weapon.cpp \
-				src/HumanA.cpp src/HumanB.cpp \
 									
 OBJS		=	obj/main.o \
-				obj/Weapon.o \
-				obj/HumanA.o obj/HumanB.o \
 
 # OBJS        =   ${SRC:.cpp=.o}
 
-obj/%.o: src/%.cpp
-		$(CC) $(FLAGS) -c $< -o $@
+obj/%.o:	src/%.cpp
+			$(CC) $(FLAGS) -c $< -o $@
 
-all: $(BIN)
+all:	$(BIN)
 
-$(BIN): $(OBJS)
-	$(CC) $(FLAGS) $(SRC) -o ./bin/$(BIN)
+$(BIN):	$(OBJS)
+		$(CC) $(FLAGS) $(SRC) -o ./bin/$(BIN)
 
 run:
-	./bin/$(BIN)
+		./bin/$(BIN)
 
-debug: $(OBJS)
-	$(CC) $(DEBUG_FLAGS) $(INC) $(SRC) -o ./bin/$(BIN)
+debug:	$(OBJS)
+		$(CC) $(DEBUG_FLAGS) $(INC) $(SRC) -o ./bin/$(BIN)
 
 clean:
-				rm -f ./bin/* ./obj/*
+		rm -f obj/*
 
-re:		clean all
+fclean:	clean
+		rm -rf bin/* 
+
+re:		fclean all
 
 .PHONY:	all clean re run

@@ -29,7 +29,6 @@ Account::Account(int initial_deposit) {
             outFile << "Error: couldn't open outFile" << std::endl;
     }
 
-
     _displayTimestamp();
     g_indexG++;
     outFile << " index:" << this->_accountIndex;

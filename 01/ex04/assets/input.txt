@@ -1,0 +1,5 @@
+This book was written for readers interested in learning the C++ programming
+language from scratch, and for both novice and advanced C++ programmers wishing
+to enhance their knowledge of C++. It was our goal from the begining to
+design this text with the capabilities of serving dual markets, as a text- book
+for students and as a holistic reference manual for professionals.
