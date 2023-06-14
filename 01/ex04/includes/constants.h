@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:03:06 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/14 10:05:51 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:45:00 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #define ERR_ARGS "Error: invalid number of arguments\n"
 
 #define ERR_CODE 2
+#define REQUIRED_ARGUMENTS 4
 
 // Colors
 #define CBLACK    "\033[0;30m"

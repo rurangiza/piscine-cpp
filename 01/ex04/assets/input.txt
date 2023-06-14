@@ -1,5 +1,7 @@
-This book was written for readers interested in learning the C++ programming
-language from scratch, and for both novice and advanced C++ programmers wishing
-to enhance their knowledge of C++. It was our goal from the begining to
-design this text with the capabilities of serving dual markets, as a text- book
-for students and as a holistic reference manual for professionals.
+People call me Harry eventhough Harry is not my name
+But I'm not that guy
+Who Harry anyway?
+Is it the magician?
+Harry! Where are you?
+No one answers
+Well, I'm harry now I guess
