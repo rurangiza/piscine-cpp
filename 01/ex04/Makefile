@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/14 10:38:31 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/14 21:37:40 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ debug:	$(OBJS)
 		$(CC) $(DEBUG_FLAGS) $(INC) $(SRC) -o ./bin/$(BIN)
 
 clean:
-		rm -f obj/*
+		rm -f obj/* assets/*.replace
 
 fclean:	clean
 		rm -rf bin/* 
