@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/15 12:51:41 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/15 15:59:34 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ BIN			=   runthis
 ### directories
 SRC_DIR		=	src
 OBJ_DIR		=	obj
+BIN_DIR		=	bin
 
 ### files
 SRC_FILES	=	$(wildcard $(SRC_DIR)/*.cpp)
@@ -28,19 +29,24 @@ FLAGS       =	-Wall -Wextra -Werror
 DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
 
 ### rules
-obj/%.o:	src/%.cpp
-			$(CC) $(FLAGS) -c $< -o $@
-
 all:		$(BIN)
 
-$(BIN):		$(OBJ_FILES)
-			$(CC) $(FLAGS) $(OBJ_FILES) -o ./bin/$(BIN)
+$(BIN):		$(OBJ_DIR) $(BIN_DIR) $(OBJ_FILES)
+			$(COMPILER) $(FLAGS) $(OBJ_FILES) -o ./bin/$(BIN)
+
+obj/%.o:	src/%.cpp
+			$(COMPILER) $(FLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+			mkdir $(OBJ_DIR)
+$(BIN_DIR):
+			mkdir $(BIN_DIR)
 
 run:
 			./bin/$(BIN)
 
 clean:
-			rm -f obj/* assets/*.replace
+			rm -f obj/*
 
 fclean:		clean
 			rm -rf bin/* 

@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:21:29 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/15 10:35:25 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:59:12 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,20 @@ Harl::~Harl( void )
 
 void
 Harl::complain( std::string level ) {
-    if (level == "DEBUG")
-        ; // call debug()
-    else if (level == "INFO")
-        ; // call info()
-    else if (level == "WARNING")
-        ; // call warning()
-    else if (level == "ERROR")
-        ; // call error()
+
+    (void)level;
+    void (Harl::*func_array[4])(void);
+
+    func_array[0] = &Harl::error;
+    func_array[1] = &Harl::info;
+    func_array[2] = &Harl::warning;
+    func_array[3] = &Harl::debug;
+
+    int debug_or_warning = (level[0] - 65) % 4;
+    int info_or_error = (level[0]) % 3;
+    int pos = debug_or_warning != 0 ? debug_or_warning : info_or_error;
+    
+    (this->*func_array[pos])();
 }
 
 void
