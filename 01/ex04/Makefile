@@ -6,11 +6,13 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/15 12:23:21 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/15 13:06:59 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=   runthis
+BIN			=   runthis
+
+
 COMPILER    =   c++ $(VERSION)
 VERSION     =   -std=c++98
 FLAGS       =	-Wall -Wextra -Werror
@@ -26,10 +28,10 @@ OBJ_FILES	=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 obj/%.o:	src/%.cpp
 			$(COMPILER) $(FLAGS) -c $< -o $@
 
-all:	$(NAME)
+all:	$(BIN)
 
-$(NAME):	$(OBJ_DIR) $(BIN_DIR) $(OBJ_FILES)
-			$(COMPILER) $(OBJ_FILES) -o $(BIN_DIR)/$(NAME)
+$(BIN):	$(OBJ_DIR) $(BIN_DIR) $(OBJ_FILES)
+			$(COMPILER) $(OBJ_FILES) -o $(BIN_DIR)/$(BIN)
 
 $(OBJ_DIR):
 			mkdir obj
@@ -37,13 +39,13 @@ $(BIN_DIR):
 			mkdir bin
 
 run:
-			./bin/$(BIN)
+			$(BIN_DIR)/$(BIN)
 
 clean:
-			rm -f obj/* assets/*.replace
+			rm -f $(OBJ_DIR)/* assets/*.replace
 
 fclean:		clean
-			rm -rf bin/* 
+			rm -rf $(BIN_DIR)/*
 
 re:			fclean all
 

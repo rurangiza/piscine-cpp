@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/15 10:19:56 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/15 12:51:41 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ obj/%.o:	src/%.cpp
 all:		$(BIN)
 
 $(BIN):		$(OBJ_FILES)
-			$(CC) $(FLAGS) $(SRC_FILES) -o ./bin/$(BIN)
+			$(CC) $(FLAGS) $(OBJ_FILES) -o ./bin/$(BIN)
 
 run:
 			./bin/$(BIN)
