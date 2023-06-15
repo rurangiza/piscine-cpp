@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 09:18:18 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/14 21:25:50 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/15 01:18:14 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../includes/constants.h"
 
 int
-main( int arg_count, __unused char *arg_list[] ) {
+main( int arg_count, char *arg_list[] ) {
 
     // check for valid arguments
     if (arg_count != REQUIRED_ARGUMENTS) {
@@ -37,9 +37,9 @@ main( int arg_count, __unused char *arg_list[] ) {
         std::ofstream outfile;
         outfile.open( "./assets/" + filename + ".replace", std::ios::app );
         if ( !outfile ) {
-          std::cerr << ERR_FOPEN << filename << ".replace" << std::endl;
-          infile.close();
-          return ( ERR_CODE );
+            std::cerr << ERR_FOPEN << filename << ".replace" << std::endl;
+            infile.close();
+            return ( ERR_CODE );
         }
         // read infile one line at a time
         std::string line;
