@@ -6,14 +6,14 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 15:16:45 by lupin             #+#    #+#              #
-#    Updated: 2023/06/08 15:25:38 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/16 16:26:54 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   phonebook
 CC          =   c++
-FLAGS       =
-FLAGS       +=	-Wall -Wextra -Werror
+VERSION     =	-std=c++98
+FLAGS       =	-Wall -Wextra -Werror
 DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
 
 INC         =	  -I./includes
