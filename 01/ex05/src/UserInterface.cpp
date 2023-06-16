@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constants.h                                        :+:      :+:    :+:   */
+/*   UserInterface.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 10:08:07 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/15 17:26:33 by arurangi         ###   ########.fr       */
+/*   Created: 2023/06/15 17:54:16 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/15 20:54:58 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#include "UserInterface.h"
 
-#define CGREEN "\033[32m"
-#define CRED "\033[31m"
-#define CBOLD	"\x1b[1m"
-#define CRESET	"\033[0m"
+// UserInterface::UserInterface() {
+//     ;
+// }
 
-#endif
+// UserInterface::~UserInterface() {
+//     ;
+// }
+
+void
+UserInterface::errmsg(std::string type, std::string msg) {
+    std::cout << CRED CBOLD "Error " CRESET 
+              << "(" << type << ") : "
+              << msg << std::endl;
+    
+}

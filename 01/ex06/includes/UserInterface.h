@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constants.h                                        :+:      :+:    :+:   */
+/*   UserInterface.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/15 10:08:07 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/15 17:26:33 by arurangi         ###   ########.fr       */
+/*   Created: 2023/06/15 17:53:14 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/15 20:56:01 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONSTANTS_H
-#define CONSTANTS_H
+#include <iostream>
+#include <string>
+#include "constants.h"
 
-#define CGREEN "\033[32m"
-#define CRED "\033[31m"
-#define CBOLD	"\x1b[1m"
-#define CRESET	"\033[0m"
-
-#endif
+class UserInterface {
+    
+    public:
+        void errmsg(std::string type, std::string msg);
+};

@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 21:01:21 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/08 16:48:31 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:18:15 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,15 +109,8 @@ Phonebook::search() const {
 
         ui.err_msg(13, "invalid input ^");
         std::cin.clear();
-        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-
     showOneContact(contact_index);
-
-    //std::cin.clear();
-    //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    //std::cin.ignore(1, '\n');
 }
 
 /* Show all contacts currently in phonebook */

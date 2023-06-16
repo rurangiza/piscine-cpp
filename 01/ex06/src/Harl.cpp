@@ -6,44 +6,59 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:21:29 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/16 13:13:54 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/16 13:14:39 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Harl.h"
 
-Harl::Harl(/* args */)
-{
+Harl::Harl(/* args */) {
+    ;
 }
 
-Harl::~Harl( void )
-{
+Harl::~Harl( void ) {
+    ;
 }
 
-// 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 void
 Harl::complain( std::string level ) {
 
-    (void)level;
-    void (Harl::*func_array[4])(void);
+     void (Harl::*func_array[4])(void);
 
-    func_array[0] = &Harl::error;
-    func_array[1] = &Harl::info;
-    func_array[2] = &Harl::warning;
-    func_array[3] = &Harl::debug;
+    func_array[0] = &Harl::debug; // 3 -> 0 [+1 or -3]
+    func_array[1] = &Harl::info; //     = 1 [0]
+    func_array[2] = &Harl::warning; //  = 2 [0]
+    func_array[3] = &Harl::error; // 0 -> 3 [-1 or +3]
 
     int debug_or_warning = (level[0] - 65) % 4;
     int info_or_error = (level[0]) % 3;
     int pos = debug_or_warning != 0 ? debug_or_warning : info_or_error;
-    
-    (this->*func_array[pos])();
+
+    if (pos == 3)
+        pos = 0;
+    else if (pos == 0)
+        pos = 3;
+
+    switch (pos) {
+        case 0:
+            (this->*func_array[0])();
+        case 1:
+            (this->*func_array[1])();
+        case 2:
+            (this->*func_array[2])();
+        case 3:
+            (this->*func_array[3])();
+            break ;
+    }
+        
+
 }
 
 void
 Harl::debug( void ) {
-    
-    std::cout << std::endl << "[ DEBUG ]" << std::endl;
+  std::cout << std::endl << "[ DEBUG ]" << std::endl;
     std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special- ketchup burger. "
               << "I really do !"
               << std::endl;
