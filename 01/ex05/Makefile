@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/15 20:54:14 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/18 11:42:40 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,10 +47,10 @@ run:
 			./bin/$(BIN)
 
 clean:
-			rm -f obj/*
+			rm -rf obj/
 
 fclean:		clean
-			rm -rf bin/* 
+			rm -rf bin/
 
 re:			fclean all
 

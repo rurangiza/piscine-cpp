@@ -31,7 +31,7 @@ is_onlyLetters(std::string str) {
 }
 
 std::string
-truncate(const std::string& str, size_t width) {
+truncate(std::string str, size_t width) {
     if (str.length() > width)
         return str.substr(0, width-1) + ".";
     return (str);
@@ -60,7 +60,7 @@ is_all_spaces(std::string str) {
 
 std::string
 ignoreSpaces(std::string str) {
-
+ 
     if (str.size() > 10) {
         size_t start = 0;
         while (start < str.size() && isspace(str[start]))

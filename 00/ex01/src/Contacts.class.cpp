@@ -24,27 +24,27 @@ Contacts::Contacts() {
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
 std::string
-Contacts::getFirstName() {
+Contacts::getFirstName() const {
     return m_first_name;
 };
 
 std::string
-Contacts::getLastName() {
+Contacts::getLastName() const {
     return m_last_name;
 };
 
 std::string
-Contacts::getNickname() {
+Contacts::getNickname() const {
     return m_nickname;
 };
 
 std::string
-Contacts::getDarkestSecret() {
+Contacts::getDarkestSecret() const {
     return m_darkest_secret;
 };
 
 std::string
-Contacts::getPhoneNumber() {
+Contacts::getPhoneNumber() const {
     return m_phonenumber;
 };
 

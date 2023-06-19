@@ -10,7 +10,7 @@
 #include <csignal>
 #include <iostream>
 
-std::string truncate(const std::string& str, size_t width);
+std::string truncate(std::string str, size_t width);
 bool        is_onlyDigits(std::string str);
 bool        is_onlyLetters(std::string str);
 std::string addSpace(int n);

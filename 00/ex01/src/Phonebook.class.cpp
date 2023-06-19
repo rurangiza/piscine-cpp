@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 21:01:21 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/16 16:18:15 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:18:24 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ Phonebook::Phonebook() {
 };
 
 Phonebook::~Phonebook() {
-    int i = 0;
-    int limit = m_size > MAX_CONTACTS ? MAX_CONTACTS : m_size;
-    while (i < limit)
-        delete m_contacts[i++];
+    ;
 }
 
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
@@ -31,22 +28,18 @@ Phonebook::~Phonebook() {
 /* Add new contact to phonebook after prompting for input */
 void
 Phonebook::add() {
-    Contacts	*new_contact;
-
-    new_contact = new Contacts;
+    Contacts	new_contact;
 
     ui.subprompt(2, "Fill in the form");
 
-    new_contact->setFirstName(get_input("string", "First Name ... : "));
-    new_contact->setLastName(get_input("string", "Last Name .... : "));
-    new_contact->setNickname(get_input("string", "Nickname ..... : "));
-    new_contact->setDarkestSecret(get_input("string", "Darkest secret : "));
-    new_contact->setPhoneNumber(get_input("number", "Phone number . : "));
+    new_contact.setFirstName(get_input("string", "First Name ... : "));
+    new_contact.setLastName(get_input("string", "Last Name .... : "));
+    new_contact.setNickname(get_input("string", "Nickname ..... : "));
+    new_contact.setDarkestSecret(get_input("string", "Darkest secret : "));
+    new_contact.setPhoneNumber(get_input("number", "Phone number . : "));
 
     ui.succ_msg(4, "Contact added to the phonebook");
 
-    if (m_size > MAX_CONTACTS)
-        delete m_contacts[m_size % MAX_CONTACTS];
     m_contacts[m_size % MAX_CONTACTS] = new_contact;
     m_size++;
     m_is_empty = false;
@@ -128,15 +121,15 @@ Phonebook::showAllContacts() const {
         if (i >= 8)
             break ;
 
-        std::string firstname = m_contacts[i]->getFirstName();
+        std::string firstname = m_contacts[i].getFirstName();
 
         std::cout << std::setw(10) << std::right << i << " | ";
         std::cout << std::setw(10) << std::right
                   << truncate(firstname, 10) << " | ";
         std::cout << std::setw(10) << std::right
-                  << truncate(m_contacts[i]->getLastName(), 10) << " | ";
+                  << truncate(m_contacts[i].getLastName(), 10) << " | ";
         std::cout << std::setw(10) << std::right
-                  << truncate(m_contacts[i]->getNickname(), 10) << std::endl;
+                  << truncate(m_contacts[i].getNickname(), 10) << std::endl;
         i++;
     }
     std::cout << "-------------------------------------------------" << std::endl;
@@ -149,11 +142,11 @@ Phonebook::showOneContact(int contact_index) const {
     int i = 0;
     while (i < m_size) {
         if (i == contact_index) {
-            ui.list(4, "First name ... : ", m_contacts[i]->getFirstName(), true);
-            ui.list(4, "Last name .... : ", m_contacts[i]->getLastName(), true);
-            ui.list(4, "Nickname ..... : ", m_contacts[i]->getNickname(), true);
-            ui.list(4, "Phone number . : ", m_contacts[i]->getPhoneNumber(), true);
-            ui.list(4, "Darkest secret : ", m_contacts[i]->getDarkestSecret(), true);
+            ui.list(4, "First name ... : ", m_contacts[i].getFirstName(), true);
+            ui.list(4, "Last name .... : ", m_contacts[i].getLastName(), true);
+            ui.list(4, "Nickname ..... : ", m_contacts[i].getNickname(), true);
+            ui.list(4, "Phone number . : ", m_contacts[i].getPhoneNumber(), true);
+            ui.list(4, "Darkest secret : ", m_contacts[i].getDarkestSecret(), true);
             return ;
         }
         i++;
@@ -169,13 +162,13 @@ Phonebook::fill() {
     int i = this->m_size;
     while (i < 8) {
 
-        Contacts *person = new Contacts;
+        Contacts person;
 
-        person->setFirstName("John");
-        person->setLastName("Doe");
-        person->setNickname("Unknown");
-        person->setDarkestSecret("Nothing special");
-        person->setPhoneNumber("0483872256");
+        person.setFirstName("John");
+        person.setLastName("Doe");
+        person.setNickname("Unknown");
+        person.setDarkestSecret("Nothing special");
+        person.setPhoneNumber("0483872256");
 
         this->m_contacts[i] = person;
         this->m_size++;

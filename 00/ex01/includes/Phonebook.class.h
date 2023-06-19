@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 21:01:47 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/04 21:01:49 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:00:53 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 class Phonebook {
 
     private:
-        Contacts    *m_contacts[MAX_CONTACTS];
+        Contacts    m_contacts[MAX_CONTACTS];
         int         m_size;
         bool        m_is_empty;
 
