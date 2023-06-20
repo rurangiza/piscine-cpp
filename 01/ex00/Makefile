@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 06:57:34 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/20 14:28:35 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/20 15:56:28 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SOURCES		=	$(addsuffix .cpp, $(FILES))
 OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
 
 ### variables
-COMPILER	=   c++ -std=c++98 $(OPTIMIZE)
+COMPILER	=   g++
+#c++ -std=c++98
+#$(OPTIMIZE)
 OPTIMIZE	=	-O2
 INCLUDES	=	-I ./includes
 FLAGS       =	-Wall -Wextra -Werror

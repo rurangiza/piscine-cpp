@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 06:58:24 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/20 11:50:10 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/20 15:05:23 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Zombie {
         std::string m_name;
 };
 
-Zombie* newZombie( std::string name );
+Zombie *newZombie( std::string name );
 void    randomChump( std::string name );
 void    showName(std::string name);
 

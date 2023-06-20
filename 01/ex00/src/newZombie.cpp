@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 06:57:41 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 16:49:37 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/20 15:13:15 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
  * être utilisé en dehors de la portée de la fonction.
 */
 
-Zombie* newZombie( std::string name ) {
+// On Heap
+Zombie *newZombie( std::string name ) {
     
     Zombie *zombie = new Zombie(name);
     return zombie;
