@@ -6,42 +6,46 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 06:57:34 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/12 14:27:21 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/20 14:28:35 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        =   brainzz
-CC          =   c++ $(VERSION)
-VERSION     =   -std=c++98
+### executable
+BIN			=   brainzzz
+
+### directories
+SRC_DIR		=	src/
+OBJ_DIR		=	obj/
+BIN_DIR		=	bin/
+
+### files
+FILES		=	main newZombie randomChump Zombie 
+SOURCES		=	$(addsuffix .cpp, $(FILES))
+OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
+
+### variables
+COMPILER	=   c++ -std=c++98 $(OPTIMIZE)
+OPTIMIZE	=	-O2
+INCLUDES	=	-I ./includes
 FLAGS       =	-Wall -Wextra -Werror
-DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
+DFLAGS		=	-Wconversion -g -fsanitize=address
 
-INC         =	  -I./includes
-SRC         =     main.cpp Zombie.cpp \
-					newZombie.cpp randomZombie.cpp \
-									
+### rules
+all:		$(BIN)
 
-OBJS        =   ${SRC:.cpp=.o}
-%.o: %.c
-		$(CC) $(FLAGS) $(INC) -cpp $< -o $@
+$(BIN): $(OBJECTS)
+			$(COMPILER) $(OBJECTS) -o $(BIN)
 
-all: $(NAME)
-
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(INC) -o $(NAME) $(SRC)
-
-minimal:
-		$(CC) $(INC) -o $(NAME) $(SRC)
-
-debug: $(OBJS)
-	$(CC) $(DEBUG_FLAGS) $(INC) -o $(NAME) $(SRC)
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
+			mkdir -p $(@D)
+			$(COMPILER) $(INCLUDES) $(FLAGS) -c $< -o $@
 
 clean:
-				rm -f $(OBJS)
+			rm -rf $(OBJ_DIR)
 
-fclean:	clean
-				rm -f ${NAME}
+fclean:		clean
+			rm -f $(BIN)
 
-re:		fclean all
+re:			fclean all
 
-.PHONY:	all clean fclean re run
+.PHONY:		all clean fclean re run

@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 06:57:56 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 14:23:53 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:55:09 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,31 @@
 
 Zombie::Zombie(std::string name) {
     this->m_name = name;
+    showName(this->m_name);
+    std::cout << ": " << CGREEN << "constructed" << CRESET
+              << std::endl;
     ;
 };
 
 Zombie::~Zombie() {
-    ;
+    showName(this->m_name);
+    std::cout << ": " << CRED << "destroyed" << CRESET
+              << std::endl;
 }
 
 //===---===---===---===---===---===---===---===---===---===---===---===---===---
 
 void Zombie::announce(void) {
-    std::cout << this->m_name << ": " 
-							<< "BraiiiiiiinnnzzzZ..."
-							<< std::endl;
+    showName(this->m_name);
+    std::cout << ": BraiiiiiiinnnzzzZ..."
+			  << std::endl;
+}
+
+void showName(std::string name) {
+    std::cout << CBOLD 
+              << std::setw(12)
+              << std::left
+              << std::setfill('.')
+              << name
+              << CRESET;
 }

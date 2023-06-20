@@ -6,47 +6,46 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/15 13:13:38 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/20 14:39:28 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-BIN			=   runthis
+### executable
+BIN			=   repl
 
+### directories
+SRC_DIR		=	src/
+OBJ_DIR		=	obj/
+BIN_DIR		=	bin/
 
-COMPILER    =   c++ $(VERSION)
-VERSION     =   -std=c++98
+### files
+FILES		=	main
+SOURCES		=	$(addsuffix .cpp, $(FILES))
+OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
+
+### variables
+COMPILER	=   c++ -std=c++98 $(OPTIMIZE)
+OPTIMIZE	=	-O2
+INCLUDES	=	-I ./includes
 FLAGS       =	-Wall -Wextra -Werror
-DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
+DFLAGS		=	-Wconversion -g -fsanitize=address
 
-SRC_DIR		=	src
-OBJ_DIR		=	obj
-BIN_DIR		=	bin
+### rules
+all:		$(BIN)
 
-SRC_FILES	=	$(wildcard $(SRC_DIR)/*.cpp)
-OBJ_FILES	=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
+$(BIN): $(OBJECTS)
+			$(COMPILER) $(OBJECTS) -o $(BIN)
 
-obj/%.o:	src/%.cpp
-			$(COMPILER) $(FLAGS) -c $< -o $@
-
-all:	$(BIN)
-
-$(BIN):	$(OBJ_DIR) $(BIN_DIR) $(OBJ_FILES)
-			$(COMPILER) $(OBJ_FILES) -o $(BIN_DIR)/$(BIN)
-
-$(OBJ_DIR):
-			mkdir obj
-$(BIN_DIR):
-			mkdir bin
-
-run:
-			$(BIN_DIR)/$(BIN)
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
+			mkdir -p $(@D)
+			$(COMPILER) $(INCLUDES) $(FLAGS) -c $< -o $@
 
 clean:
-			rm -f $(OBJ_DIR)/* assets/*.replace
+			rm -rf $(OBJ_DIR) assets/*.replace
 
 fclean:		clean
-			rm -rf $(BIN_DIR)/*
+			rm -f $(BIN)
 
 re:			fclean all
 
-.PHONY:		all clean re run
+.PHONY:		all clean fclean re

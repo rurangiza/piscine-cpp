@@ -6,43 +6,49 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 16:50:40 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/12 16:51:13 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/20 14:33:59 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        =   this_is_brainz
-CC          =   c++ $(VERSION)
-VERSION     =   -std=c++98
+### executable
+BIN			=   this_is_brainzz
+
+### directories
+SRC_DIR		=	src/
+OBJ_DIR		=	obj/
+BIN_DIR		=	bin/
+
+### files
+FILES		=	main
+SOURCES		=	$(addsuffix .cpp, $(FILES))
+OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
+
+### variables
+COMPILER	=   c++ -std=c++98 $(OPTIMIZE)
+OPTIMIZE	=	-O2
+INCLUDES	=	-I ./includes
 FLAGS       =	-Wall -Wextra -Werror
-DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
+DFLAGS		=	-Wconversion -g -fsanitize=address
 
-SRC         =     main.cpp \
-									
+### rules
+all:		$(BIN)
 
-OBJS        =   ${SRC:.cpp=.o}
-%.o: %.c
-		$(CC) $(FLAGS) $(INC) -cpp $< -o $@
+$(BIN): $(OBJECTS)
+			$(COMPILER) $(OBJECTS) -o $(BIN)
 
-all: $(NAME)
-
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(INC) -o $(NAME) $(SRC)
-
-minimal:
-		$(CC) $(INC) -o $(NAME) $(SRC)
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
+			mkdir -p $(@D)
+			$(COMPILER) $(INCLUDES) $(FLAGS) -c $< -o $@
 
 run:
-	./$(NAME)
-
-debug: $(OBJS)
-	$(CC) $(DEBUG_FLAGS) $(INC) -o $(NAME) $(SRC)
+	./$(BIN)
 
 clean:
-				rm -f $(OBJS)
+			rm -rf $(OBJ_DIR)
 
-fclean:	clean
-				rm -f ${NAME}
+fclean:		clean
+			rm -f $(BIN)
 
-re:		fclean all
+re:			fclean all
 
-.PHONY:	all clean fclean re run
+.PHONY:		all clean fclean re run

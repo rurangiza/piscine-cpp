@@ -6,43 +6,49 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/13 16:48:07 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/20 14:36:07 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+### executable
 BIN			=   violence
-CC          =   c++ $(VERSION)
-VERSION     =   -std=c++98
+
+### directories
+SRC_DIR		=	src/
+OBJ_DIR		=	obj/
+BIN_DIR		=	bin/
+
+### files
+FILES		=	main HumanA HumanB Weapon
+SOURCES		=	$(addsuffix .cpp, $(FILES))
+OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
+
+### variables
+COMPILER	=   c++ -std=c++98 $(OPTIMIZE)
+OPTIMIZE	=	-O2
+INCLUDES	=	-I ./includes
 FLAGS       =	-Wall -Wextra -Werror
-DEBUG_FLAGS =   $(FLAGS) -Wconversion -g -fsanitize=address
+DFLAGS		=	-Wconversion -g -fsanitize=address
 
-SRC			=	src/main.cpp \
-				src/Weapon.cpp \
-				src/HumanA.cpp src/HumanB.cpp \
-									
-OBJS		=	obj/main.o \
-				obj/Weapon.o \
-				obj/HumanA.o obj/HumanB.o \
+### rules
+all:		$(BIN)
 
-# OBJS        =   ${SRC:.cpp=.o}
+$(BIN): $(OBJECTS)
+			$(COMPILER) $(OBJECTS) -o $(BIN)
 
-obj/%.o: src/%.cpp
-		$(CC) $(FLAGS) -c $< -o $@
-
-all: $(BIN)
-
-$(BIN): $(OBJS)
-	$(CC) $(FLAGS) $(SRC) -o ./bin/$(BIN)
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
+			mkdir -p $(@D)
+			$(COMPILER) $(INCLUDES) $(FLAGS) -c $< -o $@
 
 run:
-	./bin/$(BIN)
-
-debug: $(OBJS)
-	$(CC) $(DEBUG_FLAGS) $(INC) $(SRC) -o ./bin/$(BIN)
+	./$(BIN)
 
 clean:
-				rm -f ./bin/* ./obj/*
+			rm -rf $(OBJ_DIR)
 
-re:		clean all
+fclean:		clean
+			rm -f $(BIN)
 
-.PHONY:	all clean re run
+re:			fclean all
+
+.PHONY:		all clean fclean re run

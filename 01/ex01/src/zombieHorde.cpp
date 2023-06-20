@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:30:09 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 16:47:47 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/20 14:31:57 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ zombieHorde( int N, std::string name ) {
   while (i < N) {
     horde[i].setName(name + std::to_string(i));
     i++;
-  }
-
-  system("leaks zombieland");
-  
+  }  
   return (horde);
 }

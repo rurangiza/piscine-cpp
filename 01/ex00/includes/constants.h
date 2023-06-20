@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.h                                           :+:      :+:    :+:   */
+/*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 06:58:24 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 14:22:49 by arurangi         ###   ########.fr       */
+/*   Created: 2023/06/15 10:08:07 by arurangi          #+#    #+#             */
+/*   Updated: 2023/06/15 17:26:33 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H_
-#define ZOMBIE_H_
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
-#include <iostream>
-#include <string>
-
-class Zombie {
-    public:
-        Zombie(std::string name);
-        ~Zombie();
-
-        void announce(void);
-
-    private:
-        std::string m_name;
-};
-
-Zombie* newZombie( std::string name );
-void    randomChump( std::string name );
+#define CGREEN "\033[32m"
+#define CRED "\033[31m"
+#define CBOLD	"\x1b[1m"
+#define CRESET	"\033[0m"
 
 #endif
