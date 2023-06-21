@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:58:33 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/21 11:59:47 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:18:49 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "Zombie.h"
 
-void    changeScope( Zombie *zomb );
+void    changeScope_heap( Zombie *zomb );
 void    changeScope_stack( Zombie zombie );
 Zombie  newZombie_bis( std::string name );
 

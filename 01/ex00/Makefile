@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 06:57:34 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/21 12:01:34 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/21 14:30:35 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ_DIR		=	obj/
 BIN_DIR		=	bin/
 
 ### files
-FILES		=	main newZombie randomChump Zombie helpers
+FILES		=	main Zombie helpers
 SOURCES		=	$(addsuffix .cpp, $(FILES))
 OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
 
@@ -41,6 +41,9 @@ $(BIN): $(OBJECTS)
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 			mkdir -p $(@D)
 			$(COMPILER) $(INCLUDES) $(FLAGS) -c $< -o $@
+
+run:
+			@./$(BIN)
 
 clean:
 			rm -rf $(OBJ_DIR)

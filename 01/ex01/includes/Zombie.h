@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 06:58:24 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/12 16:29:45 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/21 14:49:36 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <string>
-
+#include <cctype>
 #include "common.h"
 
 class Zombie {
