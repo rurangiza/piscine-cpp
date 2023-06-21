@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:22:15 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/15 17:49:31 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:11:31 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include <iostream>
 
 #include "constants.h"
+
+#define MSG_INVALID_COM "only 4 valid commands, (1)DEBUG - (2)INFO - (3)WARNING or (4)ERROR)"
+#define MSG_INVALID_ARGS "two arguments needed"
+
 
 class Harl
 {
@@ -32,5 +36,7 @@ class Harl
 
         void complain( std::string level );
 };
+
+bool isValidComment(std::string comment);
 
 #endif

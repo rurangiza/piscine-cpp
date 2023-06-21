@@ -6,20 +6,20 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:06:06 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/13 13:13:18 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:31:31 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Weapon.h"
-#include "../includes/HumanA.h"
-#include "../includes/HumanB.h"
+#include "Weapon.h"
+#include "HumanA.h"
+#include "HumanB.h"
 
 int
 main() {
 
     {
       Weapon club = Weapon("spear");
-      HumanA bob("Bob", club); // const reference: since I won't assign another class of weapon
+      HumanA bob("Bob", club);
       bob.attack();
       club.setType("spear Ultimate");
       bob.attack();
@@ -27,7 +27,7 @@ main() {
     {
       Weapon club = Weapon("dagger");
       HumanB jim("Jim");
-      jim.setWeapon(club); // pointer: since I can assign another class of weapon 
+      jim.setWeapon(club);
       jim.attack();
       club.setType("dagger Ultimate");
       jim.attack();

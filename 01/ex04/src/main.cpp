@@ -6,14 +6,14 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 09:18:18 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/15 01:18:14 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:56:16 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "../includes/constants.h"
+#include "constants.h"
 
 int
 main( int arg_count, char *arg_list[] ) {
@@ -35,15 +35,17 @@ main( int arg_count, char *arg_list[] ) {
     {
         // open outfile in APPEND mode
         std::ofstream outfile;
-        outfile.open( "./assets/" + filename + ".replace", std::ios::app );
+        outfile.open(filename + ".replace", std::ios::app );
         if ( !outfile ) {
             std::cerr << ERR_FOPEN << filename << ".replace" << std::endl;
             infile.close();
             return ( ERR_CODE );
         }
+
         // read infile one line at a time
         std::string line;
         while ( std::getline(infile, line) ) {
+            
             // look for occurences
             size_t pos = line.find(s1);
             while ( pos != std::string::npos ) {
@@ -52,9 +54,11 @@ main( int arg_count, char *arg_list[] ) {
                 line.insert(pos, s2);
                 pos = line.find(s1);
             }
+    
             // APPEND current line to oufile
             outfile << line << std::endl;
         }
+
         outfile.close();
         infile.close();
         return ( EXIT_SUCCESS );

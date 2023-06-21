@@ -6,17 +6,18 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/20 14:39:28 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/21 16:52:57 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### executable
-BIN			=   repl
+BIN			=   runthis
 
 ### directories
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 BIN_DIR		=	bin/
+
 
 ### files
 FILES		=	main
@@ -40,8 +41,11 @@ $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 			mkdir -p $(@D)
 			$(COMPILER) $(INCLUDES) $(FLAGS) -c $< -o $@
 
+run:
+	@./$(BIN) singleline_short Bond Bobby
+
 clean:
-			rm -rf $(OBJ_DIR) assets/*.replace
+			rm -rf $(OBJ_DIR) ./*.replace
 
 fclean:		clean
 			rm -f $(BIN)
