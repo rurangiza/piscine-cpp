@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 06:57:56 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/20 11:55:09 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:30:43 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void Zombie::announce(void) {
 }
 
 void showName(std::string name) {
-    std::cout << CBOLD 
+    std::cout << CBLUE << "• " << CRESET
               << std::setw(12)
               << std::left
               << std::setfill('.')
