@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 06:57:25 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/21 14:55:47 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:31:19 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,17 @@ int
 main(void) {
 
     std::string name("Brutus");
-    int size = 3;
+    int size = 7;
 
     // create horde
-    std::cout << CGREEN
-              << "> Creating a horde of " << size << "zombies"
-              << CRESET << std::endl;
     Zombie *horde = zombieHorde(size, name);
     if (!horde)
         return (EXIT_FAILURE);
+    std::cout << CGREEN
+              << "> Created a horde of " << size << " zombies"
+              << CRESET << std::endl;
     
     // display horde
-    std::cout << CGREEN
-              << "> Displaying the horde:"
-              << CRESET << std::endl;
     for (int i = 0; i < size; i++) {
         std::cout << "["
                   << std::setw(2) << std::setfill('0')
@@ -41,6 +38,9 @@ main(void) {
 
     // kill horde
     delete[] horde;
+    std::cout << CRED
+              << "> Killed the horde "
+              << CRESET << std::endl;
 
     return 0;
 }
