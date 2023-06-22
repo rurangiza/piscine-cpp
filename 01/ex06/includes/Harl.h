@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:22:15 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/15 17:49:31 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:04:38 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <iostream>
 
 #include "constants.h"
+
+#define MSG_RANDOM_COMPLAIN "[ Probably complaining about insignificant problems ]"
 
 class Harl
 {
@@ -32,5 +34,7 @@ class Harl
 
         void complain( std::string level );
 };
+
+bool isValidComment(std::string comment);
 
 #endif

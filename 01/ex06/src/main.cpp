@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:08:18 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/15 21:05:36 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:07:33 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ main(int ac, char *av[]) {
     }
 
     std::string level = av[1];
+    if (!isValidComment(level)) {
+        std::cout << CBOLD CBLUE
+                  << MSG_RANDOM_COMPLAIN CRESET
+                  << std::endl;
+        return (0);
+    }
     
     Harl harl;
     harl.complain(level);

@@ -1,3 +1,5 @@
+# Themes
+Allocation mémoire, pointeurs sur membres, réference, switch instruction
 
 ## La difference entre la stack et la heap. Quand les utiliser.
 
@@ -27,3 +29,7 @@ int main()
 - un pointeur peut etre initialisé quand tu le déclare OU plus tard et peut etre re-assigné. 
 - une reference doit etre initialisée quand tu la déclare et ne peut pas etre re-assignée.
 -
+
+## Sources
+- [Pointers vs References in C++](https://www.geeksforgeeks.org/pointers-vs-references-cpp/)
+- 

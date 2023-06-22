@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:21:29 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/21 17:57:17 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:04:28 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ Harl::complain( std::string level ) {
         case 3:
             (this->*func_array[3])();
             break ;
+        default:
+            std::cout << "Error (switch): expression doesn't match any constant"
+                      << std::endl;
     }
         
 
@@ -87,4 +90,13 @@ Harl::error( void ) {
     std::cout << "This is unacceptable ! "
               << "I want to speak to the manager now."
               << std::endl;
+}
+
+bool isValidComment(std::string comment) {
+    if (comment != "DEBUG"
+        && comment != "INFO"
+        && comment != "WARNING"
+        && comment != "ERROR")
+        return false;
+    return true;
 }

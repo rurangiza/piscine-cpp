@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/12 17:22:14 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/22 14:56:05 by arurangi         ###   ########.fr        #
+#    Created: 2023/06/22 11:37:13 by arurangi          #+#    #+#              #
+#    Updated: 2023/06/22 11:40:21 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### executable
-BIN			=   HarlFilter
+BIN			=   runthis
 
 ### directories
 SRC_DIR		=	src/
@@ -19,7 +19,7 @@ OBJ_DIR		=	obj/
 BIN_DIR		=	bin/
 
 ### files
-FILES		=	Harl main UserInterface
+FILES		=	main
 SOURCES		=	$(addsuffix .cpp, $(FILES))
 OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
 
@@ -41,7 +41,7 @@ $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 			$(COMPILER) $(INCLUDES) $(FLAGS) -c $< -o $@
 
 run:
-			@./$(BIN) INFO
+			@./$(BIN) DEBUG
 
 clean:
 			rm -rf $(OBJ_DIR)
@@ -51,4 +51,16 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+################################################################################
+
+MSG	=	updated
+
+push:
+	git add .
+	git commit -m "$(MSG)"
+	git push
+
+purge:
+	find . \( -name ".DS_Store" -or -name ".vscode" -or -name ".idea" \) -exec rm -rf {} +
+
+.PHONY:		all clean fclean re run
