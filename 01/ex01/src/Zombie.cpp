@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 06:57:56 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/21 14:52:09 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:12:35 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ Zombie* zombieHorde( int N, std::string name ) {
 
     int i = 0;
     while (i < N) {
-    horde[i].setName(name);
-    i++;
-    }  
+        horde[i].setName(name);
+        i++;
+    }
     return (horde);
 }

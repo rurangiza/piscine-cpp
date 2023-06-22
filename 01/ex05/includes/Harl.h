@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:22:15 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/21 17:11:31 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:57:13 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 #define MSG_INVALID_ARGS "two arguments needed"
 
 
-class Harl
-{
+class Harl {
     private:
       void debug( void );
       void info( void );

@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 06:57:34 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/21 14:27:50 by arurangi         ###   ########.fr        #
+#    Updated: 2023/06/22 10:10:32 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 			$(COMPILER) $(INCLUDES) $(FLAGS) -c $< -o $@
 
 run:
-	./$(BIN)
+	@./$(BIN)
 
 clean:
 			rm -rf $(OBJ_DIR)

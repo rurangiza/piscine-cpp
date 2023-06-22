@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:36:13 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/13 12:58:50 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:02:39 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <string>
 #include <iostream>
-#include "../includes/Weapon.h"
+#include "Weapon.h"
 #include "common.h"
 
 class HumanA {

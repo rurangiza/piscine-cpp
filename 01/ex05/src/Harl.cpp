@@ -6,13 +6,13 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 10:21:29 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/21 17:09:58 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/22 10:55:03 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Harl.h"
+#include "Harl.h"
 
-Harl::Harl(/* args */)
+Harl::Harl( void )
 {
 }
 
@@ -24,7 +24,6 @@ Harl::~Harl( void )
 
 void Harl::complain( std::string level ) {
 
-    (void)level;
     void (Harl::*func_array[4])(void);
 
     func_array[0] = &Harl::error;
