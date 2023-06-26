@@ -1,0 +1,8 @@
+# Notes
+
+> ==standard for floats==: IEEE-754 standard
+    An IEEE-754 float (4 bytes) or double (8 bytes) has three components (there is also an analogous 96-bit extended-precision format under IEEE-854): a sign bit telling whether the number is positive or negative, an exponent giving its order of magnitude, and a mantissa specifying the actual digits of the number.
+
+> ==Un nombre a virgule flotante==:  type de données numériques utilisé en informatique pour représenter des nombres réels. Il est appelé "flottant" car la position de la virgule peut varier, contrairement à un nombre à virgule fixe. En général, les nombres à virgule flottante sont stockés en utilisant la norme IEEE 754, qui spécifie la représentation binaire et les règles pour effectuer des opérations arithmétiques sur ces nombres
+
+> ==Un nombre==: Un nombre est une notion mathématique qui permet de quantifier ou de mesurer une grandeur. Les nombres peuvent être utilisés pour compter des objets (nombres entiers), représenter des quantités fractionnaires (nombres rationnels), ou encore décrire des grandeurs continues telles que des distances ou des temps (nombres réels). Les nombres peuvent être représentés sous différentes formes, telles que des chiffres, des fractions, des décimales, des pourcentages, etc. Ils sont utilisés dans de nombreux domaines, tels que les sciences, les finances, la technologie, la musique, etc
