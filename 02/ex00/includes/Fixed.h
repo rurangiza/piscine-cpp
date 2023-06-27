@@ -6,9 +6,11 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:21:07 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/23 14:42:22 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:09:12 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <iostream>
 
 class Fixed {
 
@@ -17,7 +19,12 @@ class Fixed {
         static const int    _fractionalBits;
     
     public:
-        Fixed();
+        Fixed(); // default empty
+        Fixed( Fixed const &cpy); // copy constructor
+        ~Fixed(); // destructor
+
+        void operator=( const Fixed& cpyAssign);
         
-        ~Fixed();
+        int     getRawBits( void ) const;
+        void    setRawBits( int const raw );
 };
