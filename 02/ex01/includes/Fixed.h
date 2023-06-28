@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:21:07 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/27 16:40:49 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:54:10 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ class Fixed {
     private:
         int                 _fixedPoint;
         static const int    _fractionalBits;
-    
+
     public:
-        Fixed(); // default empty
-        Fixed( Fixed const &cpy); // copy constructor
+        Fixed();
+        Fixed( int const number );
+        Fixed( Fixed const &cpy );
         ~Fixed(); // destructor
 
         void operator=( const Fixed& cpyAssign);
@@ -29,26 +30,31 @@ class Fixed {
         void    setRawBits( int const raw );
 };
 
-
 /** EXPECTED OUTPUT
+---
 
 $> ./a.out
 Default constructor called
+Int constructor called
+Float constructor called
 Copy constructor called
-Copy assignment operator called // <-- This line may be missing depending on your implementation
-getRawBits member function called
-Default constructor called
 Copy assignment operator called
-getRawBits member function called
-getRawBits member function called
-0
-getRawBits member function called
-0
-getRawBits member function called
-0
+Float constructor called
+Copy assignment operator called
+Destructor called
+a is 1234.43
+b is 10
+c is 42.4219
+d is 10
+a is 1234 as integer
+b is 10 as integer
+c is 42 as integer
+d is 10 as integer
+Destructor called
 Destructor called
 Destructor called
 Destructor called
 $>
 
+---
 **/
