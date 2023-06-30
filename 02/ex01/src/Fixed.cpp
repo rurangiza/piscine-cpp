@@ -6,58 +6,98 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:21:10 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/28 09:02:55 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/30 11:05:01 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.h"
+#include "Fixed.hpp"
 
 const int Fixed::_fractionalBits = 8;
 
-/* -- Constructors / Destructors -- */
+/* -------------------- Constructors / Destructors -------------------------- */
 
+// constructor: default
 Fixed::Fixed() {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << CGREEN << "✓ " << CRESET
+              << "Default constructor called" << std::endl;
 
-    this->_fixedPoint = 0;
+    this->_value = 0;
 }
 
-Fixed::Fixed(int const number) {
-    std::cout << "Int constructor called" << std::endl;
-
-    // take interger as paramater
-    // convert to corresponding fixed point value
-}
-
-Fixed::Fixed( Fixed const &cpy){
-    std::cout << "Copy constructor called" << std::endl;
+// constructor: integer to fixed-point
+Fixed::Fixed(const int& number) {
+    std::cout << CGREEN << "✓ " << CRESET
+              << CBLUE << "Int " << CRESET 
+              << "constructor called" << std::endl;
     
-    this->_fixedPoint = cpy.getRawBits();
+    const int scale = std::pow(2, this->_fractionalBits);
+    this->_value = number * scale;                          // this->_value = number << this->_fractionalBits;
+
 }
 
+// constructor: float to fixed-point
+Fixed::Fixed(const float& number) {
+    std::cout << CGREEN << "✓ " << CRESET
+              << CBLUE << "Float " << CRESET 
+              << "constructor called" << std::endl;
+
+    int scale = std::pow(2, this->_fractionalBits);
+    int scaledValue = std::round(number * scale);
+    this->_value = static_cast<int>(scaledValue);
+    
+    // N.B: can't do `number << _fractionalBits` when dealing with floats
+}
+
+// constructor copy
+Fixed::Fixed(const Fixed &copy) {
+    std::cout << CGREEN << "✓ " << CRESET
+              << "Copy constructor called" << std::endl;
+    
+    *this = copy;
+}
+
+// destructor
 Fixed::~Fixed() {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << CRED << "✗ " << CRESET
+              << "Destructor called" << std::endl;
 }
 
-/* -- Operator Overloading -- */
+/* ------------------------- Operator Overload ------------------------------ */
 
 void
 Fixed::operator=( const Fixed& cpyAssign) {
     std::cout << "Copy assignment operator called" << std::endl;
 
-    this->_fixedPoint = cpyAssign.getRawBits();
+    this->_value = cpyAssign.getRawBits();
 }
 
-/* -- Member fucntions -- */
+std::ostream&
+operator<<(std::ostream &out, const Fixed& number) {
+    out << number.toFloat();
+    return out;
+}
+
+/* ------------------------- Member Functions ------------------------------- */
 
 int
-Fixed::getRawBits( void ) const {
-    std::cout << "getRawBits member functionc called" << std::endl;
-    
-    return this->_fixedPoint;
+Fixed::toInt(void) const {
+    return this->_value >> this->_fractionalBits;
+}
+
+float
+Fixed::toFloat(void) const {
+
+    float divider = (float)(1 << this->_fractionalBits); // or divider = pow(2, _fractionalBits)
+    float castedValue = (float)this->_value;
+    return (castedValue / divider);
+}
+
+int
+Fixed::getRawBits( void ) const {    
+    return this->_value;
 }
 
 void
 Fixed::setRawBits( int const raw ) {
-    this->_fixedPoint = raw;
+    this->_value = raw;
 }

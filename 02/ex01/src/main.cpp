@@ -6,11 +6,27 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:46:26 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/27 18:17:55 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/30 10:46:23 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.h"
+#include "Fixed.hpp"
+
+#include <iomanip>
+#include <bitset>
+
+// typedef size_t const Bits;
+// typedef signed int fix;
+
+// int main()
+// {
+
+//     Fixed a( 45.5456f );
+
+//     std::cout << a << std::endl;
+
+//     return 0;
+// }
 
 int main( void ) {
     Fixed a;
