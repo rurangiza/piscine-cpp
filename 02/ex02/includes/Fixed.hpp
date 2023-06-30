@@ -6,9 +6,12 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:21:07 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/30 11:55:45 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:32:56 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
 #include <iostream>
 #include <string>
@@ -33,19 +36,22 @@ class Fixed {
         void operator=(const Fixed& cpyAssign);
 
         // >, <, >=, <=, == and !=
-        // bool operator > (const Fixed& other);
-        // bool operator < (const Fixed& other);
-        // bool operator >= (const Fixed& other);
-        // bool operator <= (const Fixed& other);
-        // bool operator == (const Fixed& other);
-        // bool operator != (const Fixed& other);
+        bool operator > (const Fixed& other);
+        bool operator < (const Fixed& other);
+        bool operator >= (const Fixed& other);
+        bool operator <= (const Fixed& other);
+        bool operator == (const Fixed& other);
+        bool operator != (const Fixed& other);
         
         // +, -, *, /
-        int operator + (const Fixed& other);
-        // int operator - (const Fixed& other);
-        // int operator * (const Fixed& other);
-        // int operator / (const Fixed& other);
+        Fixed operator + (const Fixed& other);
+        Fixed operator - (const Fixed& other);
+        Fixed operator * (const Fixed& other);
+        Fixed operator / (const Fixed& other);
 
+        Fixed operator ++ ( void );
+        Fixed& operator ++ ( int );
+        
         int     getRawBits(void) const;
         void    setRawBits(const int raw);
 
@@ -54,3 +60,5 @@ class Fixed {
 };
 
 std::ostream& operator<< (std::ostream &out, const Fixed& number);
+
+#endif // FIXED_HPP

@@ -6,11 +6,11 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:21:10 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/30 11:59:47 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:32:52 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "../includes/Fixed.hpp"
 
 const int Fixed::_fractionalBits = 8;
 
@@ -18,18 +18,11 @@ const int Fixed::_fractionalBits = 8;
 
 // constructor: default
 Fixed::Fixed() {
-    std::cout << CGREEN << "✓ " << CRESET
-              << "Default constructor called" << std::endl;
-
     this->_value = 0;
 }
 
 // constructor: integer to fixed-point
 Fixed::Fixed(const int& number) {
-    std::cout << CGREEN << "✓ " << CRESET
-              << CBLUE << "Int " << CRESET 
-              << "constructor called" << std::endl;
-    
     const int scale = std::pow(2, this->_fractionalBits);
     this->_value = number * scale;                          // this->_value = number << this->_fractionalBits;
 
@@ -37,10 +30,6 @@ Fixed::Fixed(const int& number) {
 
 // constructor: float to fixed-point
 Fixed::Fixed(const float& number) {
-    std::cout << CGREEN << "✓ " << CRESET
-              << CBLUE << "Float " << CRESET 
-              << "constructor called" << std::endl;
-
     int scale = std::pow(2, this->_fractionalBits);
     int scaledValue = std::round(number * scale);
     this->_value = static_cast<int>(scaledValue);
@@ -50,80 +39,50 @@ Fixed::Fixed(const float& number) {
 
 // constructor copy
 Fixed::Fixed(const Fixed &copy) {
-    std::cout << CGREEN << "✓ " << CRESET
-              << "Copy constructor called" << std::endl;
-    
     *this = copy;
 }
 
 // destructor
 Fixed::~Fixed() {
-    std::cout << CRED << "✗ " << CRESET
-              << "Destructor called" << std::endl;
+    ;
 }
 
 /* ------------------------- Operator Overload ------------------------------ */
 
 void
 Fixed::operator= ( const Fixed& cpyAssign) {
-    std::cout << "Copy assignment operator called" << std::endl;
-
     this->_value = cpyAssign.getRawBits();
 }
 
-// bool
-// Fixed::operator > (const Fixed& other) {
-//     if (this->_value > other.getRawBits())
-//         return true;
-//     return false;
-// }
+Fixed
+Fixed::operator + (const Fixed& other) {
+    return (this->_value + other.getRawBits());
+};
 
-// bool
-// Fixed::operator < (const Fixed& other) {
-//     if (this->_value < other.getRawBits())
-//         return true;
-//     return false;
-// }
-// bool
-// Fixed::operator >= (const Fixed& other) {
-//     if (this->_value >= other.getRawBits())
-//         return true;
-//     return false;
-// }
-// bool
-// Fixed::operator <= (const Fixed& other) {
-//     if (this->_value <= other.getRawBits())
-//         return true;
-//     return false;
-// }
-// bool
-// Fixed::operator == (const Fixed& other) {
-//     if (this->_value == other.getRawBits())
-//         return true;
-//     return false;
-// }
-// bool
-// Fixed::operator != (const Fixed& other) {
-//     if (this->_value != other.getRawBits())
-//         return true;
-//     return false;
-// }
-
-
-int Fixed::operator + (const Fixed& other) {
-    return this->toInt();
+// Overload ++ when used as prefix
+Fixed Fixed::operator ++ ( void )
+{
+    Fixed tmp(*this);
+    ++this->_value;
+    return (tmp); 
 }
-// int Fixed::operator - (const Fixed& other) {
-//     return this->_value - other.getRawBits();
-// }
-// int Fixed::operator * (const Fixed& other) {
-//     return this->_value * other.getRawBits();
-// }
-// int Fixed::operator / (const Fixed& other) {
-//     return this->_value / other.getRawBits();
-// }
 
+// Overload ++ when used as postfix
+Fixed& Fixed::operator ++ ( int )
+{
+    this->_value++;
+    return (*this); 
+}
 
+// Overload * to multiply
+Fixed Fixed::operator * (const Fixed& other) {
+    Fixed tmp;
+
+    tmp.setRawBits(((long) this->_value * (long) other._value) >> this->_fractionalBits);
+    return tmp;
+};
+
+// ----------------------------------------------------------------------------
 
 std::ostream&
 operator<< (std::ostream &out, const Fixed& number) {
