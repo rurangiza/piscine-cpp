@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:21:10 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/30 17:32:52 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/04 13:31:18 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 const int Fixed::_fractionalBits = 8;
 
-/* -------------------- Constructors / Destructors -------------------------- */
+/*
+
+ ██████╗ ██████╗ ███╗   ██╗███████╗████████╗██████╗ ██╗   ██╗ ██████╗████████╗ ██████╗ ██████╗ ███████╗
+██╔════╝██╔═══██╗████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║   ██║██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝
+██║     ██║   ██║██╔██╗ ██║███████╗   ██║   ██████╔╝██║   ██║██║        ██║   ██║   ██║██████╔╝███████╗
+██║     ██║   ██║██║╚██╗██║╚════██║   ██║   ██╔══██╗██║   ██║██║        ██║   ██║   ██║██╔══██╗╚════██║
+╚██████╗╚██████╔╝██║ ╚████║███████║   ██║   ██║  ██║╚██████╔╝╚██████╗   ██║   ╚██████╔╝██║  ██║███████║
+ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝  ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝
+
+*/
 
 // constructor: default
 Fixed::Fixed() {
@@ -23,18 +32,27 @@ Fixed::Fixed() {
 
 // constructor: integer to fixed-point
 Fixed::Fixed(const int& number) {
-    const int scale = std::pow(2, this->_fractionalBits);
-    this->_value = number * scale;                          // this->_value = number << this->_fractionalBits;
 
+    // const int scale = std::pow(2, this->_fractionalBits);
+    // this->_value = number * scale; 
+
+    this->_value = number << this->_fractionalBits;
+    
+    std::cout << "Constructor: INT" << std::endl;
 }
 
 // constructor: float to fixed-point
 Fixed::Fixed(const float& number) {
-    int scale = std::pow(2, this->_fractionalBits);
-    int scaledValue = std::round(number * scale);
-    this->_value = static_cast<int>(scaledValue);
-    
+
+    // int scale = std::pow(2, this->_fractionalBits);
+    // int scaledValue = std::round(number * scale);
+    // this->_value = static_cast<int>(scaledValue);
+
     // N.B: can't do `number << _fractionalBits` when dealing with floats
+
+    this->_value = roundf(number * (1 << this->_fractionalBits));
+    
+    std::cout << "Constructor: FLOAT" << std::endl;
 }
 
 // constructor copy
@@ -47,70 +65,173 @@ Fixed::~Fixed() {
     ;
 }
 
-/* ------------------------- Operator Overload ------------------------------ */
+/*
 
-void
-Fixed::operator= ( const Fixed& cpyAssign) {
-    this->_value = cpyAssign.getRawBits();
+███╗   ███╗███████╗███╗   ███╗██████╗ ███████╗██████╗ 
+████╗ ████║██╔════╝████╗ ████║██╔══██╗██╔════╝██╔══██╗
+██╔████╔██║█████╗  ██╔████╔██║██████╔╝█████╗  ██████╔╝
+██║╚██╔╝██║██╔══╝  ██║╚██╔╝██║██╔══██╗██╔══╝  ██╔══██╗
+██║ ╚═╝ ██║███████╗██║ ╚═╝ ██║██████╔╝███████╗██║  ██║
+╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝
+
+███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗
+██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║
+█████╗  ██║   ██║██╔██╗ ██║██║        ██║   ██║██║   ██║██╔██╗ ██║
+██╔══╝  ██║   ██║██║╚██╗██║██║        ██║   ██║██║   ██║██║╚██╗██║
+██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║
+╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+
+*/
+
+int Fixed::toInt(void) const {
+    return this->_value >> this->_fractionalBits;
 }
 
-Fixed
-Fixed::operator + (const Fixed& other) {
-    return (this->_value + other.getRawBits());
-};
+float Fixed::toFloat(void) const {
 
-// Overload ++ when used as prefix
-Fixed Fixed::operator ++ ( void )
-{
-    Fixed tmp(*this);
-    ++this->_value;
-    return (tmp); 
+    // float divider = (float)(1 << this->_fractionalBits); // or divider = pow(2, _fractionalBits)
+    // float castedValue = (float)this->_value;
+    // return (castedValue / divider);
+
+    return (float)this->_value / (1 << this->_fractionalBits);
 }
 
-// Overload ++ when used as postfix
-Fixed& Fixed::operator ++ ( int )
-{
-    this->_value++;
-    return (*this); 
+int Fixed::getRawBits( void ) const {    
+    return this->_value;
 }
 
-// Overload * to multiply
-Fixed Fixed::operator * (const Fixed& other) {
+void Fixed::setRawBits( int const raw ) {
+    this->_value = raw;
+}
+
+/*
+ ██████╗ ██████╗ ███████╗██████╗  █████╗ ████████╗ ██████╗ ██████╗ ███████╗
+██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔══██╗╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝
+██║   ██║██████╔╝█████╗  ██████╔╝███████║   ██║   ██║   ██║██████╔╝███████╗
+██║   ██║██╔═══╝ ██╔══╝  ██╔══██╗██╔══██║   ██║   ██║   ██║██╔══██╗╚════██║
+╚██████╔╝██║     ███████╗██║  ██║██║  ██║   ██║   ╚██████╔╝██║  ██║███████║
+ ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝                                                                        
+*/                                                              
+
+// Assignment
+Fixed& Fixed::operator = ( const Fixed& copy) {
+    this->_value = copy.getRawBits();
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+
+//Comparaison
+bool Fixed::operator > (const Fixed& other) const {
+    return this->_value > other.getRawBits();
+}
+
+bool Fixed::operator >= (const Fixed& other) const {
+    return this->_value >= other.getRawBits();
+}
+
+bool Fixed::operator < (const Fixed& other) const {
+    return this->_value < other.getRawBits();
+}
+
+bool Fixed::operator <= (const Fixed& other) const {
+    return this->_value <= other.getRawBits();
+}
+
+bool Fixed::operator == (const Fixed& other) const {
+    return this->_value == other.getRawBits();
+}
+
+bool Fixed::operator != (const Fixed& other) const {
+    return this->_value != other.getRawBits();
+}
+
+// Arithmetic
+
+Fixed Fixed::operator + (const Fixed& other) {
     Fixed tmp;
-
-    tmp.setRawBits(((long) this->_value * (long) other._value) >> this->_fractionalBits);
+    
+    tmp.setRawBits(this->_value + other.getRawBits());
     return tmp;
 };
 
-// ----------------------------------------------------------------------------
+Fixed Fixed::operator - (const Fixed& other) {
+    Fixed tmp;
+    
+    tmp.setRawBits(this->_value - other.getRawBits());
+    return tmp;
+};
 
-std::ostream&
-operator<< (std::ostream &out, const Fixed& number) {
+Fixed Fixed::operator * (const Fixed& other) {
+    Fixed tmp;
+
+    tmp.setRawBits((this->_value * other._value) >> this->_fractionalBits); // maybe cast to long
+    return tmp;
+};
+
+Fixed Fixed::operator / (const Fixed& other) {
+    Fixed	tmp;
+
+	tmp.setRawBits(((long) this->_value << this->_fractionalBits) / (long) other._value); // maybe cast to long
+	return (tmp);
+};
+
+// Increment / Decrement
+
+Fixed& Fixed::operator ++ ( void )
+{
+    ++this->_value;
+    return (*this); 
+}
+
+Fixed Fixed::operator ++ ( int )
+{
+    Fixed tmp(*this);
+    this->_value++;
+    return (tmp); 
+}
+
+Fixed& Fixed::operator -- ( void )
+{
+    --this->_value;
+    return (*this); 
+}
+
+Fixed Fixed::operator -- ( int )
+{
+    Fixed tmp(*this);
+    this->_value--;
+    return (tmp); 
+}
+
+// Display
+
+std::ostream& operator << (std::ostream &out, const Fixed& number) {
     out << number.toFloat();
     return out;
 }
 
-/* ------------------------- Member Functions ------------------------------- */
-
-int
-Fixed::toInt(void) const {
-    return this->_value >> this->_fractionalBits;
+// Min max
+Fixed& Fixed::min(Fixed& a, Fixed& b) {
+    Fixed tmp;
+    
+    if (a < b)
+        return a;
+    return b;
+}
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b) {
+    if (a < b)
+        return a;
+    return b;
 }
 
-float
-Fixed::toFloat(void) const {
-
-    float divider = (float)(1 << this->_fractionalBits); // or divider = pow(2, _fractionalBits)
-    float castedValue = (float)this->_value;
-    return (castedValue / divider);
+Fixed& Fixed::max(Fixed& a, Fixed& b) {
+    if (a > b)
+        return a;
+    return b;
 }
-
-int
-Fixed::getRawBits( void ) const {    
-    return this->_value;
-}
-
-void
-Fixed::setRawBits( int const raw ) {
-    this->_value = raw;
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b) {
+    if (a > b)
+        return a;
+    return b;
 }
