@@ -4,7 +4,7 @@ push:
 	git commit -m "$(MSG)"
 	git push
 purge:
-	find . -name ".DS_Store" -delete
+	find . \( -name ".DS_Store" -or -name ".vscode" -or -name ".idea" \) -exec rm -rf {} +
 
 
 

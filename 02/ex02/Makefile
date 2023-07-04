@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 14:55:45 by arurangi          #+#    #+#              #
-#    Updated: 2023/06/30 14:49:42 by arurangi         ###   ########.fr        #
+#    Updated: 2023/07/04 14:45:26 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 
 ### files
-FILES		=	main Fixed
+FILES		=	main Fixed UserInterface
 SOURCES		=	$(addsuffix .cpp, $(FILES))
 OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
 

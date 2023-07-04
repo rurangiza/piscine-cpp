@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:21:10 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/04 13:31:18 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:14:21 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ Fixed::Fixed(const int& number) {
     // this->_value = number * scale; 
 
     this->_value = number << this->_fractionalBits;
-    
-    std::cout << "Constructor: INT" << std::endl;
 }
 
 // constructor: float to fixed-point
@@ -52,7 +50,6 @@ Fixed::Fixed(const float& number) {
 
     this->_value = roundf(number * (1 << this->_fractionalBits));
     
-    std::cout << "Constructor: FLOAT" << std::endl;
 }
 
 // constructor copy
@@ -165,7 +162,7 @@ Fixed Fixed::operator - (const Fixed& other) {
 Fixed Fixed::operator * (const Fixed& other) {
     Fixed tmp;
 
-    tmp.setRawBits((this->_value * other._value) >> this->_fractionalBits); // maybe cast to long
+    tmp.setRawBits(((long)this->_value * (long)other._value) >> this->_fractionalBits); // maybe cast to long
     return tmp;
 };
 
