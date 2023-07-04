@@ -6,11 +6,12 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:21:07 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/27 16:40:49 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:21:47 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "constants.h"
 
 class Fixed {
 
