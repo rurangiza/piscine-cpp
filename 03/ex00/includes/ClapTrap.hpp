@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:14:06 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/05 13:42:32 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:35:12 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ class ClapTrap
 {
     private:
         std::string _name;
-        int _hitPoints;
-        int _energyPoints;
-        int _attackDamage;
+        int         _hitPoints;
+        int         _energyPoints;
+        int         _attackDamage;
         
     public:
         ClapTrap() {

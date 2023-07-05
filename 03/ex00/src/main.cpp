@@ -6,20 +6,18 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:09:00 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/05 11:43:30 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:43:57 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-
-class Animal {
-    
-};
+#include "../includes/ClapTrap.hpp"
 
 int main()
 {
-    Animal bob;
+    ClapTrap clap;
 
-    bob.eat();
+    
+
+    
     return (0);
 }
