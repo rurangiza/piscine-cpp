@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:21:10 by arurangi          #+#    #+#             */
-/*   Updated: 2023/06/27 16:19:56 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:25:42 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,38 @@
 const int Fixed::_fractionalBits = 8;
 
 Fixed::Fixed(){
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << CGREEN << "✓ " << CRESET
+              << "Default constructor called" << std::endl;
 
     this->_fixedPoint = 0;
 }
 
 Fixed::Fixed( Fixed const &cpy){
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << CGREEN << "✓ " << CRESET
+              << "Copy constructor called" << std::endl;
     
     this->_fixedPoint = cpy.getRawBits();
 }
 
 Fixed::~Fixed() {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << CRED << "✗ " << CRESET
+              << "Destructor called" << std::endl;
 }
 
 /* --- */
 
 void
 Fixed::operator=( const Fixed& cpyAssign) {
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << CBLUE << "• " << CRESET
+              << "Copy assignment operator called" << std::endl;
 
     this->_fixedPoint = cpyAssign.getRawBits();
 }
 
 int
 Fixed::getRawBits( void ) const {
-    std::cout << "getRawBits member functionc called" << std::endl;
+    std::cout << "• "
+              << "getRawBits member functionc called" << std::endl;
     
     return this->_fixedPoint;
 }
