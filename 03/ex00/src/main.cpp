@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:09:00 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/05 11:13:57 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/05 11:43:30 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Animal {
 
 int main()
 {
-    Dog bob;
+    Animal bob;
 
     bob.eat();
     return (0);
