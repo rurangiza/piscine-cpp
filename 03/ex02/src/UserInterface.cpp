@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:55 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 14:27:12 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:57:10 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,14 @@ UserInterface::guardMode( const std::string& name ) const {
             //   << CGRAY << "ScravTrap " << CRESET
               << CBOLD << name << CRESET << ": "
               << "entered Gate Keeper mode!!" << std::endl;
+}
+
+void
+UserInterface::highFive( const std::string& name ) const {
+    std::cout << CBLUE << " • " << CRESET
+            //   << CGRAY << "FragTrap " << CRESET
+              << CBOLD << name << CRESET << ": "
+              << "high five guys!" << std::endl;
 }
 
 // -----------------------------------------------------------------------------------

@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:55 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 09:57:39 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:10:48 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ UserInterface::attack( const std::string& name, const std::string& target, const
             << CGRAY << "ClapTrap " << CRESET
             << CBOLD << name << CRESET
             << ": attacked " << target << ", "
-            << "causing " << hitPoints << " pts of damage"
+            << "causing " << hitPoints << "pts of damage"
             << std::endl;
 }
 
