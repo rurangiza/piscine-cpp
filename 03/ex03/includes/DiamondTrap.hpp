@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:08:08 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 16:22:42 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/07 16:23:22 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@
         private:
             std::string _name;
         public:
-            DiamondTrap( std::string name ) : ClapTrap(name + "_clap_name")
-            {
-                this->_hitPoints = FragTrap::_hitPoints;
-                _energyPoints = FragTrap::_energyPoints;
-            }
+            DiamondTrap( std::string name );
             ~DiamondTrap();
     };
 
