@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:15:51 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 09:57:12 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:30:03 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ ClapTrap::ClapTrap() {
     _attackDamage = 0;
 
     std::cout << CGREEN << "|| " << "Constructing" << CRESET 
-              << " ClapTrap" << std::endl;
+            << CGRAY <<" ClapTrap " << CRESET
+            << CBOLD << "nameless" << CRESET
+            << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string name ) {

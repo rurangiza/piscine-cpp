@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:55 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 09:57:39 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:58:09 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,21 @@ UserInterface::oScope( const std::string& funcName, const int& indent ) const {
     str += "_end ";
     str += "(" + funcName + ")";
     std::cout << str << std::endl;
+}
+
+void
+UserInterface::setFormat( const int& width, const std::string& alignment ) const {
+    std::cout << std::setw(13);
+    if (alignment == "right")
+        std::cout.setf(std::ios_base::right, std::ios_base::adjustfield);
+    else
+        std::cout.setf(std::ios_base::left, std::ios_base::adjustfield);
+}
+
+void
+UserInterface::unsetFormat() {
+    std::cout.unsetf(std::ios_base::left);
+    std::cout << std::setw(0);
 }
 
 // -----------------------------------------------------------------------------
@@ -100,4 +115,11 @@ UserInterface::err_takingDamage( const std::string& name ) const {
                   << "ClapTrap " << name << ": "
                   << "is already dead"
                   << std::endl;
+}
+
+void
+UserInterface::guardMode( const std::string& name ) const {
+    std::cout << CBLUE << " • " << CRESET
+              << CGRAY << "ScravTrap " << CRESET << name << ": "
+              << "entered Gate Keeper mode!!" << std::endl;
 }

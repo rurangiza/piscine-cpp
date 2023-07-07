@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 14:55:45 by arurangi          #+#    #+#              #
-#    Updated: 2023/07/06 13:49:02 by arurangi         ###   ########.fr        #
+#    Updated: 2023/07/07 11:20:51 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 
 ### files
-FILES		=	main ClapTrap UserInterface
+FILES		=	main ClapTrap ScravTrap UserInterface
 SOURCES		=	$(addsuffix .cpp, $(FILES))
 OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
 
