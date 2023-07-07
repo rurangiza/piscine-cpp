@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:09:10 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/04 18:09:12 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:48:50 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
     #define COMMON_H
 
     #define CBLACK      "\033[0;30m"
+    #define CGRAY       "\033[90m"
     #define CRED        "\033[0;31m"
     #define CGREEN      "\033[0;32m"
     #define CBLUE       "\033[0;94m"
