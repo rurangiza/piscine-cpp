@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:12 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 14:56:12 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/10 08:40:41 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,23 @@
 
             void guardMode( const std::string& name ) const;
             void highFive( const std::string& name ) const;
+    };
+    
+    class A {
+        public:
+            A() { std::cout << "A : construction" << std::endl; }
+    };
+    class B : public A {
+        public:
+            B() { std::cout << "B : construction" << std::endl; }
+    };
+    class C : public A {
+        public:
+            C() { std::cout << "C : construction" << std::endl; }
+    };
+    class D : public B, public C {
+        public:
+            D() { std::cout << "D : construction" << std::endl; }
     };
 
 #endif // USERINTERFACE_HPP

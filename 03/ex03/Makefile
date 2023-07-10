@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 14:55:45 by arurangi          #+#    #+#              #
-#    Updated: 2023/07/07 14:51:42 by arurangi         ###   ########.fr        #
+#    Updated: 2023/07/07 20:09:20 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,17 +18,17 @@ SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 
 ### files
-FILES		=	main ClapTrap ScravTrap FragTrap UserInterface
+FILES		=	main ClapTrap ScravTrap FragTrap DiamondTrap UserInterface
 SOURCES		=	$(addsuffix .cpp, $(FILES))
 OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
 
 ### variables
 COMPILER	=   c++ -std=c++98 $(OPTIMIZE)
 OPTIMIZE	=	-O2
-INCLUDES	=	-I ./includes
-FLAGS       =	-Wall -Wextra -Werror
-#-Wconversion
+FLAGS       =	-Wall -Wextra -Werror -Wconversion
 DFLAGS		=	-g -fsanitize=address
+
+INCLUDES	=	-I ./includes
 
 ### rules
 all:		$(BIN)

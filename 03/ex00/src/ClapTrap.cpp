@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:15:51 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 11:30:03 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/10 09:53:19 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ ClapTrap::getAttackDamage() const {
 
 /* Operator Overloading */
 
-void
+ClapTrap&
 ClapTrap::operator=( const ClapTrap &rhs ) {
     
     if (this == &rhs) {

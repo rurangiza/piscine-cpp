@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:05:32 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 11:38:31 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/10 09:35:23 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@
         private:
             //
         public:
+            ScravTrap( void );
             ScravTrap( std::string name );
+            ScravTrap( const ScravTrap &src );
             ~ScravTrap();
+
+            ScravTrap& operator= ( const ScravTrap& rhs);
 
             void guardGate();
     };
