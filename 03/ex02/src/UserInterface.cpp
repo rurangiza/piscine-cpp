@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:55 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 10:37:04 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:03:55 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ UserInterface::healing( const std::string& name, const unsigned int& amount) con
 }
 
 void
-UserInterface::attack( const std::string& name, const std::string& target, const int& hitPoints ) const {
+UserInterface::attack( const std::string& name, const std::string& target, const int& hitPoints, std::string origin) const {
     std::cout << CBLUE << " • " << CRESET
-            // << CGRAY << "ClapTrap " << CRESET
+            << CGRAY << origin << CRESET << " "
             << CBOLD << name << CRESET
             << ": attacked " << target << ", "
             << "causing " << hitPoints << "pts of damage"

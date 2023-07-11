@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:09:00 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 09:05:40 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 12:05:15 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,48 @@
 #include "../includes/DiamondTrap.hpp"
 #include "../includes/UserInterface.hpp"
 
+void Test_diamond_problem();
+void Test_construction_order();
+void Test_all_actions();
+
 UserInterface ui2;
 
 int main()
 {
-    D first; // D hérite de B et C, qui eux meme héritent de A
 
-    DiamondTrap diamond("Saphir");
-
-    diamond.attack("Goku");
+    Test_diamond_problem();
+    std::cout << std::endl;
+    
+    Test_construction_order();
+    std::cout << std::endl;
+    
+    Test_all_actions();
+    std::cout << std::endl;
+    
+    
 
     return 0;
+}
+
+void Test_diamond_problem() {
+    std::cout << std::endl << "# understand diamond problem" << std::endl;
+    
+    D obj; // D hérite de B et C, qui eux meme héritent de A
+}
+
+void Test_construction_order() {
+    std::cout << "# check in which order the classes are called" << std::endl;
+    
+    DiamondTrap diamond("Saphir");
+}
+
+void Test_all_actions() {
+    std::cout << "# check all possible actions" << std::endl;
+
+    DiamondTrap diamond("Gogeta");
+
+    diamond.whoAmI();
+    diamond.attack("Janemba");
+    diamond.takeDamage(100);
+    diamond.beRepaired(80);
 }

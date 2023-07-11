@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:08:08 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 10:28:37 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:17:55 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
             DiamondTrap( const DiamondTrap& src );
             DiamondTrap& operator= ( const DiamondTrap& rhs);
             ~DiamondTrap();
+
+            void whoAmI();
     };
 
 #endif // DIAMONDTRAP_HPP

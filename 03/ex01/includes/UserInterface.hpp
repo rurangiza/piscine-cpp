@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:12 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 11:47:58 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:05:04 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
             void unsetFormat();
             
             void healing( const std::string& name, const unsigned int& amount ) const;
-            void attack( const std::string& name, const std::string& target, const int& hitpoints ) const;
+            void attack( const std::string& name, const std::string& target, const int& hitpoints, std::string origin ) const;
             void damage( const std::string& name, const unsigned int& amount ) const;
 
             void err_healing( const std::string& name ) const;

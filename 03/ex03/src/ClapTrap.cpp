@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:35:06 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 10:50:47 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:01:37 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ ClapTrap::beRepaired( unsigned int amount ) {
 void
 ClapTrap::takeDamage( unsigned int amount ) {
 
-    if ( _hitPoints <= 0 || (_hitPoints - amount) <= 0 ) {
+    if ( _hitPoints <= 0 || (_hitPoints - (int)amount) <= 0 ) {
         ui.err_takingDamage( _name );
         return ;
     }

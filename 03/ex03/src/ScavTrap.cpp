@@ -90,7 +90,7 @@ ScavTrap::operator= ( const ScavTrap& rhs )
               << rhs.getName()
               << " to " << this->getName()
               << std::endl;
-              
+
     _name = rhs._name;
     _hitPoints = rhs._hitPoints;
     _energyPoints = rhs._energyPoints;

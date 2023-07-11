@@ -91,7 +91,7 @@ ScavTrap::attack( const std::string& target ) {
         return ;
     }
     _energyPoints--;
-    uiScav.attack( _name, target, _hitPoints);
+    uiScav.attack( _name, target, _hitPoints, "ScavTrap" );
 }
 
 void

@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:55 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 10:36:49 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:26:44 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ UserInterface::unsetFormat() {
 void
 UserInterface::healing( const std::string& name, const unsigned int& amount) const {
     std::cout << CBLUE << " • " << CRESET
-                // << CGRAY << "ClapTrap " << CRESET
+                << CGRAY << "ClapTrap " << CRESET
                 << CBOLD << name << CRESET << ": "
                 << "is healing. " << amount << "pts gained"
                 << std::endl;
@@ -109,18 +109,30 @@ UserInterface::highFive( const std::string& name ) const {
               << "high five guys!" << std::endl;
 }
 
+void
+UserInterface::who( const std::string& name ) const {
+    std::cout << CBLUE << " • " << CRESET
+            << CGRAY << "DiamonTrap " << CRESET
+            << CBOLD << name << CRESET << ": "
+            << "I am "
+            << CBOLD << name << CRESET << " "
+            << "descendent of "
+            << CBOLD << "ClapTrap." << CRESET
+            << std::endl;
+}
+
 // -----------------------------------------------------------------------------------
 
 void
 UserInterface::err_healing( const std::string& name ) const {
-    std::cout << CBLUE << " • " << CRESET
+    std::cout << CYELLOW << " • " << CRESET
                   << CGRAY << "ClapTrap " << CRESET << name << ": "
                   << "can't heal. Not enough energy points" << std::endl;
 }
 
 void
 UserInterface::err_attacking( const std::string& name ) const {
-    std::cout << CBLUE << " • " << CRESET
+    std::cout << CYELLOW << " • " << CRESET
                   << CGRAY << "ClapTrap " << CRESET
                   << CBOLD << name << CRESET
                   << ": Can't attack. Not enough energy points."
@@ -129,8 +141,9 @@ UserInterface::err_attacking( const std::string& name ) const {
 
 void
 UserInterface::err_takingDamage( const std::string& name ) const {
-    std::cout << CBLUE << " • " << CRESET
-                  << "ClapTrap " << name << ": "
+    std::cout << CYELLOW << " • " << CRESET
+                  << CGRAY << "ClapTrap " << CRESET
+                  << CBOLD << name << CRESET << ": "
                   << "is already dead"
                   << std::endl;
 }

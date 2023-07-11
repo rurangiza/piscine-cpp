@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:22:14 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 10:38:49 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:25:27 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ UserInterface uiDiamond;
 /****************************** CANONICAL FORM ********************************/
 
 DiamondTrap::DiamondTrap( void )
-: ClapTrap("nameless_clap_name")
+: ClapTrap("nameless_clap_name"), ScavTrap(), FragTrap()
 {
     this->_name = "nameless";
     this->_hitPoints = FragTrap::_hitPoints;
     this->_energyPoints = ScavTrap::_energyPoints;
-    this->_attackDamage = FragTrap::_attackDamage; 
+    this->_attackDamage = FragTrap::_attackDamage;
 
     std::cout << CGREEN << "|| "
                   << std::setw(13) << std::left << "Constructing" << CRESET 
@@ -32,7 +32,7 @@ DiamondTrap::DiamondTrap( void )
 }
 
 DiamondTrap::DiamondTrap( std::string name )
-: ClapTrap(name+"_clap_name")
+: ClapTrap(name+"_clap_name"), ScavTrap(name), FragTrap(name)
 {
     this->_name = name;
     this->_hitPoints = FragTrap::_hitPoints;
@@ -78,4 +78,11 @@ DiamondTrap::operator= ( const DiamondTrap& rhs)
     this->_attackDamage = rhs.FragTrap::_attackDamage;
 
     return *this;
+}
+
+/**************************** MEMBER FUNCTIONS *******************************/
+
+void
+DiamondTrap::whoAmI() {
+    uiDiamond.who( this->_name );
 }
