@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:55 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/10 15:24:06 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 10:37:04 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ UserInterface::header() {
 
     //std::system("clear");
     std::cout << "-----" << std::endl << "INFO: ";
-    std::cout << CGREEN << "||" << CRESET << " constructor " // constructor
-              << CRED << "||" << CRESET << " destructor "// destructor
-              << CYELLOW << "|" << CRESET << " copy/assignement "// destructor
-              << CBLUE << "•" << CRESET << " actions"// player actions
+    std::cout << CGREEN << "||" << CRESET << " constructor "
+              << CRED << "||" << CRESET << " destructor "
+              << CYELLOW << "|" << CRESET << " copy/assignement "
+              << CBLUE << "•" << CRESET << " actions"
               << std::endl
               << "-----" << std::endl << std::endl;
 }

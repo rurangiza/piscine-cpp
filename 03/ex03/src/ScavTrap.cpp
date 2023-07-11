@@ -14,6 +14,9 @@
 
 UserInterface uiScav;
 
+/****************************** CANONICAL FORM ********************************/
+
+// Default Constructor
 ScavTrap::ScavTrap() : ClapTrap()
 {
     this->_name = "nameless";
@@ -28,6 +31,7 @@ ScavTrap::ScavTrap() : ClapTrap()
               << std::endl;
 }
 
+// Parameterized Constructor
 ScavTrap::ScavTrap( std::string name )
 : ClapTrap(name)
 {
@@ -44,6 +48,7 @@ ScavTrap::ScavTrap( std::string name )
                 << std::endl;
 }
 
+// Copy Constructor
 ScavTrap::ScavTrap( const ScavTrap& src )
 : ClapTrap(src)
 {
@@ -57,6 +62,20 @@ ScavTrap::ScavTrap( const ScavTrap& src )
               << std::endl;
 }
 
+// Destructor
+ScavTrap::~ScavTrap() {
+    std::cout << CRED << "|| "
+              << std::setw(13) << std::left << "Destroying" << CRESET 
+              << CGRAY << "ScavTrap " << CRESET;
+    if ( !_name.empty() ) {
+        std::cout << CBOLD << this->_name << CRESET;
+    } else {
+        std::cout << CBOLD << "nameless" << CRESET;
+    }
+    std::cout << std::endl;
+}
+
+// Assignement Operator Overloading
 ScavTrap&
 ScavTrap::operator= ( const ScavTrap& rhs )
 {
@@ -80,22 +99,7 @@ ScavTrap::operator= ( const ScavTrap& rhs )
     return *this;
 }
 
-ScavTrap::~ScavTrap() {
-    std::cout << CRED << "|| "
-              << std::setw(13) << std::left << "Destroying" << CRESET 
-              << CGRAY << "ScavTrap " << CRESET;
-    if ( !_name.empty() ) {
-        std::cout << CBOLD << this->_name << CRESET;
-    } else {
-        std::cout << CBOLD << "nameless" << CRESET;
-    }
-    std::cout << std::endl;
-}
-
-void
-ScavTrap::guardGate() {
-    uiScav.guardMode( _name );
-}
+/**************************** MEMBER FUNCTIONS *******************************/
 
 void
 ScavTrap::attack( const std::string& target ) {
@@ -106,4 +110,9 @@ ScavTrap::attack( const std::string& target ) {
     }
     _energyPoints--;
     uiScav.attack( _name, target, _hitPoints, "ScavTrap");
+}
+
+void
+ScavTrap::guardGate() {
+    uiScav.guardMode( _name );
 }

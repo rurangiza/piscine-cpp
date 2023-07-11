@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 11:34:03 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/10 13:57:33 by arurangi         ###   ########.fr       */
+/*   Created: 2023/07/10 11:35:06 by arurangi          #+#    #+#             */
+/*   Updated: 2023/07/11 10:50:47 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 UserInterface ui;
 
-/* CANONICAL */
+/****************************** CANONICAL FORM ********************************/
 
+// Default Constructor
 ClapTrap::ClapTrap()
 : _name("nameless"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
@@ -25,6 +26,7 @@ ClapTrap::ClapTrap()
             << std::endl;
 }
 
+// Parameterized Constructor
 ClapTrap::ClapTrap( std::string name )
 : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {   
@@ -34,6 +36,7 @@ ClapTrap::ClapTrap( std::string name )
               << std::endl;
 }
 
+// Copy Constructor
 ClapTrap::ClapTrap( const ClapTrap& src )
 : _name(src._name), _hitPoints(src._hitPoints), _energyPoints(src._energyPoints), _attackDamage(src._attackDamage)
 {   
@@ -42,11 +45,15 @@ ClapTrap::ClapTrap( const ClapTrap& src )
               << std::endl;
 }
 
+// Deconstructor d
 ClapTrap::~ClapTrap() {
     std::cout << CRED << "|| " <<  "Destroying" << CRESET 
-              << " ClapTrap" << std::endl;
+              << CGRAY << "   ClapTrap " << CRESET
+              << CBOLD << _name << CRESET << " "
+              << std::endl;
 }
 
+// Assignement Operator Overloading
 ClapTrap&
 ClapTrap::operator= ( const ClapTrap &rhs ) {
     
@@ -61,7 +68,7 @@ ClapTrap::operator= ( const ClapTrap &rhs ) {
               << rhs.getName()
               << " to " << this->getName()
               << std::endl;
-              
+    
     _name = rhs._name;
     _hitPoints = rhs._hitPoints;
     _energyPoints = rhs._energyPoints;
@@ -71,11 +78,7 @@ ClapTrap::operator= ( const ClapTrap &rhs ) {
     
 }
 
-/*
- ***** 
- ***** Member functions
-******
-*/
+/**************************** MEMBER FUNCTIONS *******************************/
 
 void
 ClapTrap::attack( const std::string& target ) {
@@ -85,7 +88,7 @@ ClapTrap::attack( const std::string& target ) {
         return ;
     }
     _energyPoints--;
-    ui.attack( _name, target, _hitPoints );
+    ui.attack( _name, target, _hitPoints, "ClapTrap");
 }
 
 void
@@ -103,35 +106,25 @@ ClapTrap::beRepaired( unsigned int amount ) {
 void
 ClapTrap::takeDamage( unsigned int amount ) {
 
-    if (_hitPoints == 0) {
+    if ( _hitPoints <= 0 || (_hitPoints - amount) <= 0 ) {
         ui.err_takingDamage( _name );
         return ;
     }
-
     _hitPoints -= amount;
-    _hitPoints = _hitPoints < 0 ? 0: _hitPoints; // make sure nrj never drops below zero
     ui.damage( _name, amount );
 }
 
 std::string
-ClapTrap::getName() const {
-    return _name;
-}
+ClapTrap::getName() const { return _name; }
 
 int
-ClapTrap::getHitPoints() const {
-    return _hitPoints;
-}
+ClapTrap::getHitPoints() const { return _hitPoints; }
 
 int
-ClapTrap::getEnergyPoints() const {
-    return _energyPoints;
-}
+ClapTrap::getEnergyPoints() const { return _energyPoints; }
 
 int
-ClapTrap::getAttackDamage() const {
-    return _attackDamage;
-}
+ClapTrap::getAttackDamage() const { return _attackDamage; }
 
 /* Operator Overloading */
 

@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:22:14 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/10 16:16:24 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 10:38:49 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 UserInterface uiDiamond;
 
+/****************************** CANONICAL FORM ********************************/
+
 DiamondTrap::DiamondTrap( void )
 : ClapTrap("nameless_clap_name")
 {
     this->_name = "nameless";
-    this->_hitPoints = FragTrap::_hitPoints; // 100
+    this->_hitPoints = FragTrap::_hitPoints;
     this->_energyPoints = ScavTrap::_energyPoints;
     this->_attackDamage = FragTrap::_attackDamage; 
 

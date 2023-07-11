@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:30:24 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/10 14:14:29 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 10:28:08 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
             FragTrap( void );
             FragTrap( std::string name );
             FragTrap( const FragTrap& src);
-            ~FragTrap();
             FragTrap& operator= ( const FragTrap& rhs);
+            ~FragTrap();
 
             void highFiveGuys();
     };

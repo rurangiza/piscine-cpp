@@ -84,6 +84,17 @@ ScavTrap::~ScavTrap() {
 }
 
 void
+ScavTrap::attack( const std::string& target ) {
+
+    if (_energyPoints <= 0) {
+        uiScav.err_attacking( _name );
+        return ;
+    }
+    _energyPoints--;
+    uiScav.attack( _name, target, _hitPoints);
+}
+
+void
 ScavTrap::guardGate() {
     uiScav.guardMode( _name );
 }

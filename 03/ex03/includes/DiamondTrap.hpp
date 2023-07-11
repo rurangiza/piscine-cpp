@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:08:08 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/10 15:59:43 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 10:28:37 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
             DiamondTrap( void );
             DiamondTrap( std::string name );
             DiamondTrap( const DiamondTrap& src );
-            ~DiamondTrap();
             DiamondTrap& operator= ( const DiamondTrap& rhs);
+            ~DiamondTrap();
     };
 
 #endif // DIAMONDTRAP_HPP

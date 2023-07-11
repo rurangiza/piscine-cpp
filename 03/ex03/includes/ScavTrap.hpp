@@ -23,9 +23,9 @@
             ~ScavTrap( void );
             ScavTrap& operator= ( const ScavTrap& rhs );
 
+            void attack( const std::string& target );
             void guardGate();
 
-            void attack( const std::string& target );
     };
 
 #endif // SCAVTRAP_HPP

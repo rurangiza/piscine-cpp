@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:36:48 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/10 15:36:12 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 10:40:15 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 UserInterface uiFrag;
 
+/****************************** CANONICAL FORM ********************************/
+
+// Default Constructor
 FragTrap::FragTrap( void ) {
     _name = "nameless";
     _hitPoints = 100;
@@ -27,6 +30,7 @@ FragTrap::FragTrap( void ) {
                 << std::endl;
 }
 
+// Parameterized Constructor
 FragTrap::FragTrap( std::string name )
 {
         _name = name;
@@ -41,6 +45,7 @@ FragTrap::FragTrap( std::string name )
                   << std::endl;
 }
 
+// Copy Constructor
 FragTrap::FragTrap( const FragTrap& src )
 : ClapTrap(src)
 {
@@ -54,6 +59,7 @@ FragTrap::FragTrap( const FragTrap& src )
               << std::endl;
 }
 
+// Destructor
 FragTrap::~FragTrap() {
     std::cout << CRED << "|| "
               << std::setw(13) << std::left << "Destroying" << CRESET 
@@ -66,6 +72,7 @@ FragTrap::~FragTrap() {
     std::cout << std::endl;
 }
 
+// Assignement Operator Overloading
 FragTrap&
 FragTrap::operator= ( const FragTrap& rhs) {
     if (this == &rhs) {
@@ -87,6 +94,8 @@ FragTrap::operator= ( const FragTrap& rhs) {
 
     return *this;
 }
+
+/**************************** MEMBER FUNCTIONS *******************************/
 
 void
 FragTrap::highFiveGuys() {
