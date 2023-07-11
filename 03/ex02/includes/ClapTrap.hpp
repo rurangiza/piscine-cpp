@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:14:06 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 11:11:59 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/10 14:12:55 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,12 @@
             ClapTrap( std::string name );
             ClapTrap( const ClapTrap &copy );
             ~ClapTrap();
-
-            // operator overload
-            void operator = ( const ClapTrap &rhs );
+            ClapTrap& operator = ( const ClapTrap &rhs );
             
-            // methods
             void attack( const std::string& target );
             void takeDamage( unsigned int amount );
             void beRepaired( unsigned int amount );
 
-            // Accessors
             std::string getName() const;
             int         getHitPoints() const;
             int         getEnergyPoints() const;

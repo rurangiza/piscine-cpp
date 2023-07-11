@@ -6,11 +6,11 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:09:00 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 14:28:57 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:24:06 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ScravTrap.hpp"
+#include "../includes/ScavTrap.hpp"
 #include "../includes/UserInterface.hpp"
 
 UserInterface ui2;
@@ -42,20 +42,20 @@ int main()
 void Test_constructorOrder_single() {
     std::cout << "## Testing the construction/destructiong order" << std::endl;
     
-    ScravTrap sangoku("sangoku");
+    ScavTrap sangoku("sangoku");
 }
 
 void Test_constructorOrder_multiple() {
     std::cout << "# Testing the construction/destructiong order (multiple objects)" << std::endl;
     
-    ScravTrap sangoku("sangoku");
-    ScravTrap vegeta("vegeta");
+    ScavTrap sangoku("sangoku");
+    ScavTrap vegeta("vegeta");
 }
 
 void Test_allActions() {
-    std::cout << "# Testing all actions possible by ScravTrap" << std::endl;
+    std::cout << "# Testing all actions possible by ScavTrap" << std::endl;
     
-    ScravTrap vegeta("vegeta");
+    ScavTrap vegeta("vegeta");
     
     vegeta.attack("sangoku");
     vegeta.takeDamage(100);

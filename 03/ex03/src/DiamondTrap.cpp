@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:22:14 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/10 09:40:19 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:16:24 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,30 @@
 
 UserInterface uiDiamond;
 
-DiamondTrap::DiamondTrap( std::string name ) : _name(name), ScravTrap::ScravTrap(name), FragTrap::FragTrap(name) {
-    
+DiamondTrap::DiamondTrap( void )
+: ClapTrap("nameless_clap_name")
+{
+    this->_name = "nameless";
+    this->_hitPoints = FragTrap::_hitPoints; // 100
+    this->_energyPoints = ScavTrap::_energyPoints;
+    this->_attackDamage = FragTrap::_attackDamage; 
+
     std::cout << CGREEN << "|| "
                   << std::setw(13) << std::left << "Constructing" << CRESET 
+                  << CGRAY << "DiamondTrap " << CRESET
+                  << CBOLD << "nameless" << CRESET
+                  << std::endl;
+}
+
+DiamondTrap::DiamondTrap( std::string name )
+: ClapTrap(name+"_clap_name")
+{
+    this->_name = name;
+    this->_hitPoints = FragTrap::_hitPoints;
+    this->_energyPoints = ScavTrap::_energyPoints;
+    this->_attackDamage = FragTrap::_attackDamage;
+    std::cout << CGREEN << "|| "
+                  << std::setw(13) << std::left << "Constructing" << CRESET
                   << CGRAY << "DiamondTrap " << CRESET
                   << CBOLD << this->_name << CRESET
                   << std::endl;
@@ -33,4 +53,27 @@ DiamondTrap::~DiamondTrap() {
         std::cout << CBOLD << "nameless" << CRESET;
     }
     std::cout << std::endl;
+}
+
+DiamondTrap&
+DiamondTrap::operator= ( const DiamondTrap& rhs)
+{
+    if (this == &rhs) {
+        std::cout << CYELLOW << "Warning: " << CRESET
+                  << "Self-assignment detected. Skipping assignment."
+                  << std::endl;
+        return (*this);
+    }
+
+    std::cout << CYELLOW << " | " << "Assigning " << CRESET
+              << rhs.getName()
+              << " to " << this->getName()
+              << std::endl;
+
+    this->_name = rhs._name;
+    DiamondTrap::_hitPoints = rhs.FragTrap::_hitPoints;
+    this->_energyPoints = rhs.ScavTrap::_energyPoints;
+    this->_attackDamage = rhs.FragTrap::_attackDamage;
+
+    return *this;
 }

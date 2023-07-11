@@ -6,33 +6,42 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 11:21:19 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/10 13:45:19 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/10 14:59:35 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ScavTrap.hpp"
-    
+
 UserInterface uiScav;
 
-ScavTrap::ScavTrap( void )
+ScavTrap::ScavTrap() : ClapTrap()
 {
-    _name = "";
+    this->_name = "nameless";
+    this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackDamage = 20;
+    
     std::cout << CGREEN << "|| "
               << std::setw(13) << std::left << "Constructing" << CRESET 
               << CGRAY << "ScavTrap " << CRESET
-              << CBOLD << "nameless" << CRESET
+              << CBOLD << _name << CRESET
               << std::endl;
 }
 
 ScavTrap::ScavTrap( std::string name )
 : ClapTrap(name)
 {
-        this->_name = name;
-        std::cout << CGREEN << "|| "
-                  << std::setw(13) << std::left << "Constructing" << CRESET 
-                  << CGRAY << "ScavTrap " << CRESET
-                  << CBOLD << this->_name << CRESET
-                  << std::endl;
+    this->_name = _name;
+    this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackDamage = 20;
+
+    this->_name = name;
+    std::cout << CGREEN << "|| "
+                << std::setw(13) << std::left << "Constructing" << CRESET 
+                << CGRAY << "ScavTrap " << CRESET
+                << CBOLD << this->_name << CRESET
+                << std::endl;
 }
 
 ScavTrap::ScavTrap( const ScavTrap& src )
@@ -86,4 +95,15 @@ ScavTrap::~ScavTrap() {
 void
 ScavTrap::guardGate() {
     uiScav.guardMode( _name );
+}
+
+void
+ScavTrap::attack( const std::string& target ) {
+
+    if (_energyPoints <= 0) {
+        uiScav.err_attacking( _name );
+        return ;
+    }
+    _energyPoints--;
+    uiScav.attack( _name, target, _hitPoints, "ScavTrap");
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 13:14:06 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 11:11:59 by arurangi         ###   ########.fr       */
+/*   Created: 2023/07/10 11:34:36 by arurangi          #+#    #+#             */
+/*   Updated: 2023/07/10 16:17:27 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,22 @@
             int         _hitPoints;
             int         _energyPoints;
             int         _attackDamage;
-            
+
         public:
             ClapTrap();
             ClapTrap( std::string name );
             ClapTrap( const ClapTrap &copy );
             ~ClapTrap();
-
-            // operator overload
-            void operator = ( const ClapTrap &rhs );
+            ClapTrap& operator = ( const ClapTrap &rhs );
             
-            // methods
-            void attack( const std::string& target );
+            virtual void attack( const std::string& target );
             void takeDamage( unsigned int amount );
             void beRepaired( unsigned int amount );
 
-            // Accessors
             std::string getName() const;
             int         getHitPoints() const;
             int         getEnergyPoints() const;
             int         getAttackDamage() const;
-
     };
 
     std::ostream& operator<< ( std::ostream& os, const ClapTrap& obj );

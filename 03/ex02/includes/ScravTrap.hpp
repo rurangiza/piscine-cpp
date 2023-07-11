@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScravTrap.hpp                                      :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:05:32 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 11:38:31 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/10 13:38:02 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCRAVTRAP_HPP
-    #define SCRAVTRAP_HPP
+#ifndef SCAVTRAP_HPP
+    #define SCAVTRAP_HPP
 
     #include "ClapTrap.hpp"
 
-    class ScravTrap : public ClapTrap {
-        private:
-            //
+    class ScavTrap : public ClapTrap {
         public:
-            ScravTrap( std::string name );
-            ~ScravTrap();
+            ScavTrap( void );
+            ScavTrap( std::string name );
+            ScavTrap( const ScavTrap& src );
+            ~ScavTrap( void );
+            ScavTrap& operator= ( const ScavTrap& rhs );
 
             void guardGate();
     };
 
-#endif // SCRAVTRAP_HPP
+#endif // SCAVTRAP_HPP

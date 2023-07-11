@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:55 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 14:57:10 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/10 17:32:57 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ UserInterface::healing( const std::string& name, const unsigned int& amount) con
 }
 
 void
-UserInterface::attack( const std::string& name, const std::string& target, const int& hitPoints ) const {
+UserInterface::attack( const std::string& name, const std::string& target, const int& hitPoints, std::string origin) const {
     std::cout << CBLUE << " • " << CRESET
-            // << CGRAY << "ClapTrap " << CRESET
+            << CGRAY << origin << CRESET << " "
             << CBOLD << name << CRESET
             << ": attacked " << target << ", "
             << "causing " << hitPoints << "pts of damage"
@@ -97,7 +97,7 @@ UserInterface::damage( const std::string& name, const unsigned int& amount ) con
 void
 UserInterface::guardMode( const std::string& name ) const {
     std::cout << CBLUE << " • " << CRESET
-            //   << CGRAY << "ScravTrap " << CRESET
+            //   << CGRAY << "ScavTrap " << CRESET
               << CBOLD << name << CRESET << ": "
               << "entered Gate Keeper mode!!" << std::endl;
 }

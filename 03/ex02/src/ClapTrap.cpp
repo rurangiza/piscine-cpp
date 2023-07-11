@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 13:15:51 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 15:03:59 by arurangi         ###   ########.fr       */
+/*   Created: 2023/07/10 11:34:03 by arurangi          #+#    #+#             */
+/*   Updated: 2023/07/10 13:57:33 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,61 @@
 
 UserInterface ui;
 
-/* Constructors / Deconstructors */
+/* CANONICAL */
 
-ClapTrap::ClapTrap() {
-    _hitPoints = 10;
-    _energyPoints = 10;
-    _attackDamage = 0;
-
+ClapTrap::ClapTrap()
+: _name("nameless"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+{
     std::cout << CGREEN << "|| " << "Constructing" << CRESET 
-              << CGRAY <<" ClapTrap " << CRESET
-              << CBOLD << "nameless" << CRESET
-              << std::endl;
+            << CGRAY <<" ClapTrap " << CRESET
+            << CBOLD << "nameless" << CRESET
+            << std::endl;
 }
 
-ClapTrap::ClapTrap( std::string name ) {
-
-    _name = name;
-    _hitPoints = 10;
-    _energyPoints = 10;
-    _attackDamage = 0;
-    
+ClapTrap::ClapTrap( std::string name )
+: _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+{   
     std::cout << CGREEN << "|| " << "Constructing " << CRESET 
               << CGRAY << "ClapTrap " << CRESET
               << CBOLD << this->_name << CRESET
               << std::endl;
 }
 
-ClapTrap::ClapTrap( const ClapTrap& copy ) {
-
-    _name = copy._name;
-    _hitPoints = copy._hitPoints;
-    _energyPoints = copy._energyPoints;
-    _attackDamage = copy._attackDamage;
-    
+ClapTrap::ClapTrap( const ClapTrap& src )
+: _name(src._name), _hitPoints(src._hitPoints), _energyPoints(src._energyPoints), _attackDamage(src._attackDamage)
+{   
     std::cout << CYELLOW << " | " << "Copying " << CRESET
-              << copy.getName()
+              << src.getName()
               << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << CRED << "|| "
-              << std::setw(13) << std::left << "Destroying" << CRESET 
-              << CGRAY << "ClapTrap " << CRESET;
-    if ( !_name.empty() ) {
-        std::cout << CBOLD << this->_name << CRESET;
-    } else {
-        std::cout << CBOLD << "nameless" << CRESET;
+    std::cout << CRED << "|| " <<  "Destroying" << CRESET 
+              << " ClapTrap" << std::endl;
+}
+
+ClapTrap&
+ClapTrap::operator= ( const ClapTrap &rhs ) {
+    
+    if (this == &rhs) {
+        std::cout << CYELLOW << "Warning: " << CRESET
+                  << "Self-assignment detected. Skipping assignment."
+                  << std::endl;
+        return (*this);
     }
-    std::cout << std::endl;
+
+    std::cout << CYELLOW << " | " << "Assigning " << CRESET
+              << rhs.getName()
+              << " to " << this->getName()
+              << std::endl;
+              
+    _name = rhs._name;
+    _hitPoints = rhs._hitPoints;
+    _energyPoints = rhs._energyPoints;
+    _attackDamage = rhs._attackDamage;
+
+    return *this;
+    
 }
 
 /*
@@ -102,11 +109,10 @@ ClapTrap::takeDamage( unsigned int amount ) {
     }
 
     _hitPoints -= amount;
-    _hitPoints = _hitPoints < 0 ? 0: _hitPoints;
+    _hitPoints = _hitPoints < 0 ? 0: _hitPoints; // make sure nrj never drops below zero
     ui.damage( _name, amount );
 }
 
-/* Accessors */
 std::string
 ClapTrap::getName() const {
     return _name;
@@ -128,27 +134,6 @@ ClapTrap::getAttackDamage() const {
 }
 
 /* Operator Overloading */
-
-void
-ClapTrap::operator=( const ClapTrap &rhs ) {
-    
-    if (this == &rhs) {
-        std::cout << CYELLOW << "Warning: " << CRESET
-                  << "Self-assignment detected. Skipping assignment."
-                  << std::endl;
-    }
-
-    std::cout << CYELLOW << " | " << "Assigning " << CRESET
-              << rhs.getName()
-              << " to " << this->getName()
-              << std::endl;
-              
-    _name = rhs._name;
-    _hitPoints = rhs._hitPoints;
-    _energyPoints = rhs._energyPoints;
-    _attackDamage = rhs._attackDamage;
-    
-}
 
 std::ostream&
 operator<<( std::ostream& os, const ClapTrap& obj ) {
