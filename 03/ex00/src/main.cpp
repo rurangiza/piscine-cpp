@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:09:00 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 22:31:05 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 11:45:23 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void Test_invalidArgs();
 int main()
 {
     ui2.header();
-    ui2.iScope("main", 0);
     
     Test_constructors();
     std::cout << std::endl;
@@ -32,7 +31,7 @@ int main()
     
     Test_invalidArgs();
 
-    ui2.oScope("main", 0);
+    return 0;
 }
 
 void Test_constructors() {

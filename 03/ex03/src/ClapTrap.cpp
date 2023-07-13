@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:35:06 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 18:53:54 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 11:44:16 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ ClapTrap::attack( const std::string& target ) {
         return ;
     }
     _energyPoints--;
-    ui.attack( _name, target, _attackDamage, "ClapTrap");
+    ui.attack( _name, target, _attackDamage);
 }
 
 void
@@ -106,11 +106,20 @@ ClapTrap::beRepaired( unsigned int amount ) {
 void
 ClapTrap::takeDamage( unsigned int amount ) {
 
-    if ( _hitPoints <= 0 || (_hitPoints - (int)amount) <= 0 ) {
+    if ( _hitPoints <= 0) {
         ui.err_takingDamage( _name );
         return ;
     }
-    _hitPoints -= amount;
+
+    _hitPoints -= (int)amount;
+    _hitPoints = _hitPoints < 0 ? 0 : _hitPoints;
+    if ( _hitPoints == 0 ) {
+        std::cout << CBLUE << " • " << CRESET
+                // << CGRAY << "ClapTrap " << CRESET
+                << CBOLD << _name << CRESET << ": "
+                << "just died. took too much damage"
+                << std::endl;
+    }
     ui.damage( _name, amount );
 }
 
