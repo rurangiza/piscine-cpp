@@ -17,15 +17,16 @@ UserInterface uiScav;
 /****************************** CANONICAL FORM ********************************/
 
 // Default Constructor
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap()
+: ClapTrap()
 {
     this->_name = "nameless";
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
     
-    std::cout << CGREEN << "|| "
-              << std::setw(13) << std::left << "Constructing" << CRESET 
+    std::cout << CGREEN << "|| " << CRESET
+            //   << std::setw(13) << std::left << "Constructing" << CRESET 
               << CGRAY << "ScavTrap " << CRESET
               << CBOLD << _name << CRESET
               << std::endl;
@@ -33,7 +34,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 
 // Parameterized Constructor
 ScavTrap::ScavTrap( std::string name )
-: ClapTrap(name)
+: ClapTrap( name )
 {
     this->_name = _name;
     this->_hitPoints = 100;
@@ -41,8 +42,8 @@ ScavTrap::ScavTrap( std::string name )
     this->_attackDamage = 20;
 
     this->_name = name;
-    std::cout << CGREEN << "|| "
-                << std::setw(13) << std::left << "Constructing" << CRESET 
+    std::cout << CGREEN << "|| " << CRESET
+                // << std::setw(13) << std::left << "Constructing" << CRESET 
                 << CGRAY << "ScavTrap " << CRESET
                 << CBOLD << this->_name << CRESET
                 << std::endl;
@@ -63,8 +64,8 @@ ScavTrap::ScavTrap( const ScavTrap& src )
 
 // Destructor
 ScavTrap::~ScavTrap() {
-    std::cout << CRED << "|| "
-              << std::setw(13) << std::left << "Destroying" << CRESET 
+    std::cout << CRED << "|| " << CRESET
+            //   << std::setw(13) << std::left << CRESET 
               << CGRAY << "ScavTrap " << CRESET;
     if ( !_name.empty() ) {
         std::cout << CBOLD << this->_name << CRESET;

@@ -25,8 +25,7 @@ ScavTrap::ScavTrap( void )
     this->_energyPoints = 50;
     this->_attackDamage = 20;
 
-    std::cout << CGREEN << "|| "
-              << std::setw(13) << std::left << "Constructing" << CRESET 
+    std::cout << CGREEN << "|| " << CRESET
               << CGRAY << "ScavTrap " << CRESET
               << CBOLD << "nameless" << CRESET
               << std::endl;
@@ -34,15 +33,14 @@ ScavTrap::ScavTrap( void )
 
 // Parameterized Constructor
 ScavTrap::ScavTrap( std::string name )
-: ClapTrap(name)
+: ClapTrap( name )
 {
         this->_name = name;
         this->_hitPoints = 100;
         this->_energyPoints = 50;
         this->_attackDamage = 20;
 
-        std::cout << CGREEN << "|| "
-                  << std::setw(13) << std::left << "Constructing" << CRESET 
+        std::cout << CGREEN << "|| " << CRESET
                   << CGRAY << "ScavTrap " << CRESET
                   << CBOLD << this->_name << CRESET
                   << std::endl;
@@ -56,7 +54,7 @@ ScavTrap::ScavTrap( const ScavTrap& src )
     this->_energyPoints = src._energyPoints;
     this->_attackDamage = src._attackDamage;
     
-    std::cout << CYELLOW << " | " << "Copying " << CRESET
+    std::cout << CYELLOW << " | " << CRESET
               << src.getName()
               << std::endl;
 }
@@ -72,7 +70,7 @@ ScavTrap::operator= ( const ScavTrap& rhs )
         return (*this);
     }
 
-    std::cout << CYELLOW << " | " << "Assigning " << CRESET
+    std::cout << CYELLOW << " | " << CRESET
               << rhs.getName()
               << " to " << this->getName()
               << std::endl;
@@ -87,8 +85,7 @@ ScavTrap::operator= ( const ScavTrap& rhs )
 
 // Destructor
 ScavTrap::~ScavTrap() {
-    std::cout << CRED << "|| "
-              << std::setw(13) << std::left << "Destroying" << CRESET 
+    std::cout << CRED << "|| " << CRESET
               << CGRAY << "ScavTrap " << CRESET;
     if ( !_name.empty() ) {
         std::cout << CBOLD << this->_name << CRESET;

@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:22:14 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 11:25:27 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:13:08 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ UserInterface uiDiamond;
 
 /****************************** CANONICAL FORM ********************************/
 
+// Default Constructor
 DiamondTrap::DiamondTrap( void )
 : ClapTrap("nameless_clap_name"), ScavTrap(), FragTrap()
 {
@@ -24,30 +25,40 @@ DiamondTrap::DiamondTrap( void )
     this->_energyPoints = ScavTrap::_energyPoints;
     this->_attackDamage = FragTrap::_attackDamage;
 
-    std::cout << CGREEN << "|| "
-                  << std::setw(13) << std::left << "Constructing" << CRESET 
+    std::cout << CGREEN << "|| " << CRESET
                   << CGRAY << "DiamondTrap " << CRESET
                   << CBOLD << "nameless" << CRESET
                   << std::endl;
 }
 
+// Parameterized Constructor
 DiamondTrap::DiamondTrap( std::string name )
-: ClapTrap(name+"_clap_name"), ScavTrap(name), FragTrap(name)
+: ClapTrap( name+"_clap_name" ), ScavTrap( name ), FragTrap( name )
 {
     this->_name = name;
     this->_hitPoints = FragTrap::_hitPoints;
     this->_energyPoints = ScavTrap::_energyPoints;
     this->_attackDamage = FragTrap::_attackDamage;
-    std::cout << CGREEN << "|| "
-                  << std::setw(13) << std::left << "Constructing" << CRESET
+    std::cout << CGREEN << "|| " << CRESET
                   << CGRAY << "DiamondTrap " << CRESET
                   << CBOLD << this->_name << CRESET
                   << std::endl;
 }
 
+DiamondTrap::DiamondTrap( const DiamondTrap& src )
+{   
+    _name = src._name;
+    _hitPoints = src._hitPoints;
+    _energyPoints = src._energyPoints;
+    _attackDamage = src._attackDamage;
+    std::cout << CYELLOW << " | (C) " << CRESET
+              << src.getName()
+              << std::endl;
+}
+
+// Destructor
 DiamondTrap::~DiamondTrap() {
-    std::cout << CRED << "|| "
-              << std::setw(13) << std::left << "Destroying" << CRESET 
+    std::cout << CRED << "|| " << CRESET
               << CGRAY << "DiamondTrap " << CRESET;
     if ( !_name.empty() ) {
         std::cout << CBOLD << this->_name << CRESET;
@@ -57,6 +68,7 @@ DiamondTrap::~DiamondTrap() {
     std::cout << std::endl;
 }
 
+// Assignement Operator Overloading
 DiamondTrap&
 DiamondTrap::operator= ( const DiamondTrap& rhs)
 {
@@ -67,7 +79,7 @@ DiamondTrap::operator= ( const DiamondTrap& rhs)
         return (*this);
     }
 
-    std::cout << CYELLOW << " | " << "Assigning " << CRESET
+    std::cout << CYELLOW << " | (A) " << CRESET
               << rhs.getName()
               << " to " << this->getName()
               << std::endl;

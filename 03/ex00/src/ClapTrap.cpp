@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:35:06 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/13 11:44:16 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:23:37 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ UserInterface ui;
 ClapTrap::ClapTrap()
 : _name("nameless"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-    std::cout << CGREEN << "|| " << "Constructing" << CRESET 
+    std::cout << CGREEN << "|| " << CRESET 
             << CGRAY <<" ClapTrap " << CRESET
             << CBOLD << "nameless" << CRESET
             << std::endl;
@@ -30,7 +30,7 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap( std::string name )
 : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {   
-    std::cout << CGREEN << "|| " << "Constructing " << CRESET 
+    std::cout << CGREEN << "|| " << CRESET 
               << CGRAY << "ClapTrap " << CRESET
               << CBOLD << this->_name << CRESET
               << std::endl;
@@ -40,15 +40,15 @@ ClapTrap::ClapTrap( std::string name )
 ClapTrap::ClapTrap( const ClapTrap& src )
 : _name(src._name), _hitPoints(src._hitPoints), _energyPoints(src._energyPoints), _attackDamage(src._attackDamage)
 {   
-    std::cout << CYELLOW << " | " << "Copying " << CRESET
+    std::cout << CYELLOW << " | " << CRESET
               << src.getName()
               << std::endl;
 }
 
 // Deconstructor d
 ClapTrap::~ClapTrap() {
-    std::cout << CRED << "|| " <<  "Destroying" << CRESET 
-              << CGRAY << "   ClapTrap " << CRESET
+    std::cout << CRED << "|| " << CRESET 
+              << CGRAY << "ClapTrap " << CRESET
               << CBOLD << _name << CRESET << " "
               << std::endl;
 }
@@ -64,7 +64,7 @@ ClapTrap::operator= ( const ClapTrap &rhs ) {
         return (*this);
     }
 
-    std::cout << CYELLOW << " | " << "Assigning " << CRESET
+    std::cout << CYELLOW << " | " << CRESET
               << rhs.getName()
               << " to " << this->getName()
               << std::endl;
@@ -115,12 +115,13 @@ ClapTrap::takeDamage( unsigned int amount ) {
     _hitPoints = _hitPoints < 0 ? 0 : _hitPoints;
     if ( _hitPoints == 0 ) {
         std::cout << CBLUE << " • " << CRESET
-                // << CGRAY << "ClapTrap " << CRESET
+                << CGRAY << "ClapTrap::" << CRESET
                 << CBOLD << _name << CRESET << ": "
                 << "just died. took too much damage"
                 << std::endl;
+    } else {
+        ui.damage( _name, amount );   
     }
-    ui.damage( _name, amount );
 }
 
 std::string
@@ -139,10 +140,11 @@ ClapTrap::getAttackDamage() const { return _attackDamage; }
 
 std::ostream&
 operator<<( std::ostream& os, const ClapTrap& obj ) {
-    os << "Name...........: " << obj.getName() << std::endl;
-    os << "Hit Points.....: " << obj.getHitPoints() << std::endl;
-    os << "Energy Points..: "<< obj.getEnergyPoints() << std::endl;
-    os << "Attack Damage..: " << obj.getAttackDamage() << std::endl;
+    os << " ↳ Name...........: " << obj.getName() << std::endl;
+    os << " ↳ Hit Points.....: " << obj.getHitPoints() << std::endl;
+    os << " ↳ Energy Points..: "<< obj.getEnergyPoints() << std::endl;
+    os << " ↳ Attack Damage..: " << obj.getAttackDamage() << std::endl;
+    os << " .." << std::endl;
     
     return os;
 }

@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:36:48 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 10:40:15 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:20:02 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@ UserInterface uiFrag;
 /****************************** CANONICAL FORM ********************************/
 
 // Default Constructor
-FragTrap::FragTrap( void ) {
+FragTrap::FragTrap( void )
+: ClapTrap()
+{
     _name = "nameless";
     _hitPoints = 100;
     _energyPoints = 100;
     _attackDamage = 30;
     
-    std::cout << CGREEN << "|| "
-                << std::setw(13) << std::left << "Constructing" << CRESET 
+    std::cout << CGREEN << "|| " << CRESET
                 << CGRAY << "FragTrap " << CRESET
                 << CBOLD << this->_name << CRESET
                 << std::endl;
@@ -32,14 +33,14 @@ FragTrap::FragTrap( void ) {
 
 // Parameterized Constructor
 FragTrap::FragTrap( std::string name )
+: ClapTrap( name )
 {
         _name = name;
         _hitPoints = 100;
         _energyPoints = 100;
         _attackDamage = 30;
         
-        std::cout << CGREEN << "|| "
-                  << std::setw(13) << std::left << "Constructing" << CRESET 
+        std::cout << CGREEN << "|| " << CRESET
                   << CGRAY << "FragTrap " << CRESET
                   << CBOLD << this->_name << CRESET
                   << std::endl;
@@ -47,22 +48,20 @@ FragTrap::FragTrap( std::string name )
 
 // Copy Constructor
 FragTrap::FragTrap( const FragTrap& src )
-: ClapTrap(src)
 {
     this->_name = src._name;
     this->_hitPoints = src._hitPoints;
     this->_energyPoints = src._energyPoints;
     this->_attackDamage = src._attackDamage;
     
-    std::cout << CYELLOW << " | " << "Copying " << CRESET
+    std::cout << CYELLOW << " | " << CRESET
               << src.getName()
               << std::endl;
 }
 
 // Destructor
 FragTrap::~FragTrap() {
-    std::cout << CRED << "|| "
-              << std::setw(13) << std::left << "Destroying" << CRESET 
+    std::cout << CRED << "|| " << CRESET
               << CGRAY << "FragTrap " << CRESET;
     if ( !_name.empty() ) {
         std::cout << CBOLD << this->_name << CRESET;
@@ -82,7 +81,7 @@ FragTrap::operator= ( const FragTrap& rhs) {
         return (*this);
     }
 
-    std::cout << CYELLOW << " | " << "Assigning " << CRESET
+    std::cout << CYELLOW << " | " << CRESET
               << rhs.getName()
               << " to " << this->getName()
               << std::endl;

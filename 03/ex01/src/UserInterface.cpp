@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:55 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/11 11:06:20 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:00:54 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,37 +69,38 @@ UserInterface::unsetFormat() {
 void
 UserInterface::healing( const std::string& name, const unsigned int& amount) const {
     std::cout << CBLUE << " • " << CRESET
-                // << CGRAY << "ClapTrap " << CRESET
+                << CGRAY << "ClapTrap::" << CRESET
                 << CBOLD << name << CRESET << ": "
-                << "is healing. " << amount << "pts gained"
+                << "is healing. "
+                << CGREEN << "+" << amount << CRESET
                 << std::endl;
 }
 
 void
-UserInterface::attack( const std::string& name, const std::string& target, const int& hitPoints, std::string origin ) const {
+UserInterface::attack( const std::string& name, const std::string& target, const int& attackDamage, std::string origin) const {
     std::cout << CBLUE << " • " << CRESET
-            << CGRAY << origin << CRESET << " "
+            << CGRAY << origin << "::" << CRESET
             << CBOLD << name << CRESET
-            << ": attacked " << target << ", "
-            << "causing " << hitPoints << "pts of damage"
+            << ": attacked " << CBOLD << target << CRESET << ", "
+            << "causing " << CYELLOW << "-" << attackDamage << CRESET << " of damage."
             << std::endl;
 }
 
 void
 UserInterface::damage( const std::string& name, const unsigned int& amount ) const {
     std::cout << CBLUE << " • " << CRESET
-                // << CGRAY << "ClapTrap " << CRESET
+                << CGRAY << "ClapTrap::" << CRESET
                 << CBOLD << name << CRESET << ": "
-                << "was attacked. " << amount << "pts lost"
+                << "took damage. " << amount << "pts lost"
                 << std::endl;
 }
 
 void
 UserInterface::guardMode( const std::string& name ) const {
     std::cout << CBLUE << " • " << CRESET
-            //   << CGRAY << "ScavTrap " << CRESET
+              << CGRAY << "ScavTrap::" << CRESET
               << CBOLD << name << CRESET << ": "
-              << "entered Gate Keeper mode!!" << std::endl;
+              << "in [Gate Keeper] mode 🛡️" << std::endl;
 }
 
 // -----------------------------------------------------------------------------------
@@ -107,14 +108,15 @@ UserInterface::guardMode( const std::string& name ) const {
 void
 UserInterface::err_healing( const std::string& name ) const {
     std::cout << CBLUE << " • " << CRESET
-                  << CGRAY << "ClapTrap " << CRESET << name << ": "
+                  << CGRAY << "ClapTrap::" << CRESET
+                  << name << ": "
                   << "can't heal. Not enough energy points" << std::endl;
 }
 
 void
 UserInterface::err_attacking( const std::string& name ) const {
     std::cout << CBLUE << " • " << CRESET
-                  << CGRAY << "ClapTrap " << CRESET
+                  << CGRAY << "ClapTrap::" << CRESET
                   << CBOLD << name << CRESET
                   << ": Can't attack. Not enough energy points."
                   << std::endl;
@@ -123,7 +125,7 @@ UserInterface::err_attacking( const std::string& name ) const {
 void
 UserInterface::err_takingDamage( const std::string& name ) const {
     std::cout << CBLUE << " • " << CRESET
-                  << "ClapTrap " << name << ": "
+                  << "ClapTrap::" << name << ": "
                   << "is already dead"
                   << std::endl;
 }
