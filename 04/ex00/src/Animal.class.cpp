@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 21:03:56 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/13 21:26:32 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 21:30:31 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ Animal::Animal()
 
 // Copy Constructor
 Animal::Animal( const Animal& src )
-{   
-    std::cout << CYELLOW << " | (C) " << CRESET
+{ 
+    _type = src._type;
+    
+    std::cout << CYELLOW << " | copying " << CRESET
               << CBOLD << _type << CRESET
               << std::endl;
 }
@@ -51,7 +53,7 @@ Animal::operator= ( const Animal &rhs )
         return ( *this );
     }
 
-    std::cout << CYELLOW << " | (A) " << CRESET
+    std::cout << CYELLOW << " | assigning " << CRESET
               << CBLUE << rhs._type << CRESET
               << " to " << CBLUE << _type << CRESET
               << std::endl;
@@ -69,14 +71,15 @@ Animal::getType() const { return _type; }
 void
 Animal::makeSound() const
 {
-    std::cout << CGRAY << _type << ": " << CRESET
+    std::cout << CBLUE << " • " << CRESET
+              << CGRAY << _type << ": " << CRESET
               << "[unknown sound]\n";
 }
 
 /*************************** OPERATOR OVERLOADING *****************************/
 
 std::ostream&
-operator<< (std::ostream os, const Animal& rhs)
+operator<< (std::ostream& os, const Animal& rhs)
 {
     os << rhs.getType();
     

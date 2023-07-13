@@ -1,4 +1,8 @@
 MSG	=	updated
+
+all:
+	@echo "Nothing do to. Specify: push or purge\n"
+
 push:
 	git add .
 	git commit -m "$(MSG)"
