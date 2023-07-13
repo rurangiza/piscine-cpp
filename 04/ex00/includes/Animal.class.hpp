@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:40:35 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/13 18:12:29 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 21:14:33 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
     #define ANIMAL_CLASS_HPP
     
     #include <iostream>
+    #include "constants.hpp"
 
     class Animal
     {
@@ -21,20 +22,15 @@
             std::string _type;
 
         public:
-            Animal( void ) {
-                _type = "Animal";
-            }
-            ~Animal( void ) {
-                ;
-            }
+            Animal( void );
+            ~Animal( void );
             Animal( const Animal& src );
             Animal& operator= (const Animal& rhs);
 
-            std::string getType() const { return _type; }
-            virtual void makeSound() const {
-                std::cout << CGRAY << _type << ": " << CRESET
-                          << "Animal sound\n";
-            }
+            std::string getType() const;
+            virtual void makeSound() const;
     };
+
+    std::ostream& operator<< (std::ostream os, const Animal& rhs);
 
 #endif // ANIMAL_HPP

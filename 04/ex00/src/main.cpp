@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:28:53 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/13 18:22:33 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 21:03:32 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 
 UserInterface ui2;
 
+void moreTests();
+
 int main()
 {
+    // Mandatory Tests
     const Animal* meta = new Animal();
     const Animal* j = new Dog();
     const Animal* i = new Cat();
@@ -36,5 +39,12 @@ int main()
     std::cout << x->getType() << std::endl;
     x->makeSound();
 
+    moreTests();
+
     return 0;
+}
+
+void moreTests()
+{
+    
 }

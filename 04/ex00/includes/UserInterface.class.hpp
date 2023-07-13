@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   UserInterface.hpp                                  :+:      :+:    :+:   */
+/*   UserInterface.class.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 13:41:12 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/13 16:26:06 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 21:00:52 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
     class UserInterface {
         public:
-            //
+            void header( void ) const;
     };
 
 #endif // USERINTERFACE_HPP

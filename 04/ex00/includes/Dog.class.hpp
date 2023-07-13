@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:43:37 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/13 18:12:32 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/13 21:24:44 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
             
             void makeSound() const {
                 std::cout << CGRAY << _type << ": " << CRESET
-                          << "Wuf wouf\n";
+                          << "woof\n";
             }
             
     };
