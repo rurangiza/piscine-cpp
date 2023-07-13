@@ -50,7 +50,6 @@ ScavTrap::ScavTrap( std::string name )
 
 // Copy Constructor
 ScavTrap::ScavTrap( const ScavTrap& src )
-: ClapTrap(src)
 {
     this->_name = src._name;
     this->_hitPoints = src._hitPoints;
@@ -109,7 +108,7 @@ ScavTrap::attack( const std::string& target ) {
         return ;
     }
     _energyPoints--;
-    uiScav.attack( _name, target, _hitPoints, "ScavTrap");
+    uiScav.attack( _name, target, _attackDamage, "ScavTrap");
 }
 
 void

@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 18:09:00 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/07 14:16:49 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:31:05 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void Test_validArgs() {
     ClapTrap sasuke("Sasuke");
 
     sasuke.attack("Naruto");
-    sasuke.takeDamage(20);
+    sasuke.takeDamage(2000);
     sasuke.beRepaired(10);
 }
 

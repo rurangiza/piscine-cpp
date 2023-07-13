@@ -14,9 +14,17 @@
     
 UserInterface uiScav;
 
+/****************************** CANONICAL FORM ********************************/
+
+// Default Constructor
 ScavTrap::ScavTrap( void )
+: ClapTrap()
 {
-    _name = "";
+    this->_name = "nameless";
+    this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackDamage = 20;
+
     std::cout << CGREEN << "|| "
               << std::setw(13) << std::left << "Constructing" << CRESET 
               << CGRAY << "ScavTrap " << CRESET
@@ -24,10 +32,15 @@ ScavTrap::ScavTrap( void )
               << std::endl;
 }
 
+// Parameterized Constructor
 ScavTrap::ScavTrap( std::string name )
 : ClapTrap(name)
 {
         this->_name = name;
+        this->_hitPoints = 100;
+        this->_energyPoints = 50;
+        this->_attackDamage = 20;
+
         std::cout << CGREEN << "|| "
                   << std::setw(13) << std::left << "Constructing" << CRESET 
                   << CGRAY << "ScavTrap " << CRESET
@@ -35,8 +48,8 @@ ScavTrap::ScavTrap( std::string name )
                   << std::endl;
 }
 
+// Copy Constructor
 ScavTrap::ScavTrap( const ScavTrap& src )
-: ClapTrap(src)
 {
     this->_name = src._name;
     this->_hitPoints = src._hitPoints;
@@ -48,6 +61,7 @@ ScavTrap::ScavTrap( const ScavTrap& src )
               << std::endl;
 }
 
+// Assignement Operator Overloading
 ScavTrap&
 ScavTrap::operator= ( const ScavTrap& rhs )
 {
@@ -71,6 +85,7 @@ ScavTrap::operator= ( const ScavTrap& rhs )
     return *this;
 }
 
+// Destructor
 ScavTrap::~ScavTrap() {
     std::cout << CRED << "|| "
               << std::setw(13) << std::left << "Destroying" << CRESET 
@@ -83,6 +98,8 @@ ScavTrap::~ScavTrap() {
     std::cout << std::endl;
 }
 
+/**************************** MEMBER FUNCTIONS *******************************/
+
 void
 ScavTrap::attack( const std::string& target ) {
 
@@ -91,7 +108,7 @@ ScavTrap::attack( const std::string& target ) {
         return ;
     }
     _energyPoints--;
-    uiScav.attack( _name, target, _hitPoints, "ScavTrap");
+    uiScav.attack( _name, target, _attackDamage, "ScavTrap");
 }
 
 void

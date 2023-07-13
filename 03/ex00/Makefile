@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 14:55:45 by arurangi          #+#    #+#              #
-#    Updated: 2023/07/06 13:49:02 by arurangi         ###   ########.fr        #
+#    Updated: 2023/07/11 22:44:03 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
 COMPILER	=   c++ -std=c++98 $(OPTIMIZE)
 OPTIMIZE	=	-O2
 INCLUDES	=	-I ./includes
-FLAGS       =	-Wall -Wextra -Werror
+FLAGS       =	-Wall -Wextra -Werror -Wconversion
 #-Wconversion
 DFLAGS		=	-g -fsanitize=address
 
