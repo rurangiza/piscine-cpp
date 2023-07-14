@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.class.cpp                                   :+:      :+:    :+:   */
+/*   WrongWrongCat.class.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 21:03:56 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/14 10:50:49 by arurangi         ###   ########.fr       */
+/*   Created: 2023/07/14 10:51:56 by arurangi          #+#    #+#             */
+/*   Updated: 2023/07/14 10:52:14 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.class.hpp"
+#include "../includes/WrongCat.class.hpp"
 
 /****************************** CANONICAL FORM ********************************/
 
 // Default Constructor
-Animal::Animal()
-: _type( "animal" )
+WrongCat::WrongCat()
 {
+    _type = "wrongcat";
     std::cout << CGREEN << "|| " << CRESET
             << CBOLD << _type << CRESET
             << std::endl;
 }
 
 // Copy Constructor
-Animal::Animal( const Animal& src )
+WrongCat::WrongCat( const WrongCat& src )
 { 
     _type = src._type;
     
@@ -34,16 +34,16 @@ Animal::Animal( const Animal& src )
 }
 
 // Deconstructor d
-Animal::~Animal()
+WrongCat::~WrongCat()
 {
     std::cout << CRED << "|| " << CRESET
               << CBOLD << _type << CRESET
-              << CGRAY << ((_type != "animal") ? " (animal)\n" : "\n") << CRESET; 
+              << std::endl;
 }
 
 // Assignement Operator Overloading
-Animal&
-Animal::operator= ( const Animal &rhs )
+WrongCat&
+WrongCat::operator= ( const WrongCat &rhs )
 {
     
     if ( this == &rhs ) {
@@ -66,20 +66,20 @@ Animal::operator= ( const Animal &rhs )
 /***************************** MEMBER FUNCTIONS *******************************/
 
 std::string
-Animal::getType() const { return _type; }
+WrongCat::getType() const { return _type; }
 
 void
-Animal::makeSound() const
+WrongCat::makeSound() const
 {
     std::cout << CBLUE << " • " << CRESET
               << CGRAY << _type << ": " << CRESET
-              << "[unknown sound]\n";
+              << "meowoof\n";
 }
 
 /*************************** OPERATOR OVERLOADING *****************************/
 
 std::ostream&
-operator<< (std::ostream& os, const Animal& rhs)
+operator<< (std::ostream& os, const WrongCat& rhs)
 {
     os << rhs.getType();
     

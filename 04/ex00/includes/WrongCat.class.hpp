@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:14:02 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/13 18:20:37 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/14 10:54:13 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,13 @@
         private:
             //
         public:
-            WrongCat( void ) {
-                _type = "WrongCat";
-            }
-            ~WrongCat( void ) {
-                ;
-            }
+            WrongCat( void );
+            ~WrongCat( void );
             WrongCat( const WrongCat& src );
             WrongCat& operator= (const WrongCat& rhs);
 
-            std::string getType() const { return _type; }
-            virtual void makeSound() const {
-                std::cout << CGRAY << _type << ": " << CRESET
-                          << "Miaouiiiii\n";
-            }
+            std::string getType() const;
+            virtual void makeSound() const;
     };
 
 #endif // WRONGCAT_CLASS_HPP

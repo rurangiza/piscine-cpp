@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:15:53 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/13 18:22:50 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/14 10:53:56 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,13 @@
             std::string _type;
             
         public:
-            WrongAnimal( void ) {
-                _type = "WrongAnimal";
-            }
-            ~WrongAnimal( void ) {
-                ;
-            }
+            WrongAnimal( void );
+            ~WrongAnimal( void );
             WrongAnimal( const WrongAnimal& src );
             WrongAnimal& operator= (const WrongAnimal& rhs);
 
-            std::string getType() const { return _type; }
-            void makeSound() const {
-                std::cout << CGRAY << _type << ": " << CRESET
-                          << "WrongAnimal sound\n";
-            }
+            std::string getType() const;
+            void makeSound() const;
     };
 
 #endif // WRONGANIMAL_CLASS_HPP

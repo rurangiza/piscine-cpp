@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:40:35 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/13 21:14:33 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/14 10:25:17 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
         public:
             Animal( void );
-            ~Animal( void );
+            virtual ~Animal( void );
             Animal( const Animal& src );
             Animal& operator= (const Animal& rhs);
 
