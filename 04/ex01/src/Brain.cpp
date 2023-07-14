@@ -1,51 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.class.cpp                                      :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 10:32:18 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/14 14:02:48 by arurangi         ###   ########.fr       */
+/*   Created: 2023/07/14 16:02:36 by arurangi          #+#    #+#             */
+/*   Updated: 2023/07/14 16:25:53 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Dog.class.hpp"
+#include "../includes/Brain.hpp"
 
 /****************************** CANONICAL FORM ********************************/
 
 // Default Constructor
-Dog::Dog()
+Brain::Brain()
 {
-    _type = "Dog";
     std::cout << CGREEN << "|| " << CRESET
-            << CBOLD << _type << CRESET
+            << CBOLD << "Brain" << CRESET
             << std::endl;
 }
 
 // Copy Constructor
-Dog::Dog( const Dog& src )
-{ 
-    _type = src._type;
-    
+Brain::Brain( const Brain& src )
+{     
     std::cout << CYELLOW << " | copying " << CRESET
-              << CBOLD << _type << CRESET
+              << CBOLD << "Brain" << CRESET
               << std::endl;
 }
 
 // Deconstructor d
-Dog::~Dog()
+Brain::~Brain()
 {
+
+    // TODO: delete or not the array    
+
     std::cout << CRED << "|| " << CRESET
-              << CBOLD << _type << CRESET
+              << CBOLD << "Brain" << CRESET
               << std::endl;
 }
 
 // Assignement Operator Overloading
-Dog&
-Dog::operator= ( const Dog &rhs )
+Brain&
+Brain::operator= ( const Brain &rhs )
 {
-    
+    // TODO: check how to copy the 2d array
     if ( this == &rhs ) {
         std::cout << CYELLOW << "Warning: " << CRESET
                   << "Self-assignment detected. Skipping assignment."
@@ -54,34 +54,9 @@ Dog::operator= ( const Dog &rhs )
     }
 
     std::cout << CYELLOW << " | assigning " << CRESET
-              << CBLUE << rhs._type << CRESET
-              << " to " << CBLUE << _type << CRESET
+              << CBLUE << "Brain" << CRESET
+              << " to " << CBLUE << "Brain" << CRESET
               << std::endl;
     
-    _type = rhs._type;
-
     return *this;    
-}
-
-/***************************** MEMBER FUNCTIONS *******************************/
-
-std::string
-Dog::getType() const { return _type; }
-
-void
-Dog::makeSound() const
-{
-    std::cout << CBLUE << " • " << CRESET
-              << CGRAY << _type << ": " << CRESET
-              << "woof\n";
-}
-
-/*************************** OPERATOR OVERLOADING *****************************/
-
-std::ostream&
-operator<< (std::ostream& os, const Dog& rhs)
-{
-    os << rhs.getType();
-    
-    return os;
 }

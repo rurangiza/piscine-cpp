@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.class.cpp                                      :+:      :+:    :+:   */
+/*   Dog.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Dog.class.hpp"
+#include "../includes/Dog.hpp"
 
 /****************************** CANONICAL FORM ********************************/
 
@@ -18,6 +18,8 @@
 Dog::Dog()
 {
     _type = "Dog";
+    _brain = new Brain();
+
     std::cout << CGREEN << "|| " << CRESET
             << CBOLD << _type << CRESET
             << std::endl;
@@ -36,6 +38,8 @@ Dog::Dog( const Dog& src )
 // Deconstructor d
 Dog::~Dog()
 {
+    delete _brain;
+
     std::cout << CRED << "|| " << CRESET
               << CBOLD << _type << CRESET
               << std::endl;

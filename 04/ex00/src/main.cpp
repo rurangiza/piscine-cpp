@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:28:53 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/14 10:57:34 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:06:54 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,11 @@ int main()
     j->makeSound();
     meta->makeSound();
 
-    const WrongAnimal* x = new WrongCat();
-
-    std::cout << x->getType() << std::endl;
-    x->makeSound();
-
     delete meta;
     delete i;
     delete j;
 
     moreTests();
-
-
     return 0;
 }
 
@@ -59,4 +52,15 @@ void moreTests()
 {
     // Additional Tests
     std::cout << std::endl << "--- [ PERSONAL ] ---\n\n";
+
+    // Wrong Animals
+    const WrongAnimal* x = new WrongCat();
+
+    std::cout << CBLUE << "type: " << CRESET;
+    std::cout << x->getType() << std::endl;
+    x->makeSound();
+
+    delete x;
+    // Other Tests
+    
 }

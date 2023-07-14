@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.class.hpp                                 :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 18:14:02 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/14 14:09:09 by arurangi         ###   ########.fr       */
+/*   Created: 2023/07/13 17:43:37 by arurangi          #+#    #+#             */
+/*   Updated: 2023/07/14 15:58:37 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_CLASS_HPP
-    #define WRONGCAT_CLASS_HPP
+#ifndef DOG_CLASS_HPP
+    #define DOG_CLASS_HPP
 
-    #include "WrongAnimal.class.hpp"
+    #include "Animal.hpp"
+    #include "Brain.hpp"
 
-    class WrongCat : public WrongAnimal
+    class Dog : public Animal
     {
-
         private:
-            //
+            Brain* _brain;
         public:
-            WrongCat( void );
-            ~WrongCat( void );
-            WrongCat( const WrongCat& src );
-            WrongCat& operator= (const WrongCat& rhs);
-
+            Dog( void );
+            ~Dog( void );
+            Dog( const Dog& src );
+            Dog& operator= (const Dog& rhs);
+            
             std::string getType() const;
-            virtual void makeSound() const;
+            void makeSound() const;
+            
     };
 
-#endif // WRONGCAT_CLASS_HPP
+#endif // DOG_HPP

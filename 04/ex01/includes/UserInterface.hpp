@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.class.hpp                              :+:      :+:    :+:   */
+/*   UserInterface.class.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 18:15:53 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/14 14:07:35 by arurangi         ###   ########.fr       */
+/*   Created: 2023/07/06 13:41:12 by arurangi          #+#    #+#             */
+/*   Updated: 2023/07/13 21:00:52 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_CLASS_HPP
-    #define WRONGANIMAL_CLASS_HPP
+#ifndef USERINTERFACE_HPP
+    #define USERINTERFACE_HPP
 
     #include <iostream>
+    #include <iomanip>
     #include "constants.hpp"
 
-    class WrongAnimal
-    {
-        
-        protected:
-            std::string _type;
-            
+    class UserInterface {
         public:
-            WrongAnimal( void );
-            virtual ~WrongAnimal( void );
-            WrongAnimal( const WrongAnimal& src );
-            WrongAnimal& operator= (const WrongAnimal& rhs);
-
-            std::string getType() const;
-            void makeSound() const;
+            void header( void ) const;
     };
 
-#endif // WRONGANIMAL_CLASS_HPP
+#endif // USERINTERFACE_HPP

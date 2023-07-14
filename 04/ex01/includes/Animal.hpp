@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.class.hpp                                 :+:      :+:    :+:   */
+/*   Animal.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 18:14:02 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/14 14:09:09 by arurangi         ###   ########.fr       */
+/*   Created: 2023/07/13 17:40:35 by arurangi          #+#    #+#             */
+/*   Updated: 2023/07/14 10:25:17 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_CLASS_HPP
-    #define WRONGCAT_CLASS_HPP
+#ifndef ANIMAL_CLASS_HPP
+    #define ANIMAL_CLASS_HPP
+    
+    #include <iostream>
+    #include "constants.hpp"
 
-    #include "WrongAnimal.class.hpp"
-
-    class WrongCat : public WrongAnimal
+    class Animal
     {
+        protected:
+            std::string _type;
 
-        private:
-            //
         public:
-            WrongCat( void );
-            ~WrongCat( void );
-            WrongCat( const WrongCat& src );
-            WrongCat& operator= (const WrongCat& rhs);
+            Animal( void );
+            virtual ~Animal( void );
+            Animal( const Animal& src );
+            Animal& operator= (const Animal& rhs);
 
             std::string getType() const;
             virtual void makeSound() const;
     };
 
-#endif // WRONGCAT_CLASS_HPP
+    std::ostream& operator<< (std::ostream os, const Animal& rhs);
+
+#endif // ANIMAL_HPP

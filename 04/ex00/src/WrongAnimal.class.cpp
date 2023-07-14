@@ -6,7 +6,7 @@
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:52:51 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/14 10:55:35 by arurangi         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:02:48 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // Default Constructor
 WrongAnimal::WrongAnimal()
 {
-    _type = "wrongAnimal";
+    _type = "WrongAnimal";
     std::cout << CGREEN << "|| " << CRESET
             << CBOLD << _type << CRESET
             << std::endl;

@@ -17,7 +17,7 @@
 // Default Constructor
 WrongCat::WrongCat()
 {
-    _type = "wrongcat";
+    _type = "Wrongcat";
     std::cout << CGREEN << "|| " << CRESET
             << CBOLD << _type << CRESET
             << std::endl;

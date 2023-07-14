@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.class.hpp                                 :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 18:14:02 by arurangi          #+#    #+#             */
-/*   Updated: 2023/07/14 14:09:09 by arurangi         ###   ########.fr       */
+/*   Created: 2023/07/13 17:45:11 by arurangi          #+#    #+#             */
+/*   Updated: 2023/07/14 15:58:40 by arurangi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_CLASS_HPP
-    #define WRONGCAT_CLASS_HPP
+#ifndef CAT_CLASS_HPP
+    #define CAT_CLASS_HPP
 
-    #include "WrongAnimal.class.hpp"
+    #include "Animal.hpp"
+    #include "Brain.hpp"
 
-    class WrongCat : public WrongAnimal
+    class Cat : public Animal
     {
-
         private:
-            //
+            Brain* _brain;
         public:
-            WrongCat( void );
-            ~WrongCat( void );
-            WrongCat( const WrongCat& src );
-            WrongCat& operator= (const WrongCat& rhs);
+            Cat( void );
+            ~Cat( void );
+            Cat( const Cat& src );
+            Cat& operator= (const Cat& rhs);
 
             std::string getType() const;
-            virtual void makeSound() const;
+            void makeSound() const;
+            
     };
 
-#endif // WRONGCAT_CLASS_HPP
+#endif // CAT_HPP
