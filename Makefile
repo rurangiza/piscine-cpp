@@ -1,7 +1,7 @@
 MSG	=	updated
 
 all:
-	@echo "Nothing do to. Specify: push or purge\n"
+	@echo "Nothing do to. Specify: push or purge"
 
 push:
 	git add .

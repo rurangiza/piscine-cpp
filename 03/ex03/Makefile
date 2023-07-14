@@ -6,7 +6,7 @@
 #    By: arurangi <arurangi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/22 14:55:45 by arurangi          #+#    #+#              #
-#    Updated: 2023/07/11 11:33:56 by arurangi         ###   ########.fr        #
+#    Updated: 2023/07/14 10:08:47 by arurangi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,8 @@ SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 
 ### files
-FILES		=	main ClapTrap ScavTrap FragTrap DiamondTrap UserInterface
-SOURCES		=	$(addsuffix .cpp, $(FILES))
-OBJECTS		=	$(addprefix $(OBJ_DIR), $(SOURCES:.cpp=.o))
+SOURCES		:= $(wildcard $(SRC_DIR)*.cpp)
+OBJECTS		:= $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SOURCES))
 
 ### variables
 COMPILER	=   c++ -std=c++98 $(OPTIMIZE)
